@@ -16,21 +16,38 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@radix-ui/react-navigation-menu": "^1.2.14",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-toggle": "^1.1.10",
+    "@radix-ui/react-toggle-group": "^1.1.11",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "gatsby": "^5.14.6",
     "gatsby-plugin-google-gtag": "^5.15.0",
     "gatsby-plugin-image": "^3.15.0",
     "gatsby-plugin-manifest": "^5.15.0",
+    "gatsby-plugin-postcss": "^6.15.0",
+    "gatsby-plugin-react-i18next": "^3.0.1",
     "gatsby-plugin-sharp": "^5.15.0",
     "gatsby-plugin-sitemap": "^6.15.0",
     "gatsby-source-filesystem": "^5.15.0",
+    "gatsby-transformer-json": "^5.15.0",
     "gatsby-transformer-sharp": "^5.15.0",
+    "i18next": "^22.5.1",
+    "lucide-react": "^0.544.0",
+    "postcss": "^8.5.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-i18next": "^12.3.1",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^4.1.13"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.13",
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
+    "autoprefixer": "^10.4.21",
     "typescript": "^5.3.3"
   }
 }
