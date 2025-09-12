@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home, ArrowLeft } from "lucide-react";
 import { LanguageSwitcher } from "@/components/language-switcher";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslation, Trans } from "gatsby-plugin-react-i18next";
 
 const NotFoundPage: React.FC<PageProps> = () => {
   const { t } = useTranslation();

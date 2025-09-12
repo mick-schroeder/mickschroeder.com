@@ -118,45 +118,8 @@ const config: GatsbyConfig = {
             {
               resolve: `gatsby-plugin-sitemap`,
               options: {
-                // Exclude dev 404
-                exclude: ["/dev-404-page/"],
-                query: `
-                  {
-                    site { siteMetadata { siteUrl } }
-                    allSitePage { nodes { path pageContext } }
-                  }
-                `,
-                resolveSiteUrl: ({ site }: any) => site.siteMetadata.siteUrl,
-                serialize: ({ site, allSitePage }: any) => {
-                  const siteUrl: string = (site.siteMetadata.siteUrl || '').replace(/\/$/, '');
-                  const ensureTrailingSlash = (p: string) => (p.endsWith('/') ? p : `${p}/`);
-                  return allSitePage.nodes
-                    .filter((n: any) => !n.path.includes('dev-404-page'))
-                    .map((n: any) => {
-                      const url = `${siteUrl}${n.path}`;
-                      const i18n = n.pageContext?.i18n;
-                      if (i18n) {
-                        const languages: string[] = i18n.languages || [];
-                        const defaultLanguage: string | undefined = i18n.defaultLanguage;
-                        const originalPath: string = i18n.originalPath || '/';
-                        const normalizedOriginal = originalPath && originalPath !== '/'
-                          ? (originalPath.startsWith('/') ? originalPath : `/${originalPath}`)
-                          : '/';
-                        const links = languages.map((lng: string) => ({
-                          lang: lng,
-                          url: `${siteUrl}/${lng}${ensureTrailingSlash(normalizedOriginal)}`,
-                        }));
-                        if (defaultLanguage) {
-                          links.push({
-                            lang: 'x-default',
-                            url: `${siteUrl}/${defaultLanguage}${ensureTrailingSlash(normalizedOriginal)}`,
-                          });
-                        }
-                        return { url, links };
-                      }
-                      return { url };
-                    });
-                },
+                // Use defaults. If you want hreflang alternates in the sitemap later,
+                // reintroduce a serialize function.
               },
             },
             {
