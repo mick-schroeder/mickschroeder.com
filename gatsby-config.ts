@@ -108,7 +108,7 @@ const config: GatsbyConfig = {
         background_color: `#ffffff`,
         theme_color: `#111827`,
         display: `standalone`,
-        icon: `src/images/icon.png`,
+        icon: `static/images/icon.png`,
         icon_options: { purpose: `any maskable` },
       },
     },
