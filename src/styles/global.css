@@ -40,18 +40,20 @@
 
 :root {
   --radius: 0.65rem;
-   --background: var(--color-emerald-700);
+    --background: var(--color-emerald-700);
     --foreground: var(--color-white);
     --card: var(--color-emerald-800);
     --card-foreground: var(--color-emerald-50);
     --popover: var(--color-stone-900);
     --popover-foreground: var(--color-white);
     --primary: var(--color-emerald-500);
-    --primary-foreground: var(--color-green-900);
+    /* Improve contrast of text on primary surfaces */
+    --primary-foreground: var(--color-emerald-50);
     --secondary: var(--color-emerald-900);
     --secondary-foreground: var(--color-emerald-50);
     --muted: var(--color-emerald-900);
-    --muted-foreground: var(--color-emerald-200);
+    /* Improve contrast for muted foreground on dark backgrounds */
+    --muted-foreground: var(--color-emerald-50);
     --accent: var(--color-emerald-900);
     --accent-foreground: var(--color-emerald-50);
     --destructive: var(--color-red-600);
@@ -85,11 +87,13 @@
     --popover: var(--color-stone-900);
     --popover-foreground: var(--color-white);
     --primary: var(--color-emerald-500);
-    --primary-foreground: var(--color-green-900);
+    /* Improve contrast of text on primary surfaces */
+    --primary-foreground: var(--color-emerald-50);
     --secondary: var(--color-emerald-900);
     --secondary-foreground: var(--color-emerald-50);
     --muted: var(--color-emerald-900);
-    --muted-foreground: var(--color-emerald-200);
+    /* Improve contrast for muted foreground on very dark backgrounds */
+    --muted-foreground: var(--color-emerald-50);
     --accent: var(--color-emerald-900);
     --accent-foreground: var(--color-emerald-50);
     --destructive: var(--color-red-600);
@@ -121,6 +125,16 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  /* Make textual links distinguishable without relying on color */
+  a {
+    @apply text-primary underline underline-offset-4 decoration-1;
+  }
+  a:hover {
+    @apply decoration-2;
+  }
+  a:focus-visible {
+    @apply outline-none ring-ring/50 ring-[3px];
   }
 }
 

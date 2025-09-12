@@ -3624,6 +3624,11 @@ type NotFoundI18nQueryVariables = Exact<{
 
 type NotFoundI18nQuery = { readonly locales: { readonly edges: ReadonlyArray<{ readonly node: { readonly ns: string | null, readonly data: string | null, readonly language: string | null } }> } };
 
+type ProjectIconsQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type ProjectIconsQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<{ readonly base: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
+
 type SEOConfigQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 

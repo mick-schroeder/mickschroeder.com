@@ -28,12 +28,12 @@ const IndexPage: React.FC<PageProps<{ allProjectsJson: { nodes: Project[] } }>> 
       <Projects projects={data.allProjectsJson.nodes as Project[]} className="mt-10" />
 
       <section className="mt-10">
-        <h3 className="text-2xl font-bold mb-4">{t("socials_heading")}</h3>
+        <h2 className="text-2xl font-bold mb-4">{t("socials_heading")}</h2>
         <Socials />
       </section>
 
       <section className="mt-10">
-        <h3 className="text-2xl font-bold mb-4">{t("contact_heading")}</h3>
+        <h2 className="text-2xl font-bold mb-4">{t("contact_heading")}</h2>
         <Contact />
       </section>
 

@@ -48,7 +48,7 @@ export const Projects: React.FC<Props> = ({ projects, className }) => {
   }, [data]);
   return (
     <section className={className ?? "mt-10"}>
-      <h3 className="text-2xl font-bold mb-4">{t("projects_heading")}</h3>
+      <h2 className="text-2xl font-bold mb-4">{t("projects_heading")}</h2>
       <div className="grid md:grid-cols-2 gap-6">
         {projects.map((p) => (
           <Card key={p.slug} className="border-border overflow-hidden">
