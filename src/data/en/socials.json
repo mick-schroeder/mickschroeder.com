@@ -1,0 +1,20 @@
+[
+  {
+    "title": "LinkedIn",
+    "cta": "Connect on LinkedIn",
+    "url": "https://www.linkedin.com/in/schroedermick/",
+    "icon": "/images/socials/linkedin.svg"
+  },
+  {
+    "title": "GitHub",
+    "cta": "View Projects",
+    "url": "https://github.com/mick-schroeder",
+    "icon": "/images/socials/github.svg"
+  },
+  {
+    "title": "Twitter",
+    "cta": "Follow on Twitter",
+    "url": "https://twitter.com/mick_schroeder",
+    "icon": "/images/socials/twitter.svg"
+  }
+]

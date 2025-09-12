@@ -1,9 +1,10 @@
 {
-  "hero_line": "Forbróir Bogearraí Neamhspleách Éireannach‑Meiriceánach <b class=\"pop-plus\">+</b> Cógaiseoir <b class=\"pop-plus\">+</b> Mac Léinn MBA i gColáiste na Tríonóide, Baile Átha Cliath.",
+  "hero_line": "Forbróir Bogearraí Neamhspleách Éireannach‑Meiriceánach <b>+</b> Cógaiseoir <b>+</b> Mac Léinn MBA i gColáiste na Tríonóide, Baile Átha Cliath.",
   "cta_linkedin": "Ceangail liom ar LinkedIn",
   "cta_github": "Féach ar Thionscadail",
   "cta_email": "Déan Teagmháil trí Ríomhphost",
   "footer_copy": "© 2025 Mick Schroeder, LLC.",
+  "footer_copy_html": "© 2025 Mick Schroeder, LLC. Cód: <a1>MIT</a1> • Ábhar: <a2>CC BY 4.0</a2>",
   "projects_heading": "Tionscadail",
   "socials_heading": "Meáin shóisialta",
   "contact_heading": "Teagmháil",
@@ -14,5 +15,12 @@
   "not_found_heading": "Níor aimsíodh an leathanach",
   "not_found_body": "Tá brón orainn, níor aimsíomar an méid a bhí á lorg agat.",
   "not_found_cta_home": "Téigh go dtí an leathanach baile",
-  "not_found_cta_back": "Téigh siar"
+  "not_found_cta_back": "Téigh siar",
+  "logo_alt": "Lógó Schroeder",
+  "skip_to_content": "Scipeáil go dtí an príomhábhar"
+  ,
+  "flag_solved": "Réitithe!",
+  "flag_scramble": "Measc arís"
+  ,
+  "cta_visit": "Oscail"
 }

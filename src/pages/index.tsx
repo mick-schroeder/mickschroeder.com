@@ -1,12 +1,12 @@
 import * as React from "react";
 import { graphql, type HeadFC, type PageProps } from "gatsby";
-import { useTranslation, Link } from "gatsby-plugin-react-i18next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useTranslation, Trans } from "gatsby-plugin-react-i18next";
 import { Projects, type Project } from "@/components/projects";
 import { Flag } from "@/components/flag";
-import { ExternalLink, Mail } from 'lucide-react';
-import { SEO } from "@/components/seo";
+//
+import Socials from "@/components/socials";
+import Contact from "@/components/contact";
+import { SEO, buildSoftwareSourceCodeJsonLd } from "@/components/seo";
 import { LanguageSwitcher } from "@/components/language-switcher";
 
 const IndexPage: React.FC<PageProps<{ allProjectsJson: { nodes: Project[] } }>> = ({ data }) => {
@@ -19,7 +19,7 @@ const IndexPage: React.FC<PageProps<{ allProjectsJson: { nodes: Project[] } }>> 
           <LanguageSwitcher />
         </div>
         <p className="text-muted-foreground text-xl md:px-10">
-          <span dangerouslySetInnerHTML={{ __html: t("hero_line") }} />
+          <Trans i18nKey="hero_line" components={{ b: <b className="pop-plus" /> }} />
         </p>
       </div>
 
@@ -29,44 +29,22 @@ const IndexPage: React.FC<PageProps<{ allProjectsJson: { nodes: Project[] } }>> 
 
       <section className="mt-10">
         <h3 className="text-2xl font-bold mb-4">{t("socials_heading")}</h3>
-        <div className="grid md:grid-cols-2 gap-6">
-          <Card className="border-border">
-            <CardHeader><CardTitle>{t("title_linkedin")}</CardTitle></CardHeader>
-            <CardContent>
-              <Button asChild variant="outline" className="w-full">
-                <a href="https://www.linkedin.com/in/schroedermick/" rel="noopener noreferrer">{t("cta_linkedin")}<ExternalLink /></a>
-              </Button>
-            </CardContent>
-          </Card>
-          <Card className="border-border">
-            <CardHeader><CardTitle>{t("title_github")}</CardTitle></CardHeader>
-            <CardContent>
-              <Button asChild variant="outline" className="w-full">
-                <a href="https://github.com/mick-schroeder" rel="noopener noreferrer">{t("cta_github")}<ExternalLink /></a>
-              </Button>
-            </CardContent>
-          </Card>
-           </div>
-        </section>
+        <Socials />
+      </section>
 
       <section className="mt-10">
         <h3 className="text-2xl font-bold mb-4">{t("contact_heading")}</h3>
-        <div className="grid md:grid-cols-2 gap-6">
-          <Card className="border-border">
-            <CardHeader><CardTitle>{t("title_email")}</CardTitle></CardHeader>
-            <CardContent>
-              <Button asChild variant="outline" className="w-full">
-                <a href="mailto:mick@mickschroeder.com" className="inline-flex items-center justify-center gap-2">
-                  {t("cta_email")}<Mail className="h-4 w-4" />
-                </a>
-              </Button>
-            </CardContent>
-          </Card>
-           </div>
+        <Contact />
       </section>
 
       <footer className="mt-8 text-xs text-center opacity-80">
-        {t("footer_copy")}
+        <Trans
+          i18nKey="footer_copy_html"
+          components={{
+            a1: <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer" />,
+            a2: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" />,
+          }}
+        />
       </footer>
     </>
   );
@@ -74,10 +52,19 @@ const IndexPage: React.FC<PageProps<{ allProjectsJson: { nodes: Project[] } }>> 
 
 export default IndexPage;
 
-export const Head: HeadFC = ({ location }) => <SEO pathname={location.pathname} />;
+export const Head: HeadFC = ({ location, data }) => {
+  const siteUrl = (data as any).site.siteMetadata.siteUrl.replace(/\/$/, "");
+  const authorName = (data as any).site.siteMetadata.person?.fullName || (data as any).site.siteMetadata.author;
+  const projects = (data as any).allProjectsJson.nodes as Project[];
+
+  const jsonLd = buildSoftwareSourceCodeJsonLd(projects as any, siteUrl, authorName);
+
+  return <SEO pathname={location.pathname} jsonLd={jsonLd} />;
+};
 
 export const query = graphql`
   query IndexPageI18nAndProjects($language: String!) {
+    site { siteMetadata { siteUrl author person { fullName } social { linkedin github email } } }
     locales: allLocale(filter: { language: { eq: $language } }) {
       edges { node { ns data language } }
     }
@@ -87,6 +74,10 @@ export const query = graphql`
         title
         description
         icon
+        repo
+        homepage
+        language
+        license
         links { label url }
       }
     }

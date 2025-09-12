@@ -1,9 +1,12 @@
 [
   {
     "slug": "https://cite.mickschroeder.com",
+    "homepage": "https://cite.mickschroeder.com",
+    "repo": "https://github.com/mick-schroeder/schroeder-cite",
+    "language": "TypeScript",
     "title": "Citation Generator",
     "description": "Bogearraí saor in aisce agus foinse oscailte a mholann lua citithe go huathoibríoch agus a chuidíonn le hinsint fhoinsí a scríobh.",
-    "icon": "/images/icon-cite.png",
+    "icon": "/images/projects/icon-cite.png",
     "links": [
       { "label": "Bain triail as", "url": "https://cite.mickschroeder.com" },
       { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/schroeder-cite" }
@@ -11,36 +14,44 @@
   },
   {
     "slug": "https://github.com/mick-schroeder/RxShortages",
+    "repo": "https://github.com/mick-schroeder/RxShortages",
     "title": "RxShortages",
     "description": "Aip ilardáin foinse oscailte do ghannchuidí cógais.",
-    "icon": "/images/icon-rxshortages.png",
+    "icon": "/images/projects/icon-rxshortages.png",
     "links": [
       { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/RxShortages" }
     ]
   },
   {
     "slug": "https://github.com/mick-schroeder/Medical-Spelling-Dictionary",
+    "repo": "https://github.com/mick-schroeder/Medical-Spelling-Dictionary",
     "title": "Foclóir Litrithe Leighis",
     "description": "Foclóir litrithe saor in aisce le téarmaí leighis do Microsoft Word / Office.",
-    "icon": "/images/icon-spell.png",
+    "icon": "/images/projects/icon-spell.png",
     "links": [
       { "label": "Íoslódáil", "url": "https://github.com/mick-schroeder/Medical-Spelling-Dictionary" }
     ]
   },
   {
     "slug": "https://webshuffle.mickschroeder.com",
+    "homepage": "https://webshuffle.mickschroeder.com",
+    "repo": "https://github.com/mick-schroeder/schroeder-web-shuffle",
+    "language": "TypeScript",
     "title": "Web Shuffle",
     "description": "Cnaipe \"🔀 Web Shuffle\" le suíomhanna gréasáin is fearr agus is mó tionchair, curtha in eagar ag AI.",
-    "icon": "/images/icon-randomwebsite.png",
+    "icon": "/images/projects/icon-randomwebsite.png",
     "links": [
       { "label": "Bain triail as", "url": "https://webshuffle.mickschroeder.com" }
     ]
   },
   {
     "slug": "https://github.com/mick-schroeder/gatsby-schroeder",
+    "repo": "https://github.com/mick-schroeder/gatsby-schroeder",
+    "homepage": "https://www.mickschroeder.com/",
+    "language": "TypeScript",
     "title": "mickschroeder.com",
     "description": "Féach cód foinse an tsuímh ghréasáin seo.",
-    "icon": "/images/icon-mickschroeder.png",
+    "icon": "/images/projects/icon-mickschroeder.png",
     "links": [
       { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/gatsby-schroeder" }
     ]

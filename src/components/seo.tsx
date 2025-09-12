@@ -18,6 +18,47 @@ export interface SEOProps {
   jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
+// Minimal shape of a project used to emit SoftwareSourceCode JSON-LD
+export type SoftwareProject = {
+  title: string;
+  description: string;
+  icon: string;
+  links?: { label: string; url: string }[];
+  repo?: string;
+  homepage?: string;
+  language?: string;
+  license?: string;
+};
+
+// Helper to build SoftwareSourceCode JSON-LD from project data
+export function buildSoftwareSourceCodeJsonLd(
+  projects: SoftwareProject[],
+  siteUrl: string,
+  authorName?: string
+): Record<string, unknown>[] {
+  const base = siteUrl.replace(/\/$/, "");
+  return (projects || []).map((p) => {
+    const links = Array.isArray(p.links) ? p.links.map((l) => l.url) : [];
+    const repoLink = p.repo || undefined;
+    const liveUrl = p.homepage || undefined;
+    const icon = p.icon || "";
+    const absoluteImage = icon.startsWith("http") ? icon : `${base}${icon}`;
+    const sameAs = [...links, ...(repoLink ? [repoLink] : []), ...(liveUrl ? [liveUrl] : [])];
+    return {
+      "@type": "SoftwareSourceCode",
+      name: p.title,
+      description: p.description,
+      url: liveUrl || repoLink || base,
+      codeRepository: repoLink,
+      programmingLanguage: p.language || "TypeScript",
+      license: p.license,
+      author: { "@type": "Person", name: authorName || "", url: base },
+      image: absoluteImage,
+      sameAs,
+    } as Record<string, unknown>;
+  });
+}
+
 export const SEO: React.FC<SEOProps> = ({
   title,
   description,
@@ -42,6 +83,14 @@ export const SEO: React.FC<SEOProps> = ({
           linkedin?: string;
           email?: string;
         };
+        person?: {
+          fullName?: string;
+          givenName?: string;
+          familyName?: string;
+          alternateName?: string;
+          jobTitle?: string;
+          alumniOf?: Array<{ name: string; url?: string }>;
+        };
       };
     };
   }>(graphql`
@@ -59,6 +108,14 @@ export const SEO: React.FC<SEOProps> = ({
             linkedin
             email
           }
+          person {
+            fullName
+            givenName
+            familyName
+            alternateName
+            jobTitle
+            alumniOf { name url }
+          }
         }
       }
     }
@@ -71,7 +128,7 @@ export const SEO: React.FC<SEOProps> = ({
   const ensureTrailingSlash = (p: string) => (p.endsWith("/") ? p : `${p}/`);
   const normalizedPath = pathname.startsWith("/") ? pathname : `/${pathname}`;
   const url = `${siteUrl}${ensureTrailingSlash(normalizedPath)}`;
-  const defaultImage = meta.image || "/images/icon.png";
+  const defaultImage = meta.image || "/images/projects/icon.png";
   const imageUrl = image?.startsWith("http") ? image : `${siteUrl}${image || defaultImage}`;
 
   // i18n alternates (hreflang) centralized here
@@ -108,17 +165,39 @@ export const SEO: React.FC<SEOProps> = ({
     url: siteUrl,
   } as Record<string, unknown>;
 
+  // Map language codes to human-readable names for JSON-LD
+  const langName: Record<string, string> = { en: "English", ga: "Irish" };
+
+  const sameAs = [
+    siteUrl,
+    meta.social?.twitter ? `https://twitter.com/${meta.social.twitter.replace(/^@/, "")}` : undefined,
+    meta.social?.github ? `https://github.com/${meta.social.github}` : undefined,
+    meta.social?.linkedin ? `https://www.linkedin.com/in/${meta.social.linkedin}/` : undefined,
+    meta.social?.email ? `mailto:${meta.social.email}` : undefined,
+  ].filter(Boolean);
+
   const ldPerson = {
     "@type": "Person",
-    name: meta.author || meta.title,
+    // Identity
+    name: meta.person?.fullName || meta.author || meta.title,
+    givenName: meta.person?.givenName,
+    familyName: meta.person?.familyName,
+    alternateName: meta.person?.alternateName,
     url: siteUrl,
     image: imageUrl,
-    sameAs: [
-      meta.social?.twitter ? `https://twitter.com/${meta.social.twitter.replace(/^@/, "")}` : undefined,
-      meta.social?.github ? `https://github.com/${meta.social.github}` : undefined,
-      meta.social?.linkedin ? `https://www.linkedin.com/in/${meta.social.linkedin}/` : undefined,
-      meta.social?.email ? `mailto:${meta.social.email}` : undefined,
-    ].filter(Boolean),
+    email: meta.social?.email ? `mailto:${meta.social.email}` : undefined,
+    // Professional
+    jobTitle: meta.person?.jobTitle,
+    // Presence
+    sameAs,
+    // Expertise / Languages
+    knowsLanguage: (languages || []).map((lng) => langName[lng] || lng),
+    // Education
+    alumniOf: (meta.person?.alumniOf || []).map((a) => ({
+      "@type": "EducationalOrganization",
+      name: a.name,
+      url: a.url,
+    })),
   } as Record<string, unknown>;
 
   const ldBreadcrumb = {

@@ -1,9 +1,10 @@
 {
-  "hero_line": "Irish-American Indie Software Developer <b class=\"pop-plus\">+</b> Pharmacist <b class=\"pop-plus\">+</b> MBA Candidate at Trinity College Dublin.",
+  "hero_line": "Irish-American Indie Software Developer <b>+</b> Pharmacist <b>+</b> MBA Candidate at Trinity College Dublin.",
   "cta_linkedin": "Connect on LinkedIn",
   "cta_github": "View Projects",
   "cta_email": "Contact via E-mail",
   "footer_copy": "© 2025 Mick Schroeder, LLC.",
+  "footer_copy_html": "© 2025 Mick Schroeder, LLC. Code: <a1>MIT</a1> • Content: <a2>CC BY 4.0</a2>",
   "projects_heading": "Projects",
   "socials_heading": "Socials",
   "contact_heading": "Contact",
@@ -14,5 +15,12 @@
   "not_found_heading": "Page not found",
   "not_found_body": "Sorry, we couldn’t find what you were looking for.",
   "not_found_cta_home": "Go to homepage",
-  "not_found_cta_back": "Go back"
+  "not_found_cta_back": "Go back",
+  "logo_alt": "Schroeder logo",
+  "skip_to_content": "Skip to main content"
+  ,
+  "flag_solved": "Solved!",
+  "flag_scramble": "Scramble"
+  ,
+  "cta_visit": "Visit"
 }

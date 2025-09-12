@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { ExternalLink } from 'lucide-react';
 
 export type ProjectLink = { label: string; url: string };
@@ -10,6 +11,11 @@ export type Project = {
   description: string;
   icon: string;
   links: ProjectLink[];
+  // Optional metadata to avoid heuristics
+  repo?: string; // e.g., https://github.com/user/repo
+  homepage?: string; // live URL if different from slug
+  language?: string; // primary programming language
+  license?: string; // SPDX or text
 };
 
 type Props = {
@@ -34,18 +40,12 @@ export const Projects: React.FC<Props> = ({ projects, className }) => {
               <p className="text-sm text-muted-foreground mb-3">{p.description}</p>
               <div className="flex flex-wrap gap-3">
                 {p.links.map((l) => (
-                  <a
-                    key={l.url}
-                    href={l.url}
-                    className="underline text-primary"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span className="inline-flex items-center gap-1">
+                  <Button key={l.url} asChild variant="outline">
+                    <a href={l.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
                       {l.label}
                       <ExternalLink className="w-4 h-4" />
-                    </span>
-                  </a>
+                    </a>
+                  </Button>
                 ))}
               </div>
             </CardContent>

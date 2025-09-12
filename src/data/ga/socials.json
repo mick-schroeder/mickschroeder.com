@@ -1,0 +1,20 @@
+[
+  {
+    "title": "LinkedIn",
+    "cta": "Ceangail ar LinkedIn",
+    "url": "https://www.linkedin.com/in/schroedermick/",
+    "icon": "/images/socials/linkedin.svg"
+  },
+  {
+    "title": "GitHub",
+    "cta": "Féach ar Thionscadail",
+    "url": "https://github.com/mick-schroeder",
+    "icon": "/images/socials/github.svg"
+  },
+  {
+    "title": "Twitter",
+    "cta": "Lean ar Twitter",
+    "url": "https://twitter.com/mick_schroeder",
+    "icon": "/images/socials/twitter.svg"
+  }
+]

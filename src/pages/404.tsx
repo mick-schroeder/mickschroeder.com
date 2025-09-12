@@ -53,7 +53,13 @@ const NotFoundPage: React.FC<PageProps> = () => {
       </Card>
 
       <footer className="mt-8 text-xs text-center opacity-80">
-        {t("footer_copy")}
+        <Trans
+          i18nKey="footer_copy_html"
+          components={{
+            a1: <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer" />,
+            a2: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" />,
+          }}
+        />
       </footer>
     </>
   );

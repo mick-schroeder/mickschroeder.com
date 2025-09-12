@@ -1,7 +1,8 @@
 import type { GatsbyConfig } from "gatsby";
 
 const IS_PROD = process.env.NODE_ENV === "production";
-const SITE_URL = "https://www.mickschroeder.com";
+const SITE_URL = process.env.SITE_URL || "https://www.mickschroeder.com";
+const GTAG_ID = process.env.GTAG_ID;
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -12,17 +13,30 @@ const config: GatsbyConfig = {
     author: `Mick Schroeder`,
     image: `/images/og-card.png`,
     social: {
-      twitter: `@micksco`,
+      twitter: `@mick_schroeder`,
       github: `mick-schroeder`,
       linkedin: `schroedermick`,
       email: `mick@mickschroeder.com`,
+    },
+    person: {
+      fullName: `Mick Schroeder, Pharm.D.`,
+      givenName: `Michael`,
+      familyName: `Schroeder`,
+      alternateName: `Mick`,
+      jobTitle: `Informatics Pharmacist`,
+      alumniOf: [
+        { name: `Trinity College Dublin`, url: `https://www.tcd.ie/` },
+        { name: `Philadelphia College of Pharmacy`, url: `https://www.sju.edu/departments/philadelphia-college-pharmacy` },
+      ],
     },
   },
   flags: {
     FAST_DEV: true,
     DEV_SSR: false,
   },
-  graphqlTypegen: true,
+  graphqlTypegen: {
+    typesOutputPath: `types/gatsby-types.d.ts`,
+  },
   plugins: [
     "gatsby-plugin-postcss",
     "gatsby-plugin-image",
@@ -36,6 +50,7 @@ const config: GatsbyConfig = {
       options: {
         name: `data`,
         path: `${__dirname}/src/data/`, // contains /en/projects.json and /ga/projects.json
+        ignore: ["**/.DS_Store", "**/Thumbs.db"],
       },
     },
     {
@@ -43,6 +58,7 @@ const config: GatsbyConfig = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images/`,
+        ignore: ["**/.DS_Store", "**/Thumbs.db"],
       },
     },
     {
@@ -50,6 +66,7 @@ const config: GatsbyConfig = {
       options: {
         path: `${__dirname}/locales`,
         name: `locale`,
+        ignore: ["**/.DS_Store", "**/Thumbs.db"],
       },
     },
 
@@ -71,7 +88,7 @@ const config: GatsbyConfig = {
       },
     },
 
-    // PWA manifest )
+    // PWA manifest
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -83,21 +100,21 @@ const config: GatsbyConfig = {
         background_color: `#ffffff`,
         theme_color: `#111827`,
         display: `standalone`,
-        icon: `src/images/icon.png`,
+        icon: `src/images/projects/icon.png`,
         icon_options: { purpose: `any maskable` },
       },
     },
 
-    // Only include analytics + sitemap in production
+    // Only in production
     ...(
       IS_PROD
         ? [
-            {
-              resolve: `gatsby-plugin-google-gtag`,
-              options: {
-                trackingIds: ["G-T0YB39MNT2"],
-              },
-            },
+            ...(GTAG_ID
+              ? [{
+                  resolve: `gatsby-plugin-google-gtag`,
+                  options: { trackingIds: [GTAG_ID] },
+                }]
+              : []),
             {
               resolve: `gatsby-plugin-sitemap`,
               options: {
