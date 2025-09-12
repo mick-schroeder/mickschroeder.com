@@ -126,14 +126,15 @@
   body {
     @apply bg-background text-foreground;
   }
-  /* Make textual links distinguishable without relying on color */
-  a {
+  /* Make textual links distinguishable without relying on color. */
+  /* Exclude button-like anchors (they have data-slot=button). */
+  a:not([data-slot="button"]) {
     @apply text-primary underline underline-offset-4 decoration-1;
   }
-  a:hover {
+  a:hover:not([data-slot="button"]) {
     @apply decoration-2;
   }
-  a:focus-visible {
+  a:focus-visible:not([data-slot="button"]) {
     @apply outline-none ring-ring/50 ring-[3px];
   }
 }
