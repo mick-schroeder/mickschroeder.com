@@ -7,11 +7,11 @@ import * as React from "react";
  * - Colors: evenly distributed (1/3 each) then shuffled so placement changes on every load
  */
 export const Flag: React.FC = () => {
-  // Grid + motion constants
-  const cols = 10;
+  // Grid + motion constants (3 equal vertical bands)
+  const cols = 9; // divisible by 3 for clean bands
   const rows = 5;
   const strength = 30; // stronger rotation like original
-  const ease = 0.12;   // smoother but responsive
+  const ease = 0.12;
 
   const fieldRef = React.useRef<HTMLElement | null>(null);
   const gridRef = React.useRef<HTMLDivElement | null>(null);
@@ -29,19 +29,10 @@ export const Flag: React.FC = () => {
     // Clear any existing children (hot reload safety)
     while (grid.firstChild) grid.removeChild(grid.firstChild);
 
-    // Prepare shuffled color assignments with equal thirds
+    // Fixed tricolor bands (vertical): green | white | orange
     const total = cols * rows;
-    const colors: ("white" | "green" | "orange")[] = [];
-    for (let i = 0; i < total; i++) {
-      if (i % 3 === 0) colors.push("white");
-      else if (i % 3 === 1) colors.push("green");
-      else colors.push("orange");
-    }
-    // Fisher-Yates shuffle for new layout each load
-    for (let i = colors.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [colors[i], colors[j]] = [colors[j], colors[i]];
-    }
+    const greenEnd = Math.floor(cols / 3);       // exclusive
+    const whiteEnd = Math.floor((2 * cols) / 3); // exclusive
 
     // Create tiles
     for (let i = 0; i < total; i++) {
@@ -58,15 +49,15 @@ export const Flag: React.FC = () => {
         "hover:shadow-md",
       ].join(" ");
 
-      // random base rotation
+      // random base rotation for lively look
       const base = (Math.random() * 12 - 6).toFixed(2);
       tile.style.setProperty("--base", base + "deg");
       tile.style.setProperty("--delta", "0deg");
 
-      // set shuffled color
-      const c = colors[i];
-      if (c === "white") tile.style.backgroundColor = "var(--flag-white)";
-      else if (c === "green") tile.style.backgroundColor = "var(--flag-green)";
+      // set color by band (tricolor)
+      const ccol = i % cols;
+      if (ccol < greenEnd) tile.style.backgroundColor = "var(--flag-green)";
+      else if (ccol < whiteEnd) tile.style.backgroundColor = "var(--flag-white)";
       else tile.style.backgroundColor = "var(--flag-orange)";
 
       // normalized offset from center for smooth parallax influence
@@ -85,6 +76,7 @@ export const Flag: React.FC = () => {
     const finePointer = matchMedia("(pointer: fine)").matches;
 
     function onMove(e: MouseEvent) {
+      if (!field) return;
       const rect = field.getBoundingClientRect();
       const cx = rect.left + rect.width / 2;
       const cy = rect.top + rect.height / 2;
@@ -112,8 +104,10 @@ export const Flag: React.FC = () => {
 
     // Cleanup
     return () => {
-      field.removeEventListener("mousemove", onMove as any);
-      field.removeEventListener("mouseleave", onLeave as any);
+      if (field) {
+        field.removeEventListener("mousemove", onMove as any);
+        field.removeEventListener("mouseleave", onLeave as any);
+      }
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, []);
