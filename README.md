@@ -1,49 +1,32 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby Minimal TypeScript Starter
-</h1>
+# [mickschroeder.com](https://mickschroeder.com)
 
-## 🚀 Quick start
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
-1.  **Create a Gatsby site.**
+Website of Mick Schroeder, PharmD. Irish-American Indie Software Developer + Pharmacist  🇮🇪 🇺🇸
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+![screenshot](https://github.com/mick-schroeder/gatsby-schroeder/raw/master/src/assets/images/gatsby-schroeder.gif)
 
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby -- -ts
-    ```
+## Development
 
-2.  **Start developing.**
+```
+git clone https://github.com/mick-schroeder/mickschroeder.com.git
+cd mickschroeder.com
+npm install
+npm run develop
+```
 
-    Navigate into your new site’s directory and start it up.
+Open `http://localhost:8000`
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+## Production
 
-3.  **Open the code and start customizing!**
+```
+npm run build
+```
 
-    Your site is now running at http://localhost:8000!
+## Author
 
-    Edit `src/pages/index.tsx` to see your site update in real-time!
+- [Mick Schroeder](https://mickschroeder.com)
 
-4.  **Learn more**
+## License
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-## 🚀 Quick start (Netlify)
-
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
-
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
+This project is open source and available under the [GNU Affero General Public License version 3](LICENSE)

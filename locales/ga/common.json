@@ -1,13 +1,18 @@
 {
-  "hero_line": "Ag tógáil bogearraí do <b>Éirinn</b>.",
-  "cta_linkedin": "Ceangail ar LinkedIn",
+  "hero_line": "Forbróir Bogearraí Neamhspleách Éireannach‑Meiriceánach <b class=\"pop-plus\">+</b> Cógaiseoir <b class=\"pop-plus\">+</b> Mac Léinn MBA i gColáiste na Tríonóide, Baile Átha Cliath.",
+  "cta_linkedin": "Ceangail liom ar LinkedIn",
   "cta_github": "Féach ar Thionscadail",
   "cta_email": "Déan Teagmháil trí Ríomhphost",
   "footer_copy": "© 2025 Mick Schroeder, LLC.",
-  "projects_heading": "Portfóilió",
-  "socials_heading": "Suíomhanna meáin shóisialta",
-  "contact_heading": "Teagmháil ríomhphoist",
+  "projects_heading": "Tionscadail",
+  "socials_heading": "Meáin shóisialta",
+  "contact_heading": "Teagmháil",
   "title_email": "Ríomhphost",
   "title_github": "GitHub",
   "title_linkedin": "LinkedIn"
+  ,
+  "not_found_heading": "Níor aimsíodh an leathanach",
+  "not_found_body": "Tá brón orainn, níor aimsíomar an méid a bhí á lorg agat.",
+  "not_found_cta_home": "Téigh go dtí an leathanach baile",
+  "not_found_cta_back": "Téigh siar"
 }

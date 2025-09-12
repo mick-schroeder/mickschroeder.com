@@ -39,7 +39,7 @@ export const Projects: React.FC<Props> = ({ projects, className }) => {
                     href={l.url}
                     className="underline text-primary"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                   >
                     <span className="inline-flex items-center gap-1">
                       {l.label}

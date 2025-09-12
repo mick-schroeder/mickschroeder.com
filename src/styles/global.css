@@ -131,3 +131,12 @@
 ::-webkit-scrollbar-track { background: transparent; }
 
 html { color-scheme: light dark; }
+
+/* Subtle emphasized inline plus for hero_line */
+.pop-plus {
+  color: var(--primary);
+  font-weight: 900;
+  font-size: 1.2em;
+  line-height: inherit;
+  vertical-align: baseline;
+}

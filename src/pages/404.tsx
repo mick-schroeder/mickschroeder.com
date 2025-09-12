@@ -1,49 +1,74 @@
-import * as React from "react"
-import { Link, HeadFC, PageProps } from "gatsby"
-
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
+import * as React from "react";
+import { Link, HeadFC, PageProps, graphql } from "gatsby";
+import SEO from "@/components/seo";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Home, ArrowLeft } from "lucide-react";
+import { LanguageSwitcher } from "@/components/language-switcher";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
 const NotFoundPage: React.FC<PageProps> = () => {
+  const { t } = useTranslation();
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
-  )
-}
+    <>
+      <div className="text-center mb-6">
+        <div className="mt-3 flex justify-center">
+          <LanguageSwitcher />
+        </div>
+        <h1 className="text-3xl md:text-4xl font-bold mt-4">{t("not_found_heading")}</h1>
+        <p className="text-muted-foreground mt-2 md:px-10">
+          {t("not_found_body")}
+        </p>
+      </div>
 
-export default NotFoundPage
+      <Card className="border-border">
+        <CardContent>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Button asChild className="inline-flex items-center gap-2">
+              <Link to="/">
+                <Home className="h-4 w-4" />
+                {t("not_found_cta_home")}
+              </Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="inline-flex items-center gap-2"
+            >
+              <Link
+                to={typeof window !== "undefined" && window.history.length > 1 ? "#" : "/"}
+                onClick={(e) => {
+                  if (typeof window !== "undefined" && window.history.length > 1) {
+                    e.preventDefault();
+                    window.history.back();
+                  }
+                }}
+              >
+                <ArrowLeft className="h-4 w-4" />
+                {t("not_found_cta_back")}
+              </Link>
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
 
-export const Head: HeadFC = () => <title>Not found</title>
+      <footer className="mt-8 text-xs text-center opacity-80">
+        {t("footer_copy")}
+      </footer>
+    </>
+  );
+};
+
+export default NotFoundPage;
+
+export const Head: HeadFC = ({ location }) => (
+  <SEO noindex title="Not found" pathname={location.pathname} />
+);
+
+export const query = graphql`
+  query NotFoundI18n($language: String!) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
+      edges { node { ns data language } }
+    }
+  }
+`;

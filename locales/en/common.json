@@ -1,5 +1,5 @@
 {
-  "hero_line": "Irish-American Indie Software Developer <b>+</b> Pharmacist <b>+</b> MBA Candidate at Trinity College Dublin.",
+  "hero_line": "Irish-American Indie Software Developer <b class=\"pop-plus\">+</b> Pharmacist <b class=\"pop-plus\">+</b> MBA Candidate at Trinity College Dublin.",
   "cta_linkedin": "Connect on LinkedIn",
   "cta_github": "View Projects",
   "cta_email": "Contact via E-mail",
@@ -10,4 +10,9 @@
   "title_email": "E-mail",
   "title_github": "GitHub",
   "title_linkedin": "LinkedIn"
+  ,
+  "not_found_heading": "Page not found",
+  "not_found_body": "Sorry, we couldn’t find what you were looking for.",
+  "not_found_cta_home": "Go to homepage",
+  "not_found_cta_back": "Go back"
 }

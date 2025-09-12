@@ -9,7 +9,14 @@ export const LanguageSwitcher: React.FC<{ className?: string }> = ({ className }
   const displayNames = new Intl.DisplayNames([active], { type: "language" });
 
   return (
-    <ToggleGroup type="single" size="lg" variant="outline" value={active} className={className}>
+    <ToggleGroup
+      type="single"
+      size="lg"
+      variant="outline"
+      value={active}
+      className={className}
+      rovingFocus={false}
+    >
       {languages.map((lng) => {
         const label = displayNames.of(lng) ?? lng.toUpperCase();
         return (
