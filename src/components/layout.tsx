@@ -16,6 +16,9 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             src={withPrefix("/images/logo-mick-schroeder.svg")}
             alt={t('logo_alt')}
             className="mx-auto h-20 md:h-24 invert"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
           />
           <h1 className="sr-only">Mick Schroeder</h1>
         </header>

@@ -1,5 +1,7 @@
 import * as React from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
+import { graphql, useStaticQuery } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from 'lucide-react';
@@ -25,6 +27,25 @@ type Props = {
 
 export const Projects: React.FC<Props> = ({ projects, className }) => {
   const { t } = useTranslation();
+  const data = useStaticQuery(graphql`
+    query ProjectIconsQuery {
+      allFile(filter: {extension: {in: ["png", "jpg", "jpeg", "webp"]}}) {
+        nodes {
+          base
+          childImageSharp {
+            gatsbyImageData(width: 32, height: 32, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+          }
+        }
+      }
+    }
+  `) as any;
+  const iconMap = React.useMemo(() => {
+    const m = new Map<string, any>();
+    for (const n of data?.allFile?.nodes || []) {
+      if (n.base && n.childImageSharp) m.set(n.base, n.childImageSharp);
+    }
+    return m;
+  }, [data]);
   return (
     <section className={className ?? "mt-10"}>
       <h3 className="text-2xl font-bold mb-4">{t("projects_heading")}</h3>
@@ -33,7 +54,15 @@ export const Projects: React.FC<Props> = ({ projects, className }) => {
           <Card key={p.slug} className="border-border overflow-hidden">
             <CardHeader className="flex items-center gap-3">
               {/* Decorative icon; empty alt for a11y if the title is right next to it */}
-              <img src={p.icon} alt="" width={32} height={32} className="rounded-md" />
+              {(() => {
+                const base = (p.icon || "").split("/").pop() || "";
+                const imgNode = iconMap.get(base);
+                if (imgNode) {
+                  const image = getImage(imgNode);
+                  if (image) return <GatsbyImage image={image} alt="" className="rounded-md" />;
+                }
+                return <img src={p.icon} alt="" width={32} height={32} className="rounded-md" />;
+              })()}
               <CardTitle className="text-lg">{p.title}</CardTitle>
             </CardHeader>
             <CardContent>

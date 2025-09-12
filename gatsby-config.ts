@@ -2,7 +2,6 @@ import type { GatsbyConfig } from "gatsby";
 
 const IS_PROD = process.env.NODE_ENV === "production";
 const SITE_URL = process.env.SITE_URL || "https://www.mickschroeder.com";
-const GTAG_ID = process.env.GTAG_ID;
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -61,6 +60,15 @@ const config: GatsbyConfig = {
         ignore: ["**/.DS_Store", "**/Thumbs.db"],
       },
     },
+    // Also source static images so plugin-image can process icons referenced from JSON
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `static_images`,
+        path: `${__dirname}/static/images/`,
+        ignore: ["**/.DS_Store", "**/Thumbs.db"],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -109,12 +117,6 @@ const config: GatsbyConfig = {
     ...(
       IS_PROD
         ? [
-            ...(GTAG_ID
-              ? [{
-                  resolve: `gatsby-plugin-google-gtag`,
-                  options: { trackingIds: [GTAG_ID] },
-                }]
-              : []),
             {
               resolve: `gatsby-plugin-sitemap`,
               options: {

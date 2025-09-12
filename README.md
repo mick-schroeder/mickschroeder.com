@@ -34,7 +34,7 @@ npm run build
   - Optional per‑project fields: `repo`, `homepage`, `language`, `license`, `links`
 - Socials: add/edit `src/data/en/socials.json` and `src/data/ga/socials.json`
   - Provide `title`, `cta`, `url`, and optional `icon` (e.g. `/images/socials/github.svg`)
-- Env vars: copy `.env.example` to `.env` and set `SITE_URL` (and `GTAG_ID` if used)
+- Env vars: copy `.env.example` to `.env` and set `SITE_URL`
 
 Node version: use `nvm use` (see `.nvmrc`) or Node 22.10+.
 
