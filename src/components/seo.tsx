@@ -128,7 +128,7 @@ export const SEO: React.FC<SEOProps> = ({
   const ensureTrailingSlash = (p: string) => (p.endsWith("/") ? p : `${p}/`);
   const normalizedPath = pathname.startsWith("/") ? pathname : `/${pathname}`;
   const url = `${siteUrl}${ensureTrailingSlash(normalizedPath)}`;
-  const defaultImage = meta.image || "/images/projects/icon.png";
+  const defaultImage = meta.image || "/images/icon.png";
   const imageUrl = image?.startsWith("http") ? image : `${siteUrl}${image || defaultImage}`;
 
   // i18n alternates (hreflang) centralized here
