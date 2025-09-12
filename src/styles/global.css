@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 @theme inline {
+  /* Helvetica-first sans stack */
+  --font-sans: "Helvetica Neue", Helvetica, "Nimbus Sans", Arial, ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Liberation Sans", "Noto Sans", sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -47,18 +49,17 @@
     --popover: var(--color-stone-900);
     --popover-foreground: var(--color-white);
     --primary: var(--color-emerald-500);
-    /* Improve contrast of text on primary surfaces */
     --primary-foreground: var(--color-emerald-50);
     --secondary: var(--color-emerald-900);
     --secondary-foreground: var(--color-emerald-50);
     --muted: var(--color-emerald-900);
-    /* Improve contrast for muted foreground on dark backgrounds */
     --muted-foreground: var(--color-emerald-50);
     --accent: var(--color-emerald-900);
     --accent-foreground: var(--color-emerald-50);
     --destructive: var(--color-red-600);
-    --border: color-mix(in oklch, var(--color-white) 15%, transparent);
-    --input: color-mix(in oklch, var(--color-white) 15%, transparent);
+    /* Slightly stronger borders/inputs for separation on dark */
+    --border: color-mix(in oklch, var(--color-white) 20%, transparent);
+    --input: color-mix(in oklch, var(--color-white) 20%, transparent);
     --ring: var(--color-emerald-400);
     --chart-1: var(--color-indigo-500);
     --chart-2: var(--color-emerald-400);
@@ -87,18 +88,16 @@
     --popover: var(--color-stone-900);
     --popover-foreground: var(--color-white);
     --primary: var(--color-emerald-500);
-    /* Improve contrast of text on primary surfaces */
     --primary-foreground: var(--color-emerald-50);
     --secondary: var(--color-emerald-900);
     --secondary-foreground: var(--color-emerald-50);
     --muted: var(--color-emerald-900);
-    /* Improve contrast for muted foreground on very dark backgrounds */
     --muted-foreground: var(--color-emerald-50);
     --accent: var(--color-emerald-900);
     --accent-foreground: var(--color-emerald-50);
     --destructive: var(--color-red-600);
-    --border: color-mix(in oklch, var(--color-white) 10%, transparent);
-    --input: color-mix(in oklch, var(--color-white) 15%, transparent);
+    --border: color-mix(in oklch, var(--color-white) 18%, transparent);
+    --input: color-mix(in oklch, var(--color-white) 20%, transparent);
     --ring: var(--color-emerald-400);
     --chart-1: var(--color-indigo-500);
     --chart-2: var(--color-emerald-400);
@@ -125,14 +124,16 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans);
   }
-  /* Make textual links distinguishable without relying on color. */
-  /* Exclude button-like anchors (they have data-slot=button). */
   a:not([data-slot="button"]) {
-    @apply text-primary underline underline-offset-4 decoration-1;
+    @apply text-foreground underline underline-offset-4 decoration-1 decoration-primary;
   }
   a:hover:not([data-slot="button"]) {
     @apply decoration-2;
+  }
+  a:visited:not([data-slot="button"]) {
+    @apply text-foreground;
   }
   a:focus-visible:not([data-slot="button"]) {
     @apply outline-none ring-ring/50 ring-[3px];
@@ -146,6 +147,16 @@
 ::-webkit-scrollbar-track { background: transparent; }
 
 html { color-scheme: light dark; }
+
+/* Respect users’ reduced motion preference globally */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
 /* Subtle emphasized inline plus for hero_line */
 .pop-plus {

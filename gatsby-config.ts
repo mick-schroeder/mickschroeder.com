@@ -3,6 +3,7 @@ import type { GatsbyConfig } from "gatsby";
 const IS_PROD = process.env.NODE_ENV === "production";
 const SITE_URL = process.env.SITE_URL || "https://www.mickschroeder.com";
 
+const IS_DEV = process.env.NODE_ENV !== "production";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Mick Schroeder`,
@@ -32,9 +33,6 @@ const config: GatsbyConfig = {
   flags: {
     FAST_DEV: true,
     DEV_SSR: false,
-  },
-  graphqlTypegen: {
-    typesOutputPath: `types/gatsby-types.d.ts`,
   },
   plugins: [
     "gatsby-plugin-postcss",
