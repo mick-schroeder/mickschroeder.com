@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Helvetica-first sans stack */
   --font-sans: "Helvetica Neue", Helvetica, "Nimbus Sans", Arial, ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Liberation Sans", "Noto Sans", sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

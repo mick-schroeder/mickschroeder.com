@@ -34,6 +34,9 @@ const config: GatsbyConfig = {
     FAST_DEV: true,
     DEV_SSR: false,
   },
+    graphqlTypegen: {
+    typesOutputPath: `${__dirname}/.cache/types/gatsby-types.d.ts`,
+  },
   plugins: [
     "gatsby-plugin-postcss",
     "gatsby-plugin-image",
