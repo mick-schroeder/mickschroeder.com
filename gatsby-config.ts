@@ -118,6 +118,26 @@ const config: GatsbyConfig = {
     ...(
       IS_PROD
         ? [
+            // Google Analytics (GA4) via gtag.js
+            ...(process.env.GTAG_ID
+              ? [
+                  {
+                    resolve: `gatsby-plugin-google-gtag`,
+                    options: {
+                      trackingIds: [process.env.GTAG_ID],
+                      // Global config for gtag.js
+                      gtagConfig: {
+                        anonymize_ip: true,
+                      },
+                      // Plugin behavior controls
+                      pluginConfig: {
+                        head: true,
+                        respectDNT: true,
+                      },
+                    },
+                  },
+                ]
+              : []),
             {
               resolve: `gatsby-plugin-sitemap`,
               options: {
