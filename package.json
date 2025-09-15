@@ -2,21 +2,27 @@
   "name": "mickschroeder.com",
   "version": "1.0.0",
   "private": true,
-  "description": "mickschroeder.com",
+  "description": "",
   "author": "Mick Schroeder",
   "license": "MIT",
-  "keywords": [
-    "gatsby"
-  ],
   "scripts": {
     "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check-updates": "npm-check-updates",
+    "check-updates-minor": "npm-check-updates --target minor",
+    "upgrade": "npm-check-updates -u && npm install",
+    "upgrade-minor": "npm-check-updates --target minor -u && npm install"
   },
   "dependencies": {
+    "@mdx-js/mdx": "^2.3.0",
+    "@mdx-js/react": "^2.3.0",
     "@radix-ui/react-navigation-menu": "^1.2.14",
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-toggle": "^1.1.10",
@@ -48,8 +54,10 @@
     "@tailwindcss/postcss": "^4.1.13",
     "@types/node": "^20.19.13",
     "@types/react": "^18.3.24",
+    "npm-check-updates": "^17.1.18",
     "@types/react-dom": "^18.3.7",
     "autoprefixer": "^10.4.21",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "prettier": "^3.6.2"
   }
 }

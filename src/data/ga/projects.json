@@ -2,14 +2,14 @@
   {
     "slug": "https://cite.mickschroeder.com",
     "homepage": "https://cite.mickschroeder.com",
-    "repo": "https://github.com/mick-schroeder/schroeder-cite",
+    "repo": "https://github.com/mick-schroeder/cite.mickschroeder.com",
     "language": "TypeScript",
     "title": "Citation Generator",
     "description": "Bogearraí saor in aisce agus foinse oscailte a mholann lua citithe go huathoibríoch agus a chuidíonn le hinsint fhoinsí a scríobh.",
     "icon": "/images/projects/icon-cite.png",
     "links": [
       { "label": "Bain triail as", "url": "https://cite.mickschroeder.com" },
-      { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/schroeder-cite" }
+      { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/cite.mickschroeder.com" }
     ]
   },
   {
@@ -33,27 +33,27 @@
     ]
   },
   {
-    "slug": "https://webshuffle.mickschroeder.com",
-    "homepage": "https://webshuffle.mickschroeder.com",
-    "repo": "https://github.com/mick-schroeder/schroeder-web-shuffle",
+    "slug": "https://news.mickschroeder.com",
+    "homepage": "https://news.mickschroeder.com",
+    "repo": "https://github.com/mick-schroeder/news.mickschroeder.com",
     "language": "TypeScript",
     "title": "Web Shuffle",
-    "description": "Cnaipe \"🔀 Web Shuffle\" le suíomhanna gréasáin is fearr agus is mó tionchair, curtha in eagar ag AI.",
+    "description": "\"🔀 Shuffle\" le suíomhanna gréasáin is fearr agus is mó tionchair, curtha in eagar ag AI.",
     "icon": "/images/projects/icon-randomwebsite.png",
     "links": [
-      { "label": "Bain triail as", "url": "https://webshuffle.mickschroeder.com" }
+      { "label": "Bain triail as", "url": "https://news.mickschroeder.com" }
     ]
   },
   {
-    "slug": "https://github.com/mick-schroeder/gatsby-schroeder",
-    "repo": "https://github.com/mick-schroeder/gatsby-schroeder",
+    "slug": "https://github.com/mick-schroeder/mickschroeder.com",
+    "repo": "https://github.com/mick-schroeder/mickschroeder.com",
     "homepage": "https://www.mickschroeder.com/",
     "language": "TypeScript",
     "title": "mickschroeder.com",
     "description": "Féach cód foinse an tsuímh ghréasáin seo.",
     "icon": "/images/projects/icon-mickschroeder.png",
     "links": [
-      { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/gatsby-schroeder" }
+      { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/mickschroeder.com" }
     ]
   }
 ]

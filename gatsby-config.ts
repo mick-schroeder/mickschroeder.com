@@ -1,7 +1,7 @@
 import type { GatsbyConfig } from "gatsby";
 
 const IS_PROD = process.env.NODE_ENV === "production";
-const SITE_URL = process.env.SITE_URL || "https://www.mickschroeder.com";
+const GATSBY_SITE_URL = process.env.GATSBY_SITE_URL || "https://www.mickschroeder.com";
 
 const IS_DEV = process.env.NODE_ENV !== "production";
 const config: GatsbyConfig = {
@@ -9,7 +9,7 @@ const config: GatsbyConfig = {
     title: `Mick Schroeder`,
     description:
       `Irish-American indie software developer and pharmacist.`,
-    siteUrl: SITE_URL,
+    siteUrl: GATSBY_SITE_URL,
     author: `Mick Schroeder`,
     image: `/images/og-card.png`,
     social: {
@@ -86,7 +86,7 @@ const config: GatsbyConfig = {
         localeJsonSourceName: `locale`,
         languages: [`en`, `ga`],
         defaultLanguage: `en`,
-        siteUrl: SITE_URL,
+        siteUrl: GATSBY_SITE_URL,
         trailingSlash: "always",
         i18nextOptions: {
           interpolation: { escapeValue: false },
@@ -109,7 +109,7 @@ const config: GatsbyConfig = {
         background_color: `#ffffff`,
         theme_color: `#111827`,
         display: `standalone`,
-        icon: `static/images/icon.png`,
+        icon: `src/images/icon.png`,
         icon_options: { purpose: `any maskable` },
       },
     },
@@ -119,12 +119,12 @@ const config: GatsbyConfig = {
       IS_PROD
         ? [
             // Google Analytics (GA4) via gtag.js
-            ...(process.env.GTAG_ID
+            ...(process.env.GATSBY_GTAG_ID
               ? [
                   {
                     resolve: `gatsby-plugin-google-gtag`,
                     options: {
-                      trackingIds: [process.env.GTAG_ID],
+                      trackingIds: [process.env.GATSBY_GTAG_ID],
                       // Global config for gtag.js
                       gtagConfig: {
                         anonymize_ip: true,
@@ -148,8 +148,8 @@ const config: GatsbyConfig = {
             {
               resolve: `gatsby-plugin-robots-txt`,
               options: {
-                host: SITE_URL,
-                sitemap: `${SITE_URL}/sitemap-index.xml`,
+                host: GATSBY_SITE_URL,
+                sitemap: `${GATSBY_SITE_URL}/sitemap-index.xml`,
                 policy: [{ userAgent: '*', allow: '/' }],
               },
             },

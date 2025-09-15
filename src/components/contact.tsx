@@ -18,7 +18,7 @@ export const Contact: React.FC<{ className?: string }> = ({ className }) => {
 
   return (
     <div className={className}>
-      <div className="">
+      <div className="grid md:grid-cols-2 gap-6">
         <Card className="border-border overflow-hidden">
             <CardHeader className="flex items-center gap-3">
             <span className="inline-grid place-items-center w-9 h-9 rounded-full bg-primary text-primary-foreground ring-1 ring-border">

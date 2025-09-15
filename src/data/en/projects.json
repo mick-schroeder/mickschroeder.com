@@ -2,14 +2,14 @@
   {
     "slug": "https://cite.mickschroeder.com",
     "homepage": "https://cite.mickschroeder.com",
-    "repo": "https://github.com/mick-schroeder/schroeder-cite",
+    "repo": "https://github.com/mick-schroeder/cite.mickschroeder.com",
     "language": "JavaScript",
     "title": "Citation Generator",
     "description": "Free and open source software that automatically suggests citations and helps write a bibliography for you.",
     "icon": "/images/projects/icon-cite.png",
     "links": [
       { "label": "Try it out", "url": "https://cite.mickschroeder.com" },
-      { "label": "Source code", "url": "https://github.com/mick-schroeder/schroeder-cite" }
+      { "label": "Source code", "url": "https://github.com/mick-schroeder/cite.mickschroeder.com" }
     ]
   },
   {
@@ -33,28 +33,28 @@
     ]
   },
   {
-    "slug": "https://webshuffle.mickschroeder.com",
-    "homepage": "https://webshuffle.mickschroeder.com",
-    "repo": "https://github.com/mick-schroeder/schroeder-web-shuffle",
+    "slug": "https://news.mickschroeder.com",
+    "homepage": "https://news.mickschroeder.com",
+    "repo": "https://github.com/mick-schroeder/news.mickschroeder.com",
     "language": "JavaScript",
-    "title": "Web Shuffle",
-    "description": "AI curated \"🔀 Web Shuffle\" button for the best and most influential sites on the web.",
+    "title": "News Craic",
+    "description": "\"🔀  Shuffle\" button for the best and most influential sites on the web.",
     "icon": "/images/projects/icon-randomwebsite.png",
     "links": [
-      { "label": "Try it out", "url": "https://webshuffle.mickschroeder.com" },
-      { "label": "Source code", "url": "https://github.com/mick-schroeder/schroeder-web-shuffle" }
+      { "label": "Try it out", "url": "https://news.mickschroeder.com" },
+      { "label": "Source code", "url": "https://github.com/mick-schroeder/news.mickschroeder.com" }
     ]
   },
   {
-    "slug": "https://github.com/mick-schroeder/gatsby-schroeder",
-    "repo": "https://github.com/mick-schroeder/gatsby-schroeder",
+    "slug": "https://github.com/mick-schroeder/mickschroeder.com",
+    "repo": "https://github.com/mick-schroeder/mickschroeder.com",
     "homepage": "https://www.mickschroeder.com/",
     "language": "JavaScript",
     "title": "mickschroeder.com",
     "description": "See source code for this website.",
     "icon": "/images/projects/icon-mickschroeder.png",
     "links": [
-      { "label": "Source code", "url": "https://github.com/mick-schroeder/gatsby-schroeder" }
+      { "label": "Source code", "url": "https://github.com/mick-schroeder/mickschroeder.com" }
     ]
   }
 ]
