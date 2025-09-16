@@ -7,6 +7,13 @@ Website of Mick Schroeder, PharmD. Irish-American Indie Software Developer + Pha
 
 ![screenshot](https://github.com/mick-schroeder/gatsby-schroeder/raw/master/src/assets/images/screenshot.gif)
 
+## Tech Stack
+
+- [React](https://reactjs.org/)
+- [Gatsby](https://www.gatsbyjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com)
+
 ## Development
 
 ```
