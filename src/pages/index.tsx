@@ -35,7 +35,7 @@ const IndexPage: React.FC<PageProps<IndexPageData>> = ({ data }) => {
 
         {/* CTA Buttons */}
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-          <Button asChild size="lg">
+          <Button asChild size="lg" variant="secondary">
             <a href="#projects" className="inline-flex items-center gap-2">
               <FolderKanban className="h-5 w-5" aria-hidden="true" />
               {t("projects_heading")}
@@ -47,7 +47,7 @@ const IndexPage: React.FC<PageProps<IndexPageData>> = ({ data }) => {
               {t("socials_heading")}
             </a>
           </Button>
-          <Button asChild size="lg" variant="outline">
+          <Button asChild size="lg" variant="secondary">
             <a href="#contact" className="inline-flex items-center gap-2">
               <Mail className="h-5 w-5" aria-hidden="true" />
               {t("contact_heading")}
