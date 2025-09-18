@@ -1,22 +1,17 @@
 import * as React from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import { useI18next } from "gatsby-plugin-react-i18next";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
 
-type SocialItem = { title: string; cta?: string; url: string; icon?: string };
+export type SocialItem = { title: string; cta?: string; url: string; icon?: string };
 
-export const Socials: React.FC<{ className?: string }> = ({ className }) => {
-  const { language } = useI18next();
-  const data = useStaticQuery(graphql`
-    query SocialsJsonQuery {
-      allSocialsJson { nodes { title cta url icon fields { locale } } }
-    }
-  `) as any;
-  const all = (data?.allSocialsJson?.nodes || []) as Array<any>;
-  const items: SocialItem[] = all.filter((n) => n?.fields?.locale === language);
-  if (!items.length) return null;
+type Props = {
+  items: SocialItem[];
+  className?: string;
+};
+
+export const Socials: React.FC<Props> = ({ items, className }) => {
+  if (!items?.length) return null;
 
   return (
     <div className={className}>
