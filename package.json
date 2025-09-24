@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.13",
-    "@types/node": "^20.19.13",
+    "@types/node": "^20.19.17",
     "@types/react": "^18.3.24",
     "npm-check-updates": "^17.1.18",
     "@types/react-dom": "^18.3.7",
