@@ -8,7 +8,7 @@
     "description": "Free and open source software that automatically suggests citations and helps write a bibliography for you.",
     "icon": "/images/projects/icon-cite.png",
     "links": [
-      { "label": "Try it out", "url": "https://cite.mickschroeder.com" },
+      { "label": "Website", "url": "https://cite.mickschroeder.com" },
       { "label": "Source code", "url": "https://github.com/mick-schroeder/cite.mickschroeder.com" }
     ]
   },
@@ -41,7 +41,7 @@
     "description": "\"🔀  Shuffle\" button for the best and most influential sites on the web.",
     "icon": "/images/projects/icon-randomwebsite.png",
     "links": [
-      { "label": "Try it out", "url": "https://news.mickschroeder.com" },
+      { "label": "Website", "url": "https://news.mickschroeder.com" },
       { "label": "Source code", "url": "https://github.com/mick-schroeder/news.mickschroeder.com" }
     ]
   },
@@ -54,6 +54,8 @@
     "description": "See source code for this website.",
     "icon": "/images/projects/icon-mickschroeder.png",
     "links": [
+            { "label": "Website", "url": "https://www.mickschroeder.com" },
+
       { "label": "Source code", "url": "https://github.com/mick-schroeder/mickschroeder.com" }
     ]
   }

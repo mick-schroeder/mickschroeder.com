@@ -2,14 +2,11 @@ import * as React from "react";
 import { graphql, type HeadFC, type PageProps } from "gatsby";
 import { useTranslation, Trans } from "gatsby-plugin-react-i18next";
 import { Projects, type Project } from "@/components/projects";
-import { Flag } from "@/components/flag";
-//
 import Socials, { type SocialItem } from "@/components/socials";
 import Contact from "@/components/contact";
 import { SEO, buildSoftwareSourceCodeJsonLd } from "@/components/seo";
-import { LanguageSwitcher } from "@/components/language-switcher";
-import { Button } from "@/components/ui/button";
 import { FolderKanban, Share2, Mail } from "lucide-react";
+import Layout from "@/components/layout";
 
 type IndexPageData = {
   allProjectsJson: { nodes: Project[] };
@@ -20,45 +17,18 @@ const IndexPage: React.FC<PageProps<IndexPageData>> = ({ data }) => {
   const { t } = useTranslation();
   
   return (
-    <>
-      <div className="text-center mb-6">
+    <Layout>
+      <div className="mb-6 text-center">
 
-        {/* Translation Buttons */}
-        <div className="my-3 flex justify-center">
-          <LanguageSwitcher />
-        </div>
 
         {/* Hero */}
         <p className="text-muted-foreground text-xl md:px-10">
           <Trans i18nKey="hero_line" components={{ b: <b className="pop-plus" /> }} />
         </p>
 
-        {/* CTA Buttons */}
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-          <Button asChild size="lg" variant="secondary">
-            <a href="#projects" className="inline-flex items-center gap-2">
-              <FolderKanban className="h-5 w-5" aria-hidden="true" />
-              {t("projects_heading")}
-            </a>
-          </Button>
-          <Button asChild size="lg" variant="secondary">
-            <a href="#socials" className="inline-flex items-center gap-2">
-              <Share2 className="h-5 w-5" aria-hidden="true" />
-              {t("socials_heading")}
-            </a>
-          </Button>
-          <Button asChild size="lg" variant="secondary">
-            <a href="#contact" className="inline-flex items-center gap-2">
-              <Mail className="h-5 w-5" aria-hidden="true" />
-              {t("contact_heading")}
-            </a>
-          </Button>
-        </div>
       </div>
 
-      <Flag />
-
-      <section id="projects" className="mt-10">
+      <section id="projects" className="mt-10 scroll-mt-32">
         <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
           <FolderKanban className="h-6 w-6 text-primary" aria-hidden="true" />
           {t("projects_heading")}
@@ -66,7 +36,7 @@ const IndexPage: React.FC<PageProps<IndexPageData>> = ({ data }) => {
         <Projects projects={data.allProjectsJson.nodes as Project[]} />
       </section>
 
-      <section id="socials" className="mt-10">
+      <section id="socials" className="mt-10 scroll-mt-32">
         <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
           <Share2 className="h-6 w-6 text-primary" aria-hidden="true" />
           {t("socials_heading")}
@@ -74,7 +44,7 @@ const IndexPage: React.FC<PageProps<IndexPageData>> = ({ data }) => {
         <Socials items={data.allSocialsJson.nodes} />
       </section>
 
-      <section id="contact" className="mt-10">
+      <section id="contact" className="mt-10 scroll-mt-32">
         <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
           <Mail className="h-6 w-6 text-primary" aria-hidden="true" />
           {t("contact_heading")}
@@ -82,7 +52,7 @@ const IndexPage: React.FC<PageProps<IndexPageData>> = ({ data }) => {
         <Contact />
       </section>
 
-      <footer className="mt-8 text-xs text-center opacity-80">
+      <footer className="mt-12 text-center text-xs opacity-80">
         <Trans
           i18nKey="footer_copy_html"
           components={{
@@ -91,7 +61,7 @@ const IndexPage: React.FC<PageProps<IndexPageData>> = ({ data }) => {
           }}
         />
       </footer>
-    </>
+    </Layout>
   );
 };
 

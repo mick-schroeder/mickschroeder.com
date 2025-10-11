@@ -53,6 +53,7 @@
     "description": "Féach cód foinse an tsuímh ghréasáin seo.",
     "icon": "/images/projects/icon-mickschroeder.png",
     "links": [
+      { "label": "Bain triail as", "url": "https://news.mickschroeder.com" },
       { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/mickschroeder.com" }
     ]
   }

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ExternalLink } from "lucide-react";
@@ -63,8 +63,13 @@ export const Projects: React.FC<Props> = ({ projects, className }) => {
             <CardTitle className="text-lg">{p.title}</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="mb-3 text-sm text-muted-foreground">{p.description}</p>
-            <div className="flex flex-wrap gap-3">
+            <p className="mb-3 text-sm text-muted-foreground">
+              {p.description}
+              </p>
+            
+          </CardContent>
+          <CardFooter>
+    <div className="flex flex-wrap gap-3">
               {p.links.map((l) => (
                 <Button key={l.url} asChild variant="outline">
                   <a
@@ -79,7 +84,7 @@ export const Projects: React.FC<Props> = ({ projects, className }) => {
                 </Button>
               ))}
             </div>
-          </CardContent>
+      </CardFooter>
         </Card>
       ))}
     </div>

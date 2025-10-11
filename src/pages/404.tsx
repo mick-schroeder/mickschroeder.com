@@ -6,11 +6,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home, ArrowLeft } from "lucide-react";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useTranslation, Trans } from "gatsby-plugin-react-i18next";
+import Layout from "@/components/layout";
 
 const NotFoundPage: React.FC<PageProps> = () => {
   const { t } = useTranslation();
   return (
-    <>
+    <Layout>
       <div className="text-center mb-6">
         <div className="mt-3 flex justify-center">
           <LanguageSwitcher />
@@ -61,7 +62,7 @@ const NotFoundPage: React.FC<PageProps> = () => {
           }}
         />
       </footer>
-    </>
+    </Layout>
   );
 };
 
