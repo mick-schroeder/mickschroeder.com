@@ -20,14 +20,14 @@ const IndexPage: React.FC<PageProps<IndexPageData>> = ({ data }) => {
     <Layout>
       <div className="mb-6 text-center">
 
-
         {/* Hero */}
         <p className="text-muted-foreground text-xl md:px-10">
           <Trans i18nKey="hero_line" components={{ b: <b className="pop-plus" /> }} />
         </p>
 
       </div>
-
+      
+     {/* Projects */}
       <section id="projects" className="mt-10 scroll-mt-32">
         <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
           <FolderKanban className="h-6 w-6 text-primary" aria-hidden="true" />
@@ -35,6 +35,8 @@ const IndexPage: React.FC<PageProps<IndexPageData>> = ({ data }) => {
         </h2>
         <Projects projects={data.allProjectsJson.nodes as Project[]} />
       </section>
+
+     {/* Socials */}
 
       <section id="socials" className="mt-10 scroll-mt-32">
         <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
@@ -44,6 +46,8 @@ const IndexPage: React.FC<PageProps<IndexPageData>> = ({ data }) => {
         <Socials items={data.allSocialsJson.nodes} />
       </section>
 
+     {/* Contact */}
+
       <section id="contact" className="mt-10 scroll-mt-32">
         <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
           <Mail className="h-6 w-6 text-primary" aria-hidden="true" />
@@ -51,6 +55,8 @@ const IndexPage: React.FC<PageProps<IndexPageData>> = ({ data }) => {
         </h2>
         <Contact />
       </section>
+      
+     {/* Footer */}
 
       <footer className="mt-12 text-center text-xs opacity-80">
         <Trans

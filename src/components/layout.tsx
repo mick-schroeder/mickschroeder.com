@@ -89,7 +89,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           <img
             src={withPrefix("/images/logo-mick-schroeder.svg")}
             alt="Mick Schroeder"
-            className="mx-auto h-20 md:h-24 dark:invert"
+            className="mx-auto h-20 md:h-24 invert"
             loading="eager"
             fetchPriority="high"
             decoding="async"

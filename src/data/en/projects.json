@@ -16,7 +16,7 @@
     "slug": "https://github.com/mick-schroeder/RxShortages",
     "repo": "https://github.com/mick-schroeder/RxShortages",
     "title": "RxShortages",
-    "description": "RxShortages was an open source cross platform mobile application for drug shortages.",
+    "description": "RxShortages was an open-source cross-platform mobile application for health care professionals providing information about drug shortages.",
     "icon": "/images/projects/icon-rxshortages.png",
     "links": [
       { "label": "Source code", "url": "https://github.com/mick-schroeder/RxShortages" }
@@ -37,8 +37,8 @@
     "homepage": "https://news.mickschroeder.com",
     "repo": "https://github.com/mick-schroeder/news.mickschroeder.com",
     "language": "JavaScript",
-    "title": "News Craic",
-    "description": "\"🔀  Shuffle\" button for the best and most influential sites on the web.",
+    "title": "News Shuffle",
+    "description": "Provides a shuffle button to send you to the best and most influential news websites on the web.",
     "icon": "/images/projects/icon-randomwebsite.png",
     "links": [
       { "label": "Website", "url": "https://news.mickschroeder.com" },
