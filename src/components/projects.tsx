@@ -1,6 +1,6 @@
 import * as React from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, type IGatsbyImageData } from "gatsby-plugin-image";
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -12,6 +12,7 @@ export type Project = {
   title: string;
   description: string;
   icon: string;
+  screenshot?: string;
   links: ProjectLink[];
   // Optional metadata to avoid heuristics
   repo?: string; // e.g., https://github.com/user/repo
@@ -28,20 +29,30 @@ type Props = {
 export const Projects: React.FC<Props> = ({ projects, className }) => {
   const data = useStaticQuery(graphql`
     query ProjectIconsQuery {
-      allFile(filter: {extension: {in: ["png", "jpg", "jpeg", "webp"]}}) {
+      allFile(filter: {relativeDirectory: {regex: "/projects/"}, extension: {in: ["png", "jpg", "jpeg", "webp"]}}) {
         nodes {
           base
           childImageSharp {
-            gatsbyImageData(width: 32, height: 32, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+            icon: gatsbyImageData(width: 32, height: 32, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+            screenshot: gatsbyImageData(width: 960, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
           }
         }
       }
     }
   `) as any;
-  const iconMap = React.useMemo(() => {
-    const m = new Map<string, any>();
+
+  const screenshotMap = React.useMemo(() => {
+    const m = new Map<string, IGatsbyImageData>();
     for (const n of data?.allFile?.nodes || []) {
-      if (n.base && n.childImageSharp) m.set(n.base, n.childImageSharp);
+      if (n.base && n.childImageSharp?.screenshot) m.set(n.base, n.childImageSharp.screenshot);
+    }
+    return m;
+  }, [data]);
+
+  const iconMap = React.useMemo(() => {
+    const m = new Map<string, IGatsbyImageData>();
+    for (const n of data?.allFile?.nodes || []) {
+      if (n.base && n.childImageSharp?.icon) m.set(n.base, n.childImageSharp.icon);
     }
     return m;
   }, [data]);
@@ -53,23 +64,44 @@ export const Projects: React.FC<Props> = ({ projects, className }) => {
             {/* Decorative icon; empty alt for a11y if the title is right next to it */}
             {(() => {
               const base = (p.icon || "").split("/").pop() || "";
-              const imgNode = iconMap.get(base);
-              if (imgNode) {
-                const image = getImage(imgNode);
-                if (image) return <GatsbyImage image={image} alt="" className="rounded-md" />;
-              }
+              const imgData = iconMap.get(base);
+              if (imgData) return <GatsbyImage image={imgData} alt="" className="rounded-md" />;
               return <img src={p.icon} alt="" width={32} height={32} className="rounded-md" />;
             })()}
             <CardTitle className="text-lg">{p.title}</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="mb-3 text-sm text-muted-foreground">
-              {p.description}
-              </p>
-            
+            {p.screenshot &&
+              (() => {
+                const base = (p.screenshot || "").split("/").pop() || "";
+                const imgData = screenshotMap.get(base);
+                const sharedClasses = "h-48 w-full object-cover object-top";
+                if (imgData) {
+                  return (
+                    <div className="-mx-6 mb-3">
+                      <GatsbyImage
+                        image={imgData}
+                        alt={`${p.title} screenshot`}
+                        className="h-48 w-full"
+                        imgClassName={sharedClasses}
+                      />
+                    </div>
+                  );
+                }
+                return (
+                  <div className="-mx-6 mb-3">
+                    <img
+                      src={p.screenshot}
+                      alt={`${p.title} screenshot`}
+                      className={sharedClasses}
+                    />
+                  </div>
+                );
+              })()}
+            <p className="mb-3 text-sm text-muted-foreground">{p.description}</p>
           </CardContent>
           <CardFooter>
-    <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3">
               {p.links.map((l) => (
                 <Button key={l.url} asChild variant="outline">
                   <a
@@ -84,7 +116,7 @@ export const Projects: React.FC<Props> = ({ projects, className }) => {
                 </Button>
               ))}
             </div>
-      </CardFooter>
+          </CardFooter>
         </Card>
       ))}
     </div>

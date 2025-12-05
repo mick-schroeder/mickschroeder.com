@@ -7,9 +7,25 @@
     "title": "Citation Generator",
     "description": "Bogearraí saor in aisce agus foinse oscailte a mholann lua citithe go huathoibríoch agus a chuidíonn le hinsint fhoinsí a scríobh.",
     "icon": "/images/projects/icon-cite.png",
+    "screenshot": "/images/projects/screenshot-cite.png",
     "links": [
       { "label": "Bain triail as", "url": "https://cite.mickschroeder.com" },
       { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/cite.mickschroeder.com" }
+    ]
+  },
+  {
+    "slug": "https://potatogame.mickschroeder.com",
+    "homepage": "https://potatogame.mickschroeder.com",
+    "repo": "https://github.com/mick-schroeder/potatogame",
+    "language": "Swift",
+    "title": "Potato Game",
+    "description": "Is cluiche puzail cumaisc emoji bunaithe ar dhomhantarraingt é Potato Game do iOS agus macOS.",
+    "icon": "/images/projects/icon-potatogame.png",
+    "screenshot": "/images/projects/screenshot-potatogame.png",
+    "links": [
+      { "label": "Bain triail as", "url": "https://potatogame.mickschroeder.com" },
+      { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/potatogame" },
+      { "label": "App Store", "url": "https://apps.apple.com/us/app/potato-game/id6477922776" }
     ]
   },
   {

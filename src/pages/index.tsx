@@ -95,6 +95,7 @@ export const query = graphql`
         title
         description
         icon
+        screenshot
         repo
         homepage
         language
