@@ -1,8 +1,10 @@
 {
   "hero_line": "Forbróir Bogearraí Neamhspleách Éireannach‑Meiriceánach <b>+</b> Cógaiseoir <b>+</b> Mac Léinn MBA i gColáiste na Tríonóide, Baile Átha Cliath.",
+  "hero_sub_line": "Táirgí cúramacha a sheoladh ar an ngréasán, ar ghléasanna soghluaiste, agus san AI le fócas ar cháilíocht agus oscailteacht.",
   "cta_linkedin": "Ceangail liom ar LinkedIn",
-  "cta_github": "Féach ar Thionscadail",
-  "cta_email": "Déan Teagmháil trí Ríomhphost",
+  "cta_github": "Féach ar GitHub",
+  "cta_email": "Déan Teagmháil",
+  "cta_projects": "Féach ar Thionscadail",
   "footer_copy": "© 2025 Mick Schroeder, LLC.",
   "footer_copy_html": "© 2025 Mick Schroeder, LLC. Cód: <a1>MIT</a1> • Ábhar: <a2>CC BY 4.0</a2>",
   "projects_heading": "Tionscadail",

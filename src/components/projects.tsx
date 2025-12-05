@@ -59,8 +59,11 @@ export const Projects: React.FC<Props> = ({ projects, className }) => {
   return (
     <div className={cn("grid gap-6 md:grid-cols-2", className)}>
       {projects.map((p) => (
-        <Card key={p.slug} className="border-border overflow-hidden">
-          <CardHeader className="flex items-center gap-3">
+        <Card
+          key={p.slug}
+          className="border-border overflow-hidden transition duration-200 hover:-translate-y-0.5 hover:shadow-md"
+        >
+          <CardHeader className="flex items-center gap-3 px-6">
             {/* Decorative icon; empty alt for a11y if the title is right next to it */}
             {(() => {
               const base = (p.icon || "").split("/").pop() || "";
@@ -68,39 +71,39 @@ export const Projects: React.FC<Props> = ({ projects, className }) => {
               if (imgData) return <GatsbyImage image={imgData} alt="" className="rounded-md" />;
               return <img src={p.icon} alt="" width={32} height={32} className="rounded-md" />;
             })()}
-            <CardTitle className="text-lg">{p.title}</CardTitle>
+            <CardTitle className="text-xl">{p.title}</CardTitle>
           </CardHeader>
           <CardContent>
             {p.screenshot &&
               (() => {
                 const base = (p.screenshot || "").split("/").pop() || "";
                 const imgData = screenshotMap.get(base);
-                const sharedClasses = "h-48 w-full object-cover object-top";
+                const sharedClasses = "h-full w-full object-cover object-top";
                 if (imgData) {
                   return (
-                    <div className="-mx-6 mb-3">
+                    <div className="-mx-6 mb-3 overflow-hidden">
                       <GatsbyImage
                         image={imgData}
                         alt={`${p.title} screenshot`}
-                        className="h-48 w-full"
+                        className="aspect-[16/9] h-auto w-full"
                         imgClassName={sharedClasses}
                       />
                     </div>
                   );
                 }
                 return (
-                  <div className="-mx-6 mb-3">
+                  <div className="-mx-6 mb-3 overflow-hidden">
                     <img
                       src={p.screenshot}
                       alt={`${p.title} screenshot`}
-                      className={sharedClasses}
+                      className={`aspect-[16/9] h-auto w-full ${sharedClasses}`}
                     />
                   </div>
                 );
               })()}
-            <p className="mb-3 text-sm text-muted-foreground">{p.description}</p>
+            <p className="mt-6 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
           </CardContent>
-          <CardFooter>
+          <CardFooter className="border-t border-border/60 px-6 pt-4">
             <div className="flex flex-wrap gap-3">
               {p.links.map((l) => (
                 <Button key={l.url} asChild variant="outline">
@@ -108,7 +111,7 @@ export const Projects: React.FC<Props> = ({ projects, className }) => {
                     href={l.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2"
+                    className="inline-flex items-center gap-2 font-medium"
                   >
                     {l.label}
                     <ExternalLink className="h-4 w-4" />

@@ -1,8 +1,10 @@
 {
-  "hero_line": "Irish-American Indie Software Developer <b>+</b> Pharmacist <b>+</b> MBA Candidate at Trinity College Dublin.",
+  "hero_line": "Irish-American Indie Software Developer <b>+</b> Pharmacist <b>+</b> Executive MBA Candidate at Trinity College Dublin.",
+  "hero_sub_line": "Shipping thoughtful products across web, mobile, and AI with an eye on quality and openness.",
   "cta_linkedin": "Connect on LinkedIn",
-  "cta_github": "View Projects",
-  "cta_email": "Contact via E-mail",
+  "cta_github": "Follow on Github",
+  "cta_email": "Get in touch",
+  "cta_projects": "View Projects",
   "footer_copy": "© 2025 Mick Schroeder, LLC.",
   "footer_copy_html": "© 2025 Mick Schroeder, LLC. Code: <a1>MIT</a1> • Content: <a2>CC BY 4.0</a2>",
   "projects_heading": "Projects",
@@ -12,8 +14,7 @@
   "language_switcher_current": "Current language",
   "title_email": "E-mail",
   "title_github": "GitHub",
-  "title_linkedin": "LinkedIn"
-  ,
+  "title_linkedin": "LinkedIn",
   "not_found_heading": "Page not found",
   "not_found_body": "Sorry, we couldn’t find what you were looking for.",
   "not_found_cta_home": "Go to homepage",

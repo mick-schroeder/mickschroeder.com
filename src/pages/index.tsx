@@ -4,6 +4,7 @@ import { useTranslation, Trans } from "gatsby-plugin-react-i18next";
 import { Projects, type Project } from "@/components/projects";
 import Socials, { type SocialItem } from "@/components/socials";
 import Contact from "@/components/contact";
+import { Button } from "@/components/ui/button";
 import { SEO, buildSoftwareSourceCodeJsonLd } from "@/components/seo";
 import { FolderKanban, Share2, Mail } from "lucide-react";
 import Layout from "@/components/layout";
@@ -15,16 +16,38 @@ type IndexPageData = {
 
 const IndexPage: React.FC<PageProps<IndexPageData>> = ({ data }) => {
   const { t } = useTranslation();
+  const social = (data as any).site.siteMetadata.social || {};
   
   return (
     <Layout>
-      <div className="mb-6 text-center">
-
+      <div className="relative mb-10 overflow-hidden p-6 text-center md:p-10">
         {/* Hero */}
-        <p className="text-muted-foreground text-xl md:px-10">
+        <p className="relative text-muted-foreground text-xl md:px-10">
           <Trans i18nKey="hero_line" components={{ b: <b className="pop-plus" /> }} />
         </p>
-
+        <p className="relative mt-3 text-sm text-emerald-600 md:text-base">
+          <Trans i18nKey="hero_sub_line" />
+        </p>
+        <div className="relative mt-6 flex flex-col items-center justify-center gap-3 md:flex-row">
+          <Button asChild size="lg">
+            <a href="#projects"><Trans i18nKey="cta_projects" /></a>
+          </Button>
+          <Button asChild size="lg" variant="outline">
+            <a href="#contact"><Trans i18nKey="cta_email" /></a>
+          </Button>
+        </div>
+        <div className="relative mt-4 flex flex-wrap justify-center gap-4 text-sm font-medium text-emerald-900">
+          {social.linkedin && (
+            <a href={`https://www.linkedin.com/in/${social.linkedin}/`} target="_blank" rel="noopener noreferrer" className="underline decoration-emerald-300 underline-offset-4 hover:text-emerald-700">
+          <Trans i18nKey="cta_linkedin" />
+            </a>
+          )}
+          {social.github && (
+            <a href={`https://github.com/${social.github}`} target="_blank" rel="noopener noreferrer" className="underline decoration-emerald-300 underline-offset-4 hover:text-emerald-700">
+          <Trans i18nKey="cta_github" />
+            </a>
+          )}
+        </div>
       </div>
       
      {/* Projects */}
