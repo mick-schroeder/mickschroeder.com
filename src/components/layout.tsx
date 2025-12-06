@@ -40,7 +40,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
         {t("skip_to_content")}
       </a>
 
-      <header className="sticky top-0 z-50 border-b border-navbar-border/70 bg-navbar/80 text-navbar-foreground backdrop-blur supports-[backdrop-filter]:bg-navbar/60">
+      <header className="sticky top-0 z-50 border-b border-navbar-border bg-navbar dark:border-navbar-border/70 dark:bg-navbar/80 text-navbar-foreground backdrop-blur supports-[backdrop-filter]:bg-navbar/60">
         <div className="mx-auto flex w-full max-w-4xl flex-wrap items-center gap-3 px-4 py-4 sm:flex-nowrap sm:gap-4">
           <a
             href={homeHref}

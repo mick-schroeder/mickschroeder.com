@@ -44,12 +44,12 @@ const IndexPage: React.FC<PageProps<IndexPageData>> = ({ data }) => {
         </div>
         <div className="relative z-10 mt-4 flex flex-wrap justify-center gap-4 text-sm font-medium text-emerald-50 animate-rise" style={{ animationDelay: "0.35s" }}>
           {social.linkedin && (
-            <a href={`https://www.linkedin.com/in/${social.linkedin}/`} target="_blank" rel="noopener noreferrer" className="underline decoration-emerald-300 underline-offset-4 hover:text-emerald-700">
+            <a href={`https://www.linkedin.com/in/${social.linkedin}/`} target="_blank" rel="noopener noreferrer" className="text-card-foreground underline decoration-emerald-300 underline-offset-4 hover:text-emerald-100">
           <Trans i18nKey="cta_linkedin" />
             </a>
           )}
           {social.github && (
-            <a href={`https://github.com/${social.github}`} target="_blank" rel="noopener noreferrer" className="underline decoration-emerald-300 underline-offset-4 hover:text-emerald-700">
+            <a href={`https://github.com/${social.github}`} target="_blank" rel="noopener noreferrer" className="text-card-foreground underline decoration-emerald-300 underline-offset-4 hover:text-emerald-100">
           <Trans i18nKey="cta_github" />
             </a>
           )}
