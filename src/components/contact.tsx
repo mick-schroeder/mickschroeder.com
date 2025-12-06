@@ -19,7 +19,7 @@ export const Contact: React.FC<{ className?: string }> = ({ className }) => {
   return (
     <div className={className}>
       <div className="grid md:grid-cols-2 gap-6">
-        <Card className="border-border overflow-hidden">
+        <Card className="border-border overflow-hidden animate-rise">
             <CardHeader className="flex items-center gap-3">
             <span className="inline-grid place-items-center w-9 h-9 rounded-full bg-primary text-primary-foreground ring-1 ring-border">
                   <Mail width={18} height={18} className="text-white" />
@@ -40,4 +40,3 @@ export const Contact: React.FC<{ className?: string }> = ({ className }) => {
 };
 
 export default Contact;
-

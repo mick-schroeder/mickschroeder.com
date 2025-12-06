@@ -20,15 +20,21 @@ const IndexPage: React.FC<PageProps<IndexPageData>> = ({ data }) => {
   
   return (
     <Layout>
-      <div className="relative mb-10 overflow-hidden p-6 text-center md:p-10">
+      <div className="relative mb-10 overflow-hidden rounded-2xl bg-gradient-to-b from-emerald-900/75 via-emerald-950/75 to-emerald-900/75 p-6 text-center md:p-10 ring-1 ring-emerald-800/50">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="animate-drift-slow absolute left-1/2 top-[-30%] h-60 w-60 -translate-x-1/2 rounded-full bg-lime-500/15 blur-3xl" />
+          <div className="animate-drift-slower absolute -left-6 bottom-[-10%] h-48 w-48 rounded-full bg-emerald-500/15 blur-3xl" />
+          <div className="animate-glow absolute right-[-8%] top-[-12%] h-56 w-56 rotate-6 rounded-full bg-teal-500/14 blur-3xl" />
+          <div className="animate-shimmer absolute inset-x-8 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(190,242,100,0.7),transparent)]" />
+        </div>
         {/* Hero */}
-        <p className="relative text-muted-foreground text-xl md:px-10">
+        <p className="relative z-10 text-muted-foreground text-xl md:px-10 animate-rise" style={{ animationDelay: "0.05s" }}>
           <Trans i18nKey="hero_line" components={{ b: <b className="pop-plus" /> }} />
         </p>
-        <p className="relative mt-3 text-sm text-emerald-600 md:text-base">
+        <p className="relative z-10 mt-3 text-sm text-emerald-100/90 md:text-base animate-rise" style={{ animationDelay: "0.15s" }}>
           <Trans i18nKey="hero_sub_line" />
         </p>
-        <div className="relative mt-6 flex flex-col items-center justify-center gap-3 md:flex-row">
+        <div className="relative z-10 mt-6 flex flex-col items-center justify-center gap-3 md:flex-row animate-rise" style={{ animationDelay: "0.25s" }}>
           <Button asChild size="lg">
             <a href="#projects"><Trans i18nKey="cta_projects" /></a>
           </Button>
@@ -36,7 +42,7 @@ const IndexPage: React.FC<PageProps<IndexPageData>> = ({ data }) => {
             <a href="#contact"><Trans i18nKey="cta_email" /></a>
           </Button>
         </div>
-        <div className="relative mt-4 flex flex-wrap justify-center gap-4 text-sm font-medium text-emerald-900">
+        <div className="relative z-10 mt-4 flex flex-wrap justify-center gap-4 text-sm font-medium text-emerald-50 animate-rise" style={{ animationDelay: "0.35s" }}>
           {social.linkedin && (
             <a href={`https://www.linkedin.com/in/${social.linkedin}/`} target="_blank" rel="noopener noreferrer" className="underline decoration-emerald-300 underline-offset-4 hover:text-emerald-700">
           <Trans i18nKey="cta_linkedin" />
@@ -52,7 +58,7 @@ const IndexPage: React.FC<PageProps<IndexPageData>> = ({ data }) => {
       
      {/* Projects */}
       <section id="projects" className="mt-10 scroll-mt-32">
-        <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
+        <h2 className="animate-rise mb-4 flex items-center gap-2 text-2xl font-bold" style={{ animationDelay: "0.1s" }}>
           <FolderKanban className="h-6 w-6 text-primary" aria-hidden="true" />
           {t("projects_heading")}
         </h2>
@@ -62,7 +68,7 @@ const IndexPage: React.FC<PageProps<IndexPageData>> = ({ data }) => {
      {/* Socials */}
 
       <section id="socials" className="mt-10 scroll-mt-32">
-        <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
+        <h2 className="animate-rise mb-4 flex items-center gap-2 text-2xl font-bold" style={{ animationDelay: "0.1s" }}>
           <Share2 className="h-6 w-6 text-primary" aria-hidden="true" />
           {t("socials_heading")}
         </h2>
@@ -72,7 +78,7 @@ const IndexPage: React.FC<PageProps<IndexPageData>> = ({ data }) => {
      {/* Contact */}
 
       <section id="contact" className="mt-10 scroll-mt-32">
-        <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
+        <h2 className="animate-rise mb-4 flex items-center gap-2 text-2xl font-bold" style={{ animationDelay: "0.1s" }}>
           <Mail className="h-6 w-6 text-primary" aria-hidden="true" />
           {t("contact_heading")}
         </h2>
@@ -86,7 +92,7 @@ const IndexPage: React.FC<PageProps<IndexPageData>> = ({ data }) => {
           i18nKey="footer_copy_html"
           components={{
             a1: <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer" />,
-            a2: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" />,
+            a2: <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" />,
           }}
         />
       </footer>

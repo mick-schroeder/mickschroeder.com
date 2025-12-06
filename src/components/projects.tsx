@@ -58,10 +58,11 @@ export const Projects: React.FC<Props> = ({ projects, className }) => {
   }, [data]);
   return (
     <div className={cn("grid gap-6 md:grid-cols-2", className)}>
-      {projects.map((p) => (
+      {projects.map((p, idx) => (
         <Card
           key={p.slug}
-          className="border-border overflow-hidden transition duration-200 hover:-translate-y-0.5 hover:shadow-md"
+          className="border-border overflow-hidden transition duration-200 hover:-translate-y-0.5 hover:shadow-md animate-rise"
+          style={{ animationDelay: `${idx * 60}ms` }}
         >
           <CardHeader className="flex items-center gap-3 px-6">
             {/* Decorative icon; empty alt for a11y if the title is right next to it */}

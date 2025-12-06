@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { FolderKanban, Share2, Mail } from "lucide-react";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -78,6 +79,9 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <NavigationMenuItem>
                   <LanguageSwitcher className="text-navbar-foreground" />
                 </NavigationMenuItem>
+                 <NavigationMenuItem>
+                  <ThemeToggle className="text-navbar-foreground hover:text-navbar-primary" />
+                </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
           </div>
@@ -85,7 +89,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       </header>
 
       <main id="main-content" className="mx-auto w-full max-w-4xl px-6 py-10">
-        <header className="mb-6 text-center">
+        <section className="mb-6 text-center text-foreground">
           <img
             src={withPrefix("/images/logo-mick-schroeder.svg")}
             alt="Mick Schroeder"
@@ -95,7 +99,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             decoding="async"
           />
           <h1 className="sr-only">Mick Schroeder</h1>
-        </header>
+        </section>
 
         {children}
       </main>

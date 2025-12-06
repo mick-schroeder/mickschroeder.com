@@ -17,7 +17,11 @@ export const Socials: React.FC<Props> = ({ items, className }) => {
     <div className={className}>
       <div className="grid md:grid-cols-3 gap-6">
         {items.map((it, idx) => (
-          <Card key={`${it.title}-${idx}`} className="border-border overflow-hidden">
+          <Card
+            key={`${it.title}-${idx}`}
+            className="border-border overflow-hidden animate-rise"
+            style={{ animationDelay: `${idx * 80}ms` }}
+          >
             <CardHeader className="flex items-center gap-3">
               <span className="inline-grid place-items-center w-9 h-9 rounded-full bg-primary text-primary-foreground ring-1 ring-border">
                 {it.icon ? (

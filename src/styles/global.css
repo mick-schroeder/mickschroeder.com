@@ -2,13 +2,13 @@
 
 :root {
   --background: theme(colors.emerald.700);
-  --foreground: theme(colors.emerald.50);
-  --card: theme(colors.emerald.800);
+  --foreground: theme(colors.emerald.950);
+  --card: theme(colors.emerald.600);
   --card-foreground: theme(colors.emerald.50);
   --popover: theme(colors.emerald.800);
   --popover-foreground: theme(colors.emerald.50);
-  --primary: theme(colors.lime.400);
-  --primary-foreground: theme(colors.emerald.950);
+  --primary: theme(colors.teal.500);
+  --primary-foreground: theme(colors.teal.100);
   --secondary: theme(colors.emerald.600);
   --secondary-foreground: theme(colors.emerald.50);
   --muted: theme(colors.emerald.800);
@@ -35,15 +35,15 @@
   --sidebar-ring: theme(colors.emerald.200);
   --navbar: theme(colors.emerald.900);
   --navbar-foreground: theme(colors.emerald.50);
-  --navbar-primary: theme(colors.lime.300);
+  --navbar-primary: theme(colors.teal.300);
   --navbar-primary-foreground: theme(colors.emerald.950);
   --navbar-accent: theme(colors.emerald.600);
   --navbar-accent-foreground: theme(colors.emerald.50);
   --navbar-border: theme(colors.emerald.600);
   --navbar-ring: theme(colors.emerald.200);
   --font-sans:
-    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Helvetica Neue', 'Helvetica', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol', 'Noto Color Emoji';
   --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
   --font-mono:
@@ -69,14 +69,14 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
     --background: theme(colors.emerald.950);
     --foreground: theme(colors.emerald.100);
     --card: theme(colors.emerald.900);
     --card-foreground: theme(colors.emerald.100);
     --popover: theme(colors.emerald.900);
     --popover-foreground: theme(colors.emerald.100);
-    --primary: theme(colors.lime.500);
+    --primary: theme(colors.teal.500);
     --primary-foreground: theme(colors.emerald.950);
     --secondary: theme(colors.emerald.700);
     --secondary-foreground: theme(colors.emerald.100);
@@ -88,7 +88,7 @@
     --destructive-foreground: theme(colors.emerald.50);
     --border: theme(colors.emerald.800);
     --input: theme(colors.emerald.800);
-    --ring: theme(colors.lime.400);
+    --ring: theme(colors.teal.400);
     --chart-1: theme(colors.lime.500);
     --chart-2: theme(colors.emerald.400);
     --chart-3: theme(colors.teal.500);
@@ -96,40 +96,69 @@
     --chart-5: theme(colors.green.400);
     --sidebar: theme(colors.emerald.950);
     --sidebar-foreground: theme(colors.emerald.100);
-    --sidebar-primary: theme(colors.lime.400);
+    --sidebar-primary: theme(colors.teal.400);
     --sidebar-primary-foreground: theme(colors.emerald.950);
     --sidebar-accent: theme(colors.emerald.800);
     --sidebar-accent-foreground: theme(colors.emerald.100);
     --sidebar-border: theme(colors.emerald.800);
-    --sidebar-ring: theme(colors.lime.400);
+    --sidebar-ring: theme(colors.teal.400);
     --navbar: theme(colors.emerald.950);
     --navbar-foreground: theme(colors.emerald.100);
-    --navbar-primary: theme(colors.lime.400);
+    --navbar-primary: theme(colors.teal.400);
     --navbar-primary-foreground: theme(colors.emerald.950);
     --navbar-accent: theme(colors.emerald.800);
     --navbar-accent-foreground: theme(colors.emerald.100);
     --navbar-border: theme(colors.emerald.900);
-    --navbar-ring: theme(colors.lime.400);
-    --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-    --font-mono:
-      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
-      monospace;
-    --radius: 0.625rem;
-    --shadow-x: 0;
-    --shadow-y: 1px;
-    --shadow-blur: 3px;
-    --shadow-spread: 0px;
-    --shadow-opacity: 0.1;
-    --shadow-color: oklch(0 0 0);
-    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
-    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
-    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+    --navbar-ring: theme(colors.teal.400);
   }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --background: theme(colors.emerald.950);
+  --foreground: theme(colors.emerald.100);
+  --card: theme(colors.emerald.900);
+  --card-foreground: theme(colors.emerald.100);
+  --popover: theme(colors.emerald.900);
+  --popover-foreground: theme(colors.emerald.100);
+  --primary: theme(colors.teal.500);
+  --primary-foreground: theme(colors.emerald.950);
+  --secondary: theme(colors.emerald.700);
+  --secondary-foreground: theme(colors.emerald.100);
+  --muted: theme(colors.emerald.900);
+  --muted-foreground: theme(colors.emerald.300);
+  --accent: theme(colors.teal.500);
+  --accent-foreground: theme(colors.emerald.100);
+  --destructive: theme(colors.rose.500);
+  --destructive-foreground: theme(colors.emerald.50);
+  --border: theme(colors.emerald.800);
+  --input: theme(colors.emerald.800);
+  --ring: theme(colors.lime.400);
+  --chart-1: theme(colors.lime.500);
+  --chart-2: theme(colors.emerald.400);
+  --chart-3: theme(colors.teal.500);
+  --chart-4: theme(colors.emerald.500);
+  --chart-5: theme(colors.green.400);
+  --sidebar: theme(colors.emerald.950);
+  --sidebar-foreground: theme(colors.emerald.100);
+  --sidebar-primary: theme(colors.lime.400);
+  --sidebar-primary-foreground: theme(colors.emerald.950);
+  --sidebar-accent: theme(colors.emerald.800);
+  --sidebar-accent-foreground: theme(colors.emerald.100);
+  --sidebar-border: theme(colors.emerald.800);
+  --sidebar-ring: theme(colors.lime.400);
+  --navbar: theme(colors.emerald.950);
+  --navbar-foreground: theme(colors.emerald.100);
+  --navbar-primary: theme(colors.teal.400);
+  --navbar-primary-foreground: theme(colors.emerald.950);
+  --navbar-accent: theme(colors.emerald.800);
+  --navbar-accent-foreground: theme(colors.emerald.100);
+  --navbar-border: theme(colors.emerald.900);
+  --navbar-ring: theme(colors.teal.400);
 }
 @theme inline {
   --color-background: var(--background);
@@ -174,10 +203,7 @@
   --color-navbar-border: var(--navbar-border);
   --color-navbar-ring: var(--navbar-ring);
 
-  --font-sans:
-    'Helvetica Neue', Helvetica, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);
 
@@ -236,4 +262,63 @@ html { color-scheme: light dark; }
   font-size: 1.2em;
   line-height: inherit;
   vertical-align: baseline;
+}
+
+@layer utilities {
+  .animate-rise {
+    animation: rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-drift-slow {
+    animation: drift 18s ease-in-out infinite alternate;
+  }
+  .animate-drift-slower {
+    animation: drift 22s ease-in-out infinite alternate-reverse;
+  }
+  .animate-glow {
+    animation: glow 9s ease-in-out infinite alternate;
+  }
+  .animate-shimmer {
+    animation: shimmer 5s linear infinite;
+    background-size: 200% 100%;
+  }
+}
+
+@keyframes rise {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.995);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes drift {
+  0% {
+    transform: translate3d(-8%, -6%, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(6%, 10%, 0) scale(1.04);
+  }
+}
+
+@keyframes glow {
+  0% {
+    opacity: 0.35;
+    filter: blur(32px);
+  }
+  100% {
+    opacity: 0.7;
+    filter: blur(42px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
 }
