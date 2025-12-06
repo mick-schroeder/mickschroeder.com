@@ -90,14 +90,35 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
       <main id="main-content" className="mx-auto w-full max-w-4xl px-6 py-10">
         <section className="mb-6 text-center text-foreground">
-          <img
-            src={withPrefix("/images/logo-mick-schroeder.svg")}
-            alt="Mick Schroeder"
-            className="mx-auto h-20 md:h-24 invert"
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-          />
+          {(() => {
+            const logo = withPrefix("/images/logo-mick-schroeder.svg");
+            return (
+              <div className="relative mx-auto aspect-[1150/150] w-full max-w-[18rem] md:max-w-[22rem]">
+                <span
+                  aria-hidden
+                  className="absolute inset-0 block rounded-sm bg-[var(--foreground)]"
+                  style={{
+                    maskImage: `url(${logo})`,
+                    WebkitMaskImage: `url(${logo})`,
+                    maskRepeat: "no-repeat",
+                    WebkitMaskRepeat: "no-repeat",
+                    maskSize: "contain",
+                    WebkitMaskSize: "contain",
+                    maskPosition: "center",
+                    WebkitMaskPosition: "center",
+                  }}
+                />
+                <img
+                  src={logo}
+                  alt="Mick Schroeder"
+                  className="sr-only"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                />
+              </div>
+            );
+          })()}
           <h1 className="sr-only">Mick Schroeder</h1>
         </section>
 

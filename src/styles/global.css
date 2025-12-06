@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: theme(colors.emerald.700);
+  --background: theme(colors.emerald.50);
   --foreground: theme(colors.emerald.950);
-  --card: theme(colors.emerald.600);
+  --card: theme(colors.emerald.700);
   --card-foreground: theme(colors.emerald.50);
   --popover: theme(colors.emerald.800);
   --popover-foreground: theme(colors.emerald.50);
   --primary: theme(colors.teal.500);
-  --primary-foreground: theme(colors.teal.100);
+  --primary-foreground: theme(colors.teal.50);
   --secondary: theme(colors.emerald.600);
   --secondary-foreground: theme(colors.emerald.50);
   --muted: theme(colors.emerald.800);
@@ -25,6 +25,7 @@
   --chart-3: theme(colors.teal.300);
   --chart-4: theme(colors.emerald.400);
   --chart-5: theme(colors.green.200);
+  --hero-gradient: linear-gradient(180deg, theme(colors.emerald.700) 50%, theme(colors.teal.700) 100%, theme(colors.emerald.600) 100%);
   --sidebar: theme(colors.emerald.800);
   --sidebar-foreground: theme(colors.emerald.50);
   --sidebar-primary: theme(colors.lime.300);
@@ -37,7 +38,7 @@
   --navbar-foreground: theme(colors.emerald.50);
   --navbar-primary: theme(colors.teal.300);
   --navbar-primary-foreground: theme(colors.emerald.950);
-  --navbar-accent: theme(colors.emerald.600);
+  --navbar-accent: theme(colors.emerald.700);
   --navbar-accent-foreground: theme(colors.emerald.50);
   --navbar-border: theme(colors.emerald.600);
   --navbar-ring: theme(colors.emerald.200);
@@ -94,6 +95,7 @@
     --chart-3: theme(colors.teal.500);
     --chart-4: theme(colors.emerald.500);
     --chart-5: theme(colors.green.400);
+    --hero-gradient: linear-gradient(180deg, #064e3b 0%, #022c22 50%, #065f46 100%);
     --sidebar: theme(colors.emerald.950);
     --sidebar-foreground: theme(colors.emerald.100);
     --sidebar-primary: theme(colors.teal.400);
@@ -143,6 +145,7 @@
   --chart-3: theme(colors.teal.500);
   --chart-4: theme(colors.emerald.500);
   --chart-5: theme(colors.green.400);
+  --hero-gradient: linear-gradient(180deg, #064e3b 0%, #022c22 50%, #065f46 100%);
   --sidebar: theme(colors.emerald.950);
   --sidebar-foreground: theme(colors.emerald.100);
   --sidebar-primary: theme(colors.lime.400);
@@ -241,6 +244,9 @@
   a:focus-visible:not([data-slot="button"]) {
     @apply outline-none ring-ring/50 ring-[3px];
   }
+  h2 {
+    @apply text-foreground;
+  }
 }
 
 html { color-scheme: light dark; }
@@ -280,6 +286,11 @@ html { color-scheme: light dark; }
   .animate-shimmer {
     animation: shimmer 5s linear infinite;
     background-size: 200% 100%;
+  }
+  .hero-gradient {
+    background-image: var(--hero-gradient);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }
 

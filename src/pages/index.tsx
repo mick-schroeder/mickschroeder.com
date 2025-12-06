@@ -20,7 +20,7 @@ const IndexPage: React.FC<PageProps<IndexPageData>> = ({ data }) => {
   
   return (
     <Layout>
-      <div className="relative mb-10 overflow-hidden rounded-2xl bg-gradient-to-b from-emerald-900/75 via-emerald-950/75 to-emerald-900/75 p-6 text-center md:p-10 ring-1 ring-emerald-800/50">
+      <div className="relative mb-10 overflow-hidden rounded-2xl hero-gradient p-6 text-center md:p-10 ring-1 ring-emerald-500 dark:ring-emerald-800">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="animate-drift-slow absolute left-1/2 top-[-30%] h-60 w-60 -translate-x-1/2 rounded-full bg-lime-500/15 blur-3xl" />
           <div className="animate-drift-slower absolute -left-6 bottom-[-10%] h-48 w-48 rounded-full bg-emerald-500/15 blur-3xl" />
