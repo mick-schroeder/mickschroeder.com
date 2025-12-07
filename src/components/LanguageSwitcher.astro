@@ -1,0 +1,59 @@
+---
+import type { Dictionary, Language } from "@/i18n/config";
+import { defaultLanguage, languages } from "@/i18n/config";
+import LanguagesIcon from "@lucide/astro/icons/languages";
+import NativeSelect from "@/components/ui/astro/NativeSelect.astro";
+
+interface Props {
+  lang: Language;
+  dict: Dictionary;
+  pathname: string;
+  className?: string;
+}
+
+const { lang, dict, pathname, className = "" } = Astro.props;
+const currentLocale = (Astro as any).currentLocale || lang;
+const stripLocale = (path: string) => {
+  const re = new RegExp(`^/(?:${languages.join("|")})(?=/|$)`);
+  const stripped = path.replace(re, "") || "/";
+  return stripped.startsWith("/") ? stripped : `/${stripped}`;
+};
+const normalize = (path: string) => (path.endsWith("/") ? path : `${path}/`);
+const basePath = normalize(stripLocale(Astro.url.pathname || pathname || "/"));
+const hrefFor = (lng: Language) =>
+  lng === defaultLanguage ? basePath : `/${lng}${basePath}`;
+
+const label = dict["language_switcher_label"] || "Select language";
+const options = languages.map((lng) => ({
+  lang: lng,
+  href: hrefFor(lng as Language),
+  label: lng.toUpperCase(),
+}));
+const selectId = `language-switcher-${currentLocale}`;
+---
+
+<div class={`inline-flex items-center ${className}`}>
+  <label class="sr-only" for={selectId}>{label}</label>
+  <div class="relative inline-flex items-center gap-2">
+    <span aria-hidden="true" class="flex h-9 w-9 items-center justify-center text-navbar-accent-foreground">
+      <LanguagesIcon class="h-4 w-4" />
+    </span>
+    <NativeSelect
+      id={selectId}
+      value={currentLocale}
+      onChange="const o=this.selectedOptions[0]; if(o && o.dataset.href){ window.location.href=o.dataset.href; }"
+      class="min-w-32 border-navbar-border/60 bg-navbar text-navbar-foreground focus-visible:ring-navbar-ring/60 focus-visible:ring-offset-background pr-10"
+    >
+      {options.map((opt) => (
+        <option
+          value={opt.lang}
+          data-lang={opt.lang}
+          data-href={opt.href}
+          selected={opt.lang === currentLocale}
+        >
+          {opt.label}
+        </option>
+      ))}
+    </NativeSelect>
+  </div>
+</div>

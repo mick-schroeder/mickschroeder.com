@@ -1,0 +1,48 @@
+---
+import Button from "@/components/ui/astro/Button.astro";
+import Card from "@/components/ui/astro/Card.astro";
+import ExternalLink from "@lucide/astro/icons/external-link";
+import type { SocialItem } from "@/data/socials";
+import type { Dictionary } from "@/i18n/config";
+
+interface Props {
+  items: SocialItem[];
+  dict: Dictionary;
+}
+
+const { items, dict } = Astro.props;
+const list = Array.isArray(items) ? items : [];
+---
+
+{list.length ? (
+  <div class="grid gap-6 md:grid-cols-3">
+    {list.map((item, idx) => {
+      const delay = `${idx * 80}ms`;
+      return (
+        <Card class="animate-rise" style={`animation-delay: ${delay};`}>
+          <div slot="header" class="flex items-center gap-3">
+            <span class="inline-grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-foreground ring-1 ring-border">
+              {item.icon ? (
+                <img src={item.icon} alt="" aria-hidden="true" width="18" height="18" class="invert" />
+              ) : (
+                <ExternalLink class="h-4 w-4" />
+              )}
+            </span>
+            <h3 class="text-lg font-semibold">{item.title}</h3>
+          </div>
+          <div slot="content" class="pt-0">
+            <Button
+              href={item.url}
+              variant="outline"
+              className="w-full"
+              rel="noopener noreferrer"
+            >
+              {item.cta || dict["cta_visit"] || "Visit"}
+              <ExternalLink class="h-4 w-4" />
+            </Button>
+          </div>
+        </Card>
+      );
+    })}
+  </div>
+) : null}

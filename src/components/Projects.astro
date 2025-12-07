@@ -1,0 +1,65 @@
+---
+import Card from "@/components/ui/astro/Card.astro";
+import Button from "@/components/ui/astro/Button.astro";
+import ExternalLink from "@lucide/astro/icons/external-link";
+import type { Project } from "@/data/projects";
+
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+---
+
+<div class="grid gap-6 md:grid-cols-2">
+  {projects.map((project, idx) => {
+    const delay = `${idx * 60}ms`;
+    const iconAlt = `${project.title} icon`;
+    const screenshotAlt = `${project.title} screenshot`;
+    const screenshotSrc = project.screenshot || "";
+    return (
+      <Card
+        class="transition duration-200 hover:-translate-y-0.5 hover:shadow-md animate-rise"
+        style={`animation-delay: ${delay};`}
+      >
+        <div slot="header" class="flex items-center gap-3">
+          {project.icon ? (
+            <img src={project.icon} alt={iconAlt} width="32" height="32" class="rounded-md" loading="lazy" decoding="async" />
+          ) : null}
+          <h3 class="text-xl font-semibold">{project.title}</h3>
+        </div>
+
+        <div slot="content">
+          {screenshotSrc ? (
+            <div class="-mx-6 mb-3 overflow-hidden">
+              <img
+                src={screenshotSrc}
+                alt={screenshotAlt}
+                class="aspect-[16/9] h-auto w-full object-cover object-top"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          ) : null}
+          <p class="mt-6 text-sm leading-relaxed text-muted-foreground">{project.description}</p>
+        </div>
+
+        <div slot="footer">
+          <div class="flex flex-wrap gap-3">
+            {project.links?.map((link) => (
+              <Button
+                href={link.url}
+                variant="outline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.label}
+                <ExternalLink class="h-4 w-4" />
+              </Button>
+            ))}
+          </div>
+        </div>
+      </Card>
+    );
+  })}
+</div>

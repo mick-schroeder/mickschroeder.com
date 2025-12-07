@@ -1,0 +1,192 @@
+---
+import "@/styles/global.css";
+import GoogleAnalytics from "@/components/GoogleAnalytics.astro";
+import LanguageSwitcher from "@/components/LanguageSwitcher.astro";
+import Button from "@/components/ui/astro/Button.astro";
+import ThemeToggle from "@/components/theme-toggle";
+import { siteConfig } from "@/config/site";
+import type { Dictionary, Language } from "@/i18n/config";
+import { defaultLanguage, languages, pathWithLang } from "@/i18n/config";
+import { buildPersonJsonLd } from "@/lib/seo";
+
+interface Props {
+  lang: Language;
+  dict: Dictionary;
+  title?: string;
+  description?: string;
+  pathname: string;
+  jsonLd?: Array<Record<string, unknown>>;
+}
+
+const { lang, dict, title, description, pathname, jsonLd = [] } = Astro.props;
+
+const siteUrl = siteConfig.siteUrl.replace(/\/$/, "");
+const resolvedTitle = title ? `${title} — ${siteConfig.title}` : siteConfig.title;
+const resolvedDescription = description || siteConfig.description;
+const canonicalPath = pathWithLang(lang, pathname || "/");
+const canonical = `${siteUrl}${canonicalPath}`;
+const defaultImage = siteConfig.image || "/images/icon.png";
+const imageUrl = defaultImage.startsWith("http")
+  ? defaultImage
+  : `${siteUrl}${defaultImage}`;
+const ogLocaleMap: Record<string, string> = { en: "en_US", ga: "ga_IE" };
+const ogLocale = ogLocaleMap[lang] || "en_US";
+
+const alternateLinks = languages
+  .map((lng) => ({
+    href: `${siteUrl}${pathWithLang(lng, pathname)}`,
+    hrefLang: lng,
+  }))
+  .concat([
+    {
+      href: `${siteUrl}${pathWithLang(defaultLanguage, pathname)}`,
+      hrefLang: "x-default",
+    },
+  ]);
+
+const ldGraph = [
+  { "@type": "WebSite", name: siteConfig.title, url: siteUrl },
+  buildPersonJsonLd(siteConfig, siteUrl, languages as unknown as string[]),
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: canonical,
+      },
+    ],
+  },
+  ...jsonLd,
+];
+const ld = { "@context": "https://schema.org", "@graph": ldGraph };
+
+const navLogo = "/images/icon-circle.svg";
+const navItems = [
+  { href: "#projects", label: dict["projects_heading"] || "Projects" },
+  { href: "#socials", label: dict["socials_heading"] || "Socials" },
+  { href: "#contact", label: dict["contact_heading"] || "Contact" },
+];
+const skipLabel = dict["skip_to_content"] || "Skip to main content";
+const homeHref = pathWithLang(lang, "/");
+const gaId = import.meta.env.PUBLIC_GTAG_ID;
+---
+
+<!DOCTYPE html>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/images/icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/images/icon.svg" />
+    <link rel="apple-touch-icon" href="/images/icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="generator" content={Astro.generator} />
+    {gaId && <GoogleAnalytics measurementId={gaId} />}
+    <title>{resolvedTitle}</title>
+    {resolvedDescription && <meta name="description" content={resolvedDescription} />}
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href={canonical} />
+    <meta name="color-scheme" content="light dark" />
+
+    <meta property="og:title" content={resolvedTitle} />
+    {resolvedDescription && <meta property="og:description" content={resolvedDescription} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={siteConfig.title} />
+    <meta property="og:image" content={imageUrl} />
+    {resolvedDescription && <meta property="og:image:alt" content={resolvedDescription} />}
+    <meta property="og:locale" content={ogLocale} />
+    {languages
+      .filter((lng) => lng !== lang)
+      .map((lng) => (
+        <meta property="og:locale:alternate" content={ogLocaleMap[lng] || lng} />
+      ))}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    {siteConfig.social.twitter && (
+      <meta name="twitter:site" content={`@${siteConfig.social.twitter.replace(/^@/, "")}`} />
+    )}
+    {siteConfig.social.twitter && (
+      <meta name="twitter:creator" content={`@${siteConfig.social.twitter.replace(/^@/, "")}`} />
+    )}
+    <meta name="twitter:title" content={resolvedTitle} />
+    {resolvedDescription && <meta name="twitter:description" content={resolvedDescription} />}
+    <meta name="twitter:image" content={imageUrl} />
+
+    {alternateLinks.map((alt) => (
+      <link rel="alternate" href={alt.href} hrefLang={alt.hrefLang} />
+    ))}
+
+    <script type="application/ld+json">
+      {JSON.stringify(ld)}
+    </script>
+    <script>
+      (() => {
+        try {
+          const root = document.documentElement;
+          const storageKey = "theme-preference";
+          const stored = window.localStorage.getItem(storageKey);
+          const media = window.matchMedia("(prefers-color-scheme: dark)");
+          const target = stored || "system";
+          const resolved = target === "system" ? (media.matches ? "dark" : "light") : target;
+          if (target !== "system") root.setAttribute("data-theme", target);
+          if (resolved === "dark") root.classList.add("dark");
+          root.style.colorScheme = resolved === "dark" ? "dark" : "light";
+        } catch {
+          /* ignore */
+        }
+      })();
+    </script>
+  </head>
+
+  <body class="bg-background text-foreground antialiased">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+    >
+      {skipLabel}
+    </a>
+
+    <header class="sticky top-0 z-50 border-b border-navbar-border bg-navbar text-navbar-foreground backdrop-blur supports-[backdrop-filter]:bg-navbar/60 dark:border-navbar-border/70 dark:bg-navbar/80">
+      <div class="mx-auto flex w-full max-w-4xl flex-wrap items-center gap-3 px-4 py-4 sm:flex-nowrap sm:gap-4">
+        <a
+          href={homeHref}
+          class="inline-flex items-center gap-2 text-xl font-black tracking-tighter text-navbar-foreground transition-colors hover:text-navbar-primary no-underline hover:no-underline"
+        >
+          <img src={navLogo} alt={dict["logo_alt"] || "Logo"} class="h-6 w-6" loading="lazy" decoding="async" />
+          <span class="whitespace-nowrap">mick schroeder</span>
+        </a>
+
+        <nav class="ml-auto w-full sm:w-auto">
+          <ul class="flex flex-wrap items-center justify-end gap-2 text-sm font-medium sm:justify-center">
+            {navItems.map((item) => (
+              <li>
+                <Button
+                  href={item.href}
+                  variant="outline"
+                  size="sm"
+                  className="border-navbar-border/60 bg-navbar-accent text-navbar-accent-foreground px-4 py-2 hover:bg-navbar-primary/80 hover:text-navbar-primary-foreground focus-visible:ring-navbar-ring/60 focus-visible:ring-offset-background"
+                >
+                  {item.label}
+                </Button>
+              </li>
+            ))}
+            <li>
+              <LanguageSwitcher lang={lang} dict={dict} pathname={pathname} />
+            </li>
+            <li>
+              <ThemeToggle client:load className="text-navbar-foreground hover:text-navbar-primary" />
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="mx-auto w-full max-w-4xl px-6 py-10">
+      <slot />
+    </main>
+  </body>
+</html>

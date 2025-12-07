@@ -1,0 +1,37 @@
+---
+import Button from "@/components/ui/astro/Button.astro";
+import Card from "@/components/ui/astro/Card.astro";
+import Mail from "@lucide/astro/icons/mail";
+import type { Dictionary } from "@/i18n/config";
+
+interface Props {
+  email?: string;
+  dict: Dictionary;
+}
+
+const { email, dict } = Astro.props;
+if (!email) {
+  throw new Error("Contact component requires an email address.");
+}
+---
+
+<div class="grid gap-6 md:grid-cols-2">
+  <Card class="animate-rise">
+    <div slot="header" class="flex items-center gap-3">
+      <span class="inline-grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-foreground ring-1 ring-border">
+        <Mail class="h-4 w-4" />
+      </span>
+      <h3 class="text-lg font-semibold">{dict["title_email"] || "E-mail"}</h3>
+    </div>
+    <div slot="content" class="pt-0">
+      <Button
+        href={`mailto:${email}`}
+        variant="outline"
+        className="w-full"
+      >
+        {dict["cta_email"] || "Get in touch"}
+        <Mail class="h-4 w-4" />
+      </Button>
+    </div>
+  </Card>
+</div>

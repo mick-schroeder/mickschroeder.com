@@ -1,0 +1,41 @@
+---
+import { cn } from "@/lib/utils";
+
+type Props = {
+  class?: string;
+  className?: string;
+  headerClass?: string;
+  contentClass?: string;
+  footerClass?: string;
+};
+
+const {
+  class: classAttr = "",
+  className = classAttr,
+  headerClass = "",
+  contentClass = "",
+  footerClass = "",
+} = Astro.props as Props;
+---
+
+<article class={cn("bg-card text-card-foreground overflow-hidden rounded-xl border shadow-sm", className)}>
+  {Astro.slots.has("header") && (
+    <div class={cn("flex items-center gap-3 px-6 py-4", headerClass)}>
+      <slot name="header" />
+    </div>
+  )}
+
+  {Astro.slots.has("content") ? (
+    <div class={cn("px-6 pb-6", contentClass)}>
+      <slot name="content" />
+    </div>
+  ) : (
+    <slot />
+  )}
+
+  {Astro.slots.has("footer") && (
+    <div class={cn("border-t border-border/60 px-6 py-4", footerClass)}>
+      <slot name="footer" />
+    </div>
+  )}
+</article>

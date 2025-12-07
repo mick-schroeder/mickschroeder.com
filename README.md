@@ -1,57 +1,56 @@
 # [mickschroeder.com](https://mickschroeder.com)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Content: CC BY 4.0](https://img.shields.io/badge/Content-CC%20BY%204.0-blue.svg)](CONTENT_LICENSE.md)
+[![Content: CC BY-NC 4.0](https://img.shields.io/badge/Content-CC%20BY--NC%204.0-blue.svg)](CONTENT_LICENSE)
 
-Website of Mick Schroeder, PharmD. Irish-American Indie Software Developer + Pharmacist 🇮🇪 🇺🇸
+Personal site for Mick Schroeder, PharmD — Irish-American indie software developer + pharmacist.
 
-![screenshot](https://github.com/mick-schroeder/gatsby-schroeder/raw/master/src/assets/images/screenshot.gif)
+![screenshot](public/images/projects/screenshot-mickschroeder.png)
 
 ## Tech Stack
 
-- [React](https://reactjs.org/)
-- [Gatsby](https://www.gatsbyjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [shadcn/ui](https://ui.shadcn.com)
+- [Astro](https://astro.build/) with static prerender
+- [Tailwind CSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/) styles via custom Astro wrappers
+- [Lucide Astro](https://lucide.dev/) icons (inline SVG)
+- i18n (en, ga) via Astro i18n routing
+- Partytown-enabled Google Analytics (optional, requires env var)
+- Sitemap/robots via `@astrojs/sitemap`
 
-## Development
+## Getting Started
 
-```
+```bash
 git clone https://github.com/mick-schroeder/mickschroeder.com.git
 cd mickschroeder.com
 npm install
-npm run develop
+npm run dev
 ```
 
-Open `http://localhost:8000`
+Open `http://localhost:4321`.
 
-## Production
+### Build / Preview
 
-```
+```bash
 npm run build
+npm run preview
 ```
-## Customize Your Fork
 
-- Site config: edit `gatsby-config.ts` → `siteMetadata`
-  - `title`, `description`, `siteUrl`
-  - `social`: usernames or email
-  - `person`: full name, job title, alumniOf
-- Copy and translations: `locales/en/common.json` and `locales/ga/common.json`
-- Projects: add/edit `src/data/en/projects.json` and `src/data/ga/projects.json`
-  - Optional per‑project fields: `repo`, `homepage`, `language`, `license`, `links`
-- Socials: add/edit `src/data/en/socials.json` and `src/data/ga/socials.json`
-  - Provide `title`, `cta`, `url`, and optional `icon` (e.g. `/images/socials/github.svg`)
-- Env vars: copy `.env.example` to `.env` and set `GATSBY_SITE_URL`
+## Customization
 
-Node version: use `nvm use` (see `.nvmrc`) or Node 22.10+.
+- Site config: `src/config/site.ts` (title, description, social, person metadata)
+- Copy/translations: `src/locales/en/common.json`, `src/locales/ga/common.json`
+- Projects: `src/data/projects/en.json`, `src/data/projects/ga.json`
+- Socials: `src/data/socials/en.json`, `src/data/socials/ga.json`
+- Styles: `src/styles/global.css`
+- GA: set `PUBLIC_GTAG_ID` (e.g., `G-XXXX`) to enable analytics
 
-## Author
+## Deployment
 
-- [Mick Schroeder](https://mickschroeder.com)
+- Static output in `dist/`
+- AWS Amplify: see `amplify.yml` (Node 22, `npm ci`, `npm run build`)
 
 ## License
 
 - Code: [MIT](LICENSE)
-- Content (non-code): [CC BY 4.0](CONTENT_LICENSE.md)
+- Content (non-code): [CC BY-NC 4.0](CONTENT_LICENSE)
 
 Logos, trademarks, and certain media assets may be excluded and remain All Rights Reserved unless explicitly licensed.

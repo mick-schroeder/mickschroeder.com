@@ -1,0 +1,84 @@
+[
+  {
+    "slug": "https://cite.mickschroeder.com",
+    "homepage": "https://cite.mickschroeder.com",
+    "repo": "https://github.com/mick-schroeder/cite.mickschroeder.com",
+    "language": "TypeScript",
+    "title": "Citation Generator",
+    "description": "Bogearraí saor in aisce agus foinse oscailte a mholann lua citithe go huathoibríoch agus a chuidíonn le hinsint fhoinsí a scríobh.",
+    "icon": "/images/projects/icon-cite.png",
+    "screenshot": "/images/projects/screenshot-cite.png",
+    "links": [
+      { "label": "Bain triail as", "url": "https://cite.mickschroeder.com" },
+      { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/cite.mickschroeder.com" }
+    ]
+  },
+  {
+    "slug": "https://potatogame.mickschroeder.com",
+    "homepage": "https://potatogame.mickschroeder.com",
+    "repo": "https://github.com/mick-schroeder/potatogame",
+    "language": "Swift",
+    "title": "Potato Game",
+    "description": "Is cluiche puzail cumaisc emoji bunaithe ar dhomhantarraingt é Potato Game do iOS agus macOS.",
+    "icon": "/images/projects/icon-potatogame.png",
+    "screenshot": "/images/projects/screenshot-potatogame.png",
+    "links": [
+      { "label": "Bain triail as", "url": "https://potatogame.mickschroeder.com" },
+      { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/potatogame" },
+      { "label": "App Store", "url": "https://apps.apple.com/us/app/potato-game/id6477922776" }
+    ]
+  },
+  {
+    "slug": "https://github.com/mick-schroeder/RxShortages",
+    "repo": "https://github.com/mick-schroeder/RxShortages",
+    "title": "RxShortages",
+    "description": "Aip ilardáin foinse oscailte do ghannchuidí cógais.",
+    "icon": "/images/projects/icon-rxshortages.png",
+    "screenshot": "/images/projects/screenshot-rxshortages.png",
+    "links": [
+      { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/RxShortages" }
+    ]
+  },
+  {
+    "slug": "https://github.com/mick-schroeder/Medical-Spelling-Dictionary",
+    "repo": "https://github.com/mick-schroeder/Medical-Spelling-Dictionary",
+    "title": "Foclóir Litrithe Leighis",
+    "description": "Foclóir litrithe saor in aisce le téarmaí leighis do Microsoft Word / Office.",
+    "icon": "/images/projects/icon-spell.png",
+        "screenshot": "/images/projects/screenshot-spell.png",
+
+    "links": [
+      { "label": "Íoslódáil", "url": "https://github.com/mick-schroeder/Medical-Spelling-Dictionary" }
+    ]
+  },
+  {
+    "slug": "https://news.mickschroeder.com",
+    "homepage": "https://news.mickschroeder.com",
+    "repo": "https://github.com/mick-schroeder/news.mickschroeder.com",
+    "language": "TypeScript",
+    "title": "Shuffle Nuachta",
+    "description": "\"🔀 Shuffle\" le suíomhanna gréasáin is fearr agus is mó tionchair, curtha in eagar ag AI.",
+    "icon": "/images/projects/icon-newsshuffle.png",
+    
+        "screenshot": "/images/projects/screenshot-newsshuffle.png",
+
+    "links": [
+      { "label": "Bain triail as", "url": "https://news.mickschroeder.com" }
+    ]
+  },
+  {
+    "slug": "https://github.com/mick-schroeder/mickschroeder.com",
+    "repo": "https://github.com/mick-schroeder/mickschroeder.com",
+    "homepage": "https://www.mickschroeder.com/",
+    "language": "TypeScript",
+    "title": "mickschroeder.com",
+    "description": "Féach cód foinse an tsuímh ghréasáin seo.",
+    "icon": "/images/projects/icon-mickschroeder.png",
+            "screenshot": "/images/projects/screenshot-mickschroeder.png",
+
+    "links": [
+      { "label": "Bain triail as", "url": "https://news.mickschroeder.com" },
+      { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/mickschroeder.com" }
+    ]
+  }
+]
