@@ -120,9 +120,7 @@ const gaId = import.meta.env.PUBLIC_GTAG_ID;
       <link rel="alternate" href={alt.href} hrefLang={alt.hrefLang} />
     ))}
 
-    <script type="application/ld+json">
-      {JSON.stringify(ld)}
-    </script>
+    <script type="application/ld+json" set:html={JSON.stringify(ld)} />
     <script>
       (() => {
         try {
