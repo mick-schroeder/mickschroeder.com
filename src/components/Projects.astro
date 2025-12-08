@@ -26,7 +26,7 @@ const { projects } = Astro.props;
           {project.icon ? (
             <img src={project.icon} alt={iconAlt} width="32" height="32" class="rounded-md" loading="lazy" decoding="async" />
           ) : null}
-          <h3 class="text-xl font-semibold">{project.title}</h3>
+          <h3 class="text-xl font-semibold text-primary">{project.title}</h3>
         </div>
 
         <div slot="content">

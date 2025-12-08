@@ -40,22 +40,20 @@ const labelMap: Record<ThemeMode, string> = {
   </span>
 </button>
 
-<script lang="ts">
-  type ThemeMode = "system" | "light" | "dark";
-
+<script>
   const storageKey = "theme-preference";
-  const labelMap: Record<ThemeMode, string> = {
+  const labelMap = {
     dark: "Dark mode",
     light: "Light mode",
     system: "System mode",
   };
-  const nextTheme: Record<ThemeMode, ThemeMode> = {
+  const nextTheme = {
     system: "light",
     light: "dark",
     dark: "system",
   };
 
-  const applyTheme = (target: ThemeMode) => {
+  const applyTheme = (target) => {
     const root = document.documentElement;
     const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const resolved = target === "system" ? (systemPrefersDark ? "dark" : "light") : target;
@@ -71,11 +69,11 @@ const labelMap: Record<ThemeMode, string> = {
   };
 
   const setupThemeToggle = () => {
-    const button = document.querySelector<HTMLButtonElement>("[data-theme-toggle]");
+    const button = document.querySelector("[data-theme-toggle]");
     if (!button) return;
 
-    const icons = button.querySelectorAll<HTMLElement>("[data-icon]");
-    const updateUI = (mode: ThemeMode) => {
+    const icons = button.querySelectorAll("[data-icon]");
+    const updateUI = (mode) => {
       icons.forEach((icon) => {
         icon.hidden = icon.dataset.icon !== mode;
       });
@@ -83,8 +81,9 @@ const labelMap: Record<ThemeMode, string> = {
       button.setAttribute("aria-label", `${labelMap[mode]} toggle`);
     };
 
-    const stored = window.localStorage.getItem(storageKey) as ThemeMode | null;
-    let mode: ThemeMode = stored ?? "system";
+    const stored = window.localStorage.getItem(storageKey);
+    const valid = stored === "light" || stored === "dark" || stored === "system";
+    let mode = valid ? stored : "system";
 
     applyTheme(mode);
     updateUI(mode);

@@ -60,19 +60,19 @@ const logo = "/images/logo-mick-schroeder.svg";
       <div class="animate-glow absolute right-[-8%] top-[-12%] h-56 w-56 rotate-6 rounded-full bg-teal-500/14 blur-3xl" />
       <div class="animate-shimmer absolute inset-x-8 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(190,242,100,0.7),transparent)]" />
     </div>
-    <p class="relative z-10 text-xl text-muted-foreground md:px-10 animate-rise" style="animation-delay: 0.05s" set:html={dict["hero_line"]} />
-    <p class="relative z-10 mt-3 text-sm text-emerald-100/90 md:text-base animate-rise" style="animation-delay: 0.15s">
+    <p class="relative z-10 text-xl text-hero-primary-foreground md:px-10 animate-rise" style="animation-delay: 0.05s" set:html={dict["hero_line"]} />
+    <p class="relative z-10 mt-3 text-hero-secondary-foreground text-sm md:text-base animate-rise" style="animation-delay: 0.15s">
       {dict["hero_sub_line"]}
     </p>
     <div class="relative z-10 mt-6 flex flex-col items-center justify-center gap-3 md:flex-row animate-rise" style="animation-delay: 0.25s">
-      <Button href="#projects" size="lg" className="px-6 py-3 text-lg">
+      <Button href="#projects" size="lg" className="">
         {dict["cta_projects"]}
       </Button>
       <Button
         href="#contact"
         variant="outline"
         size="lg"
-        className="px-6 py-3 text-lg"
+        className=""
       >
         {dict["cta_email"]}
       </Button>
@@ -83,7 +83,7 @@ const logo = "/images/logo-mick-schroeder.svg";
           href={`https://www.linkedin.com/in/${navSocial.linkedin}/`}
           target="_blank"
           rel="noopener noreferrer"
-          class="text-card-foreground underline decoration-emerald-300 underline-offset-4 hover:text-emerald-100"
+          class="text-hero-secondary-foreground underline decoration-emerald-300 underline-offset-4 hover:text-emerald-100"
         >
           {dict["cta_linkedin"]}
         </a>
@@ -93,7 +93,7 @@ const logo = "/images/logo-mick-schroeder.svg";
           href={`https://github.com/${navSocial.github}`}
           target="_blank"
           rel="noopener noreferrer"
-          class="text-card-foreground underline decoration-emerald-300 underline-offset-4 hover:text-emerald-100"
+          class="text-hero-secondary-foreground underline decoration-emerald-300 underline-offset-4 hover:text-emerald-100"
         >
           {dict["cta_github"]}
         </a>

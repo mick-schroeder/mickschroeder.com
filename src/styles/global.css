@@ -11,13 +11,13 @@
   --card-foreground-light: theme(colors.stone.800);
   --popover-light: theme(colors.emerald.800);
   --popover-foreground-light: theme(colors.emerald.800);
-  --primary-light: theme(colors.emerald.600);
+  --primary-light: theme(colors.emerald.800);
   --primary-foreground-light: theme(colors.emerald.50);
   --secondary-light: theme(colors.stone.900);
   --secondary-foreground-light: theme(colors.emerald.50);
   --muted-light: theme(colors.stone.400);
   --muted-foreground-light: theme(colors.stone.600);
-  --accent-light: theme(colors.emerald.500);
+  --accent-light: theme(colors.emerald.600);
   --accent-foreground-light: theme(colors.emerald.50);
   --destructive-light: theme(colors.rose.500);
   --destructive-foreground-light: theme(colors.emerald.950);
@@ -42,12 +42,12 @@
   --sidebar-ring-light: theme(colors.emerald.200);
   --navbar-light: theme(colors.stone.200);
   --navbar-foreground-light: theme(colors.emerald.900);
-  --navbar-primary-light: theme(colors.teal.300);
+  --navbar-primary-light: theme(colors.emerald.500);
   --navbar-primary-foreground-light: theme(colors.emerald.950);
   --navbar-accent-light: theme(colors.emerald.700);
   --navbar-accent-foreground-light: theme(colors.emerald.50);
   --navbar-border-light: theme(colors.stone.400);
-  --navbar-ring-light: theme(colors.emerald.200);
+  --navbar-ring-light: theme(colors.emerald.600);
 
   /* Dark values */
   --background-dark: theme(colors.emerald.950);
@@ -300,7 +300,8 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-navbar: var(--navbar);
-
+  --color-hero-primary-foreground: var(--hero-primary-foreground);
+  --color-hero-secondary-foreground: var(--hero-secondary-foreground);
   --color-navbar-foreground: var(--navbar-foreground);
   --color-navbar-primary: var(--navbar-primary);
   --color-navbar-primary-foreground: var(--navbar-primary-foreground);
