@@ -2,6 +2,7 @@
 import Card from "@/components/ui/astro/Card.astro";
 import Button from "@/components/ui/astro/Button.astro";
 import ExternalLink from "@lucide/astro/icons/external-link";
+import { Picture } from "astro:assets";
 import type { Project } from "@/data/projects";
 
 interface Props {
@@ -9,6 +10,18 @@ interface Props {
 }
 
 const { projects } = Astro.props;
+
+const projectImages = import.meta.glob("../assets/projects/*.{png,jpg,jpeg,webp,avif}", {
+  eager: true,
+  import: "default",
+});
+
+const resolveAsset = (path: string | undefined | null) => {
+  if (!path) return null;
+  const normalized = path.replace(/^\/?images\/projects\//, "");
+  const key = `../assets/projects/${normalized}`;
+  return projectImages[key] || null;
+};
 ---
 
 <div class="grid gap-6 md:grid-cols-2">
@@ -16,15 +29,34 @@ const { projects } = Astro.props;
     const delay = `${idx * 60}ms`;
     const iconAlt = `${project.title} icon`;
     const screenshotAlt = `${project.title} screenshot`;
-    const screenshotSrc = project.screenshot || "";
+    const iconSrc = resolveAsset(project.icon);
+    const screenshotSrc = resolveAsset(project.screenshot);
     return (
       <Card
         class="transition duration-200 hover:-translate-y-0.5 hover:shadow-md animate-rise"
         style={`animation-delay: ${delay};`}
       >
         <div slot="header" class="flex items-center gap-3">
-          {project.icon ? (
-            <img src={project.icon} alt={iconAlt} width="32" height="32" class="rounded-md" loading="lazy" decoding="async" />
+          {iconSrc ? (
+            <Picture
+              src={iconSrc}
+              alt={iconAlt}
+              widths={[32, 48, 64]}
+              sizes="32px"
+              formats={["avif", "webp", "png"]}
+              class="h-8 w-8 rounded-md"
+              loading="lazy"
+            />
+          ) : project.icon ? (
+            <img
+              src={project.icon}
+              alt={iconAlt}
+              width="32"
+              height="32"
+              class="h-8 w-8 rounded-md"
+              loading="lazy"
+              decoding="async"
+            />
           ) : null}
           <h3 class="text-xl font-semibold text-primary">{project.title}</h3>
         </div>
@@ -32,8 +64,20 @@ const { projects } = Astro.props;
         <div slot="content">
           {screenshotSrc ? (
             <div class="-mx-6 mb-3 overflow-hidden">
-              <img
+              <Picture
                 src={screenshotSrc}
+                alt={screenshotAlt}
+                widths={[640, 960, 1400]}
+                sizes="(max-width: 768px) 100vw, 680px"
+                formats={["avif", "webp", "png"]}
+                class="aspect-[16/9] h-auto w-full object-cover object-top"
+                loading="lazy"
+              />
+            </div>
+          ) : project.screenshot ? (
+            <div class="-mx-6 mb-3 overflow-hidden">
+              <img
+                src={project.screenshot}
                 alt={screenshotAlt}
                 class="aspect-[16/9] h-auto w-full object-cover object-top"
                 loading="lazy"
