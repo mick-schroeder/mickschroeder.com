@@ -15,6 +15,7 @@ const pathname = Astro.url.pathname;
   pathname={pathname}
   title="404"
   description={dict["not_found_body"] || "Page not found"}
+  robots="noindex,follow"
   jsonLd={[
     {
       "@type": "BreadcrumbList",

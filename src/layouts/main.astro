@@ -16,9 +16,10 @@ interface Props {
   description?: string;
   pathname: string;
   jsonLd?: Array<Record<string, unknown>>;
+  robots?: string;
 }
 
-const { lang, dict, title, description, pathname, jsonLd = [] } = Astro.props;
+const { lang, dict, title, description, pathname, jsonLd = [], robots = "index,follow" } = Astro.props as Props;
 
 const siteUrl = siteConfig.siteUrl.replace(/\/$/, "");
 const resolvedTitle = title ? `${title} — ${siteConfig.title}` : siteConfig.title;
@@ -87,7 +88,7 @@ const gaId = import.meta.env.PUBLIC_GTAG_ID;
     {gaId && <GoogleAnalytics measurementId={gaId} />}
     <title>{resolvedTitle}</title>
     {resolvedDescription && <meta name="description" content={resolvedDescription} />}
-    <meta name="robots" content="index,follow" />
+    <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
     <meta name="color-scheme" content="light dark" />
 

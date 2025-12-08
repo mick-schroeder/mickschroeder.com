@@ -1,8 +1,45 @@
 ---
-import { defaultLanguage } from "@/i18n/config";
+import HomePage from "@/components/HomePage.astro";
+import MainLayout from "@/layouts/main.astro";
+import { siteConfig } from "@/config/site";
+import type { Language } from "@/i18n/config";
+import { defaultLanguage, getDictionary } from "@/i18n/config";
+import { getProjects } from "@/data/projects";
+import { getSocials } from "@/data/socials";
+import { buildSoftwareSourceCodeJsonLd } from "@/lib/seo";
 
-const target = `/${defaultLanguage}/`;
+const lang: Language = defaultLanguage;
+const dict = getDictionary(lang);
+const projects = getProjects(lang);
+const socials = getSocials(lang);
+const pathname = Astro.url.pathname;
+const jsonLd = buildSoftwareSourceCodeJsonLd(
+  projects,
+  siteConfig.siteUrl,
+  siteConfig.person.fullName || siteConfig.author
+);
 
-export const prerender = true;
-return Astro.redirect(target, 308);
+const footerRaw = dict["footer_copy_html"] || dict["footer_copy"] || "";
+const footerHtml = footerRaw
+  .replace(/<a1>/g, `<a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">`)
+  .replace(/<\/a1>/g, "</a>")
+  .replace(/<a2>/g, `<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">`)
+  .replace(/<\/a2>/g, "</a>");
+
+const navSocial = siteConfig.social || {};
+const logo = "/images/logo-mick-schroeder.svg";
 ---
+
+<MainLayout lang={lang} dict={dict} pathname={pathname} jsonLd={jsonLd}>
+  <HomePage
+    dict={dict}
+    projects={projects}
+    socials={socials}
+    navSocial={navSocial}
+    logo={logo}
+    email={siteConfig.social.email}
+  />
+  <footer class="mt-12 text-center text-xs opacity-80">
+    <p set:html={footerHtml} />
+  </footer>
+</MainLayout>

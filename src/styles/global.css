@@ -56,7 +56,7 @@
   --card-foreground-dark: theme(colors.emerald.100);
   --popover-dark: theme(colors.emerald.900);
   --popover-foreground-dark: theme(colors.emerald.100);
-  --primary-dark: theme(colors.teal.500);
+  --primary-dark: theme(colors.emerald.300);
   --primary-foreground-dark: theme(colors.emerald.950);
   --secondary-dark: theme(colors.emerald.700);
   --secondary-foreground-dark: theme(colors.emerald.100);
