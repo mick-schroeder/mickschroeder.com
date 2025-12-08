@@ -3,7 +3,7 @@ import "@/styles/global.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics.astro";
 import LanguageSwitcher from "@/components/LanguageSwitcher.astro";
 import Button from "@/components/ui/astro/Button.astro";
-import ThemeToggle from "@/components/theme-toggle";
+import ThemeToggle from "@/components/theme-toggle.astro";
 import { siteConfig } from "@/config/site";
 import type { Dictionary, Language } from "@/i18n/config";
 import { defaultLanguage, languages, pathWithLang } from "@/i18n/config";
@@ -178,7 +178,7 @@ const gaId = import.meta.env.PUBLIC_GTAG_ID;
               <LanguageSwitcher lang={lang} dict={dict} pathname={pathname} />
             </li>
             <li>
-              <ThemeToggle client:load className="text-navbar-foreground hover:text-navbar-primary" />
+              <ThemeToggle className="text-navbar-foreground hover:text-navbar-primary" />
             </li>
           </ul>
         </nav>
