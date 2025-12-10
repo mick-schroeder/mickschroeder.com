@@ -58,18 +58,18 @@
     var(--background-light);
 
   /* Dark values */
-  --background-dark: #04110a;
+  --background-dark: theme(colors.emerald.950);
   --foreground-dark: theme(colors.stone.100);
-  --card-dark: #0a1c12;
-  --card-foreground-dark: theme(colors.stone.100);
+  --card-dark: theme(colors.emerald.950);
+  --card-foreground-dark: theme(colors.emerald.50);
   --popover-dark: #0a1c12;
   --popover-foreground-dark: theme(colors.stone.100);
-  --primary-dark: theme(colors.emerald.300);
+  --primary-dark: theme(colors.emerald.400);
   --primary-foreground-dark: theme(colors.stone.950);
   --secondary-dark: theme(colors.stone.800);
   --secondary-foreground-dark: theme(colors.stone.100);
-  --muted-dark: theme(colors.stone.800);
-  --muted-foreground-dark: theme(colors.stone.300);
+  --muted-dark: theme(colors.teal.200);
+  --muted-foreground-dark: theme(colors.stone.200);
   --accent-dark: theme(colors.emerald.300);
   --accent-foreground-dark: theme(colors.stone.950);
   --destructive-dark: theme(colors.rose.400);
@@ -83,9 +83,9 @@
   --chart-4-dark: theme(colors.emerald.300);
   --chart-5-dark: theme(colors.emerald.200);
   --hero-gradient-dark:
-    radial-gradient(circle at 18% 18%, rgba(52, 211, 153, 0.12), transparent 30%),
-    radial-gradient(circle at 84% 8%, rgba(34, 197, 94, 0.12), transparent 30%),
-    linear-gradient(140deg, #030c08 0%, #07190f 52%, #0b2116 100%);
+    radial-gradient(circle at 18% 18%, theme(colors.emerald.900), transparent 30%),
+    radial-gradient(circle at 84% 8%, theme(colors.teal.950), transparent 30%),
+    linear-gradient(140deg, theme(colors.emerald.950) 0%, theme(colors.teal.950) 52%, theme(colors.emerald.950) 100%);
   --hero-primary-foreground-dark: theme(colors.emerald.50);
   --hero-secondary-foreground-dark: theme(colors.stone.200);
   --sidebar-dark: #07150f;
