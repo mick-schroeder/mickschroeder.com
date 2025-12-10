@@ -30,15 +30,15 @@ const { dict, projects, socials, navSocial, logo, email } = Astro.props as Props
   <h1 class="sr-only">Mick Schroeder</h1>
 </section>
 
-<div class="relative mb-10 overflow-hidden rounded-2xl hero-gradient p-6 text-center ring-1 ring-emerald-500 dark:ring-emerald-800 md:p-10">
+<div class="relative mb-10 overflow-hidden rounded-3xl hero-gradient p-6 text-left ring-1 ring-primary/25 shadow-xl shadow-emerald-900/10 backdrop-blur supports-[backdrop-filter]:bg-white/5 dark:ring-primary/35 dark:shadow-black/40 md:p-10">
   <div aria-hidden class="pointer-events-none absolute inset-0">
-    <div class="animate-drift-slow absolute left-1/2 top-[-30%] h-60 w-60 -translate-x-1/2 rounded-full bg-lime-500/15 blur-3xl" />
-    <div class="animate-drift-slower absolute -left-6 bottom-[-10%] h-48 w-48 rounded-full bg-emerald-500/15 blur-3xl" />
-    <div class="animate-glow absolute right-[-8%] top-[-12%] h-56 w-56 rotate-6 rounded-full bg-teal-500/14 blur-3xl" />
-    <div class="animate-shimmer absolute inset-x-8 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(190,242,100,0.7),transparent)]" />
+    <div class="animate-drift-slow absolute left-1/2 top-[-30%] h-60 w-60 -translate-x-1/2 rounded-full bg-emerald-300/25 blur-3xl" />
+    <div class="animate-drift-slower absolute -left-6 bottom-[-10%] h-48 w-48 rounded-full bg-lime-300/18 blur-3xl" />
+    <div class="animate-glow absolute right-[-8%] top-[-12%] h-56 w-56 rotate-6 rounded-full bg-emerald-200/18 blur-3xl" />
+    <div class="animate-shimmer absolute inset-x-8 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(16,185,129,0.7),transparent)]" />
   </div>
-  <p class="relative z-10 text-xl text-hero-primary-foreground md:px-10 animate-rise" style="animation-delay: 0.05s" set:html={dict["hero_line"]} />
-  <p class="relative z-10 mt-3 text-hero-secondary-foreground text-sm md:text-base animate-rise" style="animation-delay: 0.15s">
+  <p class="relative z-10 text-xl text-hero-primary-foreground md:px-5 animate-rise" style="animation-delay: 0.05s" set:html={dict["hero_line"]} />
+  <p class="relative z-10 mt-3 md:px-5 text-hero-secondary-foreground text-sm md:text-base animate-rise" style="animation-delay: 0.15s">
     {dict["hero_sub_line"]}
   </p>
   <div class="relative z-10 mt-6 flex flex-col items-center justify-center gap-3 md:flex-row animate-rise" style="animation-delay: 0.25s">
@@ -49,13 +49,13 @@ const { dict, projects, socials, navSocial, logo, email } = Astro.props as Props
       {dict["cta_email"]}
     </Button>
   </div>
-  <div class="relative z-10 mt-4 flex flex-wrap justify-center gap-4 text-sm font-medium text-emerald-50 animate-rise" style="animation-delay: 0.35s">
+  <div class="relative z-10 mt-4 flex flex-wrap justify-center gap-4 text-sm font-semibold text-hero-secondary-foreground animate-rise" style="animation-delay: 0.35s">
     {navSocial.linkedin && (
       <a
         href={`https://www.linkedin.com/in/${navSocial.linkedin}/`}
         target="_blank"
         rel="noopener noreferrer"
-        class="text-card-foreground underline decoration-emerald-300 underline-offset-4 hover:text-emerald-100"
+        class="text-hero-primary-foreground underline decoration-primary/60 underline-offset-6 hover:text-primary"
       >
         {dict["cta_linkedin"]}
       </a>
@@ -65,7 +65,7 @@ const { dict, projects, socials, navSocial, logo, email } = Astro.props as Props
         href={`https://github.com/${navSocial.github}`}
         target="_blank"
         rel="noopener noreferrer"
-        class="text-card-foreground underline decoration-emerald-300 underline-offset-4 hover:text-emerald-100"
+        class="text-hero-primary-foreground underline decoration-primary/60 underline-offset-6 hover:text-primary"
       >
         {dict["cta_github"]}
       </a>
@@ -75,7 +75,7 @@ const { dict, projects, socials, navSocial, logo, email } = Astro.props as Props
 
 <section id="projects" class="mt-10 scroll-mt-32">
   <h2 class="animate-rise mb-4 flex items-center gap-2 text-2xl font-bold" style="animation-delay: 0.1s">
-    <FolderKanban class="h-6 w-6 text-primary" aria-hidden="true" />
+    <FolderKanban class="h-6 w-6 text-muted" aria-hidden="true" />
     {dict["projects_heading"]}
   </h2>
   <Projects projects={projects} />
@@ -83,7 +83,7 @@ const { dict, projects, socials, navSocial, logo, email } = Astro.props as Props
 
 <section id="socials" class="mt-10 scroll-mt-32">
   <h2 class="animate-rise mb-4 flex items-center gap-2 text-2xl font-bold" style="animation-delay: 0.1s">
-    <Share2 class="h-6 w-6 text-primary" aria-hidden="true" />
+    <Share2 class="h-6 w-6 text-muted" aria-hidden="true" />
     {dict["socials_heading"]}
   </h2>
   <Socials items={socials} dict={dict} />
@@ -91,7 +91,7 @@ const { dict, projects, socials, navSocial, logo, email } = Astro.props as Props
 
 <section id="contact" class="mt-10 scroll-mt-32">
   <h2 class="animate-rise mb-4 flex items-center gap-2 text-2xl font-bold" style="animation-delay: 0.1s">
-    <Mail class="h-6 w-6 text-primary" aria-hidden="true" />
+    <Mail class="h-6 w-6 text-muted" aria-hidden="true" />
     {dict["contact_heading"]}
   </h2>
   <Contact email={email} dict={dict} />

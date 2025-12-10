@@ -5,94 +5,110 @@
 
 :root {
   /* Light values */
-  --background-light: theme(colors.stone.200);
-  --foreground-light: theme(colors.stone.950);
-  --card-light: theme(colors.stone.100);
-  --card-foreground-light: theme(colors.stone.800);
-  --popover-light: theme(colors.emerald.800);
-  --popover-foreground-light: theme(colors.emerald.800);
-  --primary-light: theme(colors.emerald.800);
+  --background-light: theme(colors.emerald.500);
+  --foreground-light: theme(colors.emerald.50);
+  --card-light: #f6fff9;
+  --card-foreground-light: theme(colors.stone.900);
+  --popover-light: theme(colors.white);
+  --popover-foreground-light: theme(colors.stone.900);
+  --primary-light: theme(colors.teal.800);
   --primary-foreground-light: theme(colors.emerald.50);
-  --secondary-light: theme(colors.stone.900);
+  --secondary-light: theme(colors.emerald.900);
   --secondary-foreground-light: theme(colors.emerald.50);
-  --muted-light: theme(colors.stone.400);
-  --muted-foreground-light: theme(colors.stone.600);
-  --accent-light: theme(colors.emerald.600);
+  --muted-light: theme(colors.emerald.200);
+  --muted-foreground-light: theme(colors.stone.700);
+  --accent-light: theme(colors.emerald.700);
   --accent-foreground-light: theme(colors.emerald.50);
   --destructive-light: theme(colors.rose.500);
-  --destructive-foreground-light: theme(colors.emerald.950);
-  --border-light: theme(colors.stone.300);
-  --input-light: theme(colors.emerald.500);
-  --ring-light: theme(colors.emerald.200);
-  --chart-1-light: theme(colors.lime.300);
-  --chart-2-light: theme(colors.emerald.200);
-  --chart-3-light: theme(colors.teal.300);
-  --chart-4-light: theme(colors.emerald.400);
-  --chart-5-light: theme(colors.green.200);
-  --hero-gradient-light: linear-gradient(180deg, theme(colors.emerald.700) 50%, theme(colors.teal.700) 100%, theme(colors.emerald.600) 100%);
-  --hero-primary-foreground-light: theme(colors.emerald.50);
-  --hero-secondary-foreground-light: theme(colors.emerald.200);
-  --sidebar-light: theme(colors.emerald.800);
-  --sidebar-foreground-light: theme(colors.emerald.50);
-  --sidebar-primary-light: theme(colors.lime.300);
-  --sidebar-primary-foreground-light: theme(colors.emerald.950);
-  --sidebar-accent-light: theme(colors.emerald.600);
-  --sidebar-accent-foreground-light: theme(colors.emerald.50);
-  --sidebar-border-light: theme(colors.emerald.500);
-  --sidebar-ring-light: theme(colors.emerald.200);
-  --navbar-light: theme(colors.stone.200);
-  --navbar-foreground-light: theme(colors.emerald.900);
-  --navbar-primary-light: theme(colors.emerald.500);
-  --navbar-primary-foreground-light: theme(colors.emerald.950);
-  --navbar-accent-light: theme(colors.emerald.700);
+  --destructive-foreground-light: theme(colors.stone.50);
+  --border-light: theme(colors.emerald.400);
+  --input-light: theme(colors.emerald.200);
+  --ring-light: theme(colors.emerald.300);
+  --chart-1-light: theme(colors.emerald.500);
+  --chart-2-light: theme(colors.emerald.400);
+  --chart-3-light: theme(colors.teal.500);
+  --chart-4-light: theme(colors.teal.500);
+  --chart-5-light: theme(colors.emerald.300);
+  --hero-gradient-light:
+    radial-gradient(circle at 14% 18%, rgba(52, 211, 153, 0.24), transparent 32%),
+    radial-gradient(circle at 86% 10%, rgba(16, 185, 129, 0.2), transparent 34%),
+    linear-gradient(135deg, #f0fdf4 0%, #e7fbf0 48%, #ddf7ec 100%);
+  --hero-primary-foreground-light: theme(colors.stone.900);
+  --hero-secondary-foreground-light: theme(colors.stone.700);
+  --sidebar-light: theme(colors.white);
+  --sidebar-foreground-light: theme(colors.stone.900);
+  --sidebar-primary-light: theme(colors.emerald.600);
+  --sidebar-primary-foreground-light: theme(colors.emerald.50);
+  --sidebar-accent-light: rgba(16, 185, 129, 0.08);
+  --sidebar-accent-foreground-light: theme(colors.stone.900);
+  --sidebar-border-light: theme(colors.stone.200);
+  --sidebar-ring-light: theme(colors.emerald.400);
+  --navbar-light: rgba(6, 78, 59, 0.78);
+  --navbar-foreground-light: theme(colors.emerald.50);
+  --navbar-primary-light: theme(colors.emerald.700);
+  --navbar-primary-foreground-light: theme(colors.emerald.50);
+  --navbar-accent-light: rgba(16, 185, 129, 0.14);
   --navbar-accent-foreground-light: theme(colors.emerald.50);
-  --navbar-border-light: theme(colors.stone.400);
-  --navbar-ring-light: theme(colors.emerald.600);
+  --navbar-border-light: rgba(16, 185, 129, 0.35);
+  --navbar-ring-light: theme(colors.emerald.400);
+  --page-gradient-light:
+    radial-gradient(circle at 8% 12%, theme(colors.emerald.700), transparent 28%),
+    radial-gradient(circle at 90% 10%, theme(colors.teal.600), transparent 26%),
+    linear-gradient(180deg, theme(colors.emerald.600) 0%, theme(colors.emerald.700) 45%, theme(colors.emerald.800) 100%),
+    var(--background-light);
 
   /* Dark values */
-  --background-dark: theme(colors.emerald.950);
-  --foreground-dark: theme(colors.emerald.100);
-  --card-dark: theme(colors.emerald.900);
-  --card-foreground-dark: theme(colors.emerald.100);
-  --popover-dark: theme(colors.emerald.900);
-  --popover-foreground-dark: theme(colors.emerald.100);
+  --background-dark: #04110a;
+  --foreground-dark: theme(colors.stone.100);
+  --card-dark: #0a1c12;
+  --card-foreground-dark: theme(colors.stone.100);
+  --popover-dark: #0a1c12;
+  --popover-foreground-dark: theme(colors.stone.100);
   --primary-dark: theme(colors.emerald.300);
-  --primary-foreground-dark: theme(colors.emerald.950);
-  --secondary-dark: theme(colors.emerald.700);
-  --secondary-foreground-dark: theme(colors.emerald.100);
-  --muted-dark: theme(colors.emerald.900);
-  --muted-foreground-dark: theme(colors.emerald.300);
-  --accent-dark: theme(colors.teal.500);
-  --accent-foreground-dark: theme(colors.emerald.100);
-  --destructive-dark: theme(colors.rose.500);
-  --destructive-foreground-dark: theme(colors.emerald.50);
-  --border-dark: theme(colors.emerald.800);
-  --input-dark: theme(colors.emerald.800);
-  --ring-dark: theme(colors.teal.400);
-  --chart-1-dark: theme(colors.lime.500);
+  --primary-foreground-dark: theme(colors.stone.950);
+  --secondary-dark: theme(colors.stone.800);
+  --secondary-foreground-dark: theme(colors.stone.100);
+  --muted-dark: theme(colors.stone.800);
+  --muted-foreground-dark: theme(colors.stone.300);
+  --accent-dark: theme(colors.emerald.300);
+  --accent-foreground-dark: theme(colors.stone.950);
+  --destructive-dark: theme(colors.rose.400);
+  --destructive-foreground-dark: theme(colors.white);
+  --border-dark: #123325;
+  --input-dark: #0f2b1f;
+  --ring-dark: theme(colors.emerald.400);
+  --chart-1-dark: theme(colors.emerald.400);
   --chart-2-dark: theme(colors.emerald.400);
-  --chart-3-dark: theme(colors.teal.500);
-  --chart-4-dark: theme(colors.emerald.500);
-  --chart-5-dark: theme(colors.green.400);
-  --hero-gradient-dark: linear-gradient(180deg, #064e3b 0%, #022c22 50%, #065f46 100%);
+  --chart-3-dark: theme(colors.teal.300);
+  --chart-4-dark: theme(colors.emerald.300);
+  --chart-5-dark: theme(colors.emerald.200);
+  --hero-gradient-dark:
+    radial-gradient(circle at 18% 18%, rgba(52, 211, 153, 0.12), transparent 30%),
+    radial-gradient(circle at 84% 8%, rgba(34, 197, 94, 0.12), transparent 30%),
+    linear-gradient(140deg, #030c08 0%, #07190f 52%, #0b2116 100%);
   --hero-primary-foreground-dark: theme(colors.emerald.50);
-  --hero-secondary-foreground-dark: theme(colors.emerald.200);
-  --sidebar-dark: theme(colors.emerald.950);
-  --sidebar-foreground-dark: theme(colors.emerald.100);
-  --sidebar-primary-dark: theme(colors.teal.400);
-  --sidebar-primary-foreground-dark: theme(colors.emerald.950);
-  --sidebar-accent-dark: theme(colors.emerald.800);
-  --sidebar-accent-foreground-dark: theme(colors.emerald.100);
-  --sidebar-border-dark: theme(colors.emerald.800);
-  --sidebar-ring-dark: theme(colors.teal.400);
-  --navbar-dark: theme(colors.emerald.950);
-  --navbar-foreground-dark: theme(colors.emerald.100);
-  --navbar-primary-dark: theme(colors.teal.400);
-  --navbar-primary-foreground-dark: theme(colors.emerald.950);
-  --navbar-accent-dark: theme(colors.emerald.800);
-  --navbar-accent-foreground-dark: theme(colors.emerald.100);
-  --navbar-border-dark: theme(colors.emerald.900);
-  --navbar-ring-dark: theme(colors.teal.400);
+  --hero-secondary-foreground-dark: theme(colors.stone.200);
+  --sidebar-dark: #07150f;
+  --sidebar-foreground-dark: theme(colors.stone.100);
+  --sidebar-primary-dark: theme(colors.emerald.300);
+  --sidebar-primary-foreground-dark: theme(colors.stone.950);
+  --sidebar-accent-dark: rgba(255, 255, 255, 0.04);
+  --sidebar-accent-foreground-dark: theme(colors.stone.100);
+  --sidebar-border-dark: #0f2c1f;
+  --sidebar-ring-dark: theme(colors.emerald.400);
+  --navbar-dark: rgba(5, 15, 10, 0.92);
+  --navbar-foreground-dark: theme(colors.stone.100);
+  --navbar-primary-dark: theme(colors.emerald.300);
+  --navbar-primary-foreground-dark: theme(colors.stone.950);
+  --navbar-accent-dark: rgba(255, 255, 255, 0.05);
+  --navbar-accent-foreground-dark: theme(colors.stone.100);
+  --navbar-border-dark: #0f2c1f;
+  --navbar-ring-dark: theme(colors.emerald.400);
+  --page-gradient-dark:
+    radial-gradient(circle at 10% 10%, rgba(52, 211, 153, 0.12), transparent 24%),
+    radial-gradient(circle at 88% 8%, rgba(34, 197, 94, 0.12), transparent 26%),
+    linear-gradient(180deg, #020906 0%, #04150d 45%, #071d13 100%),
+    var(--background-dark);
 
   /* Active (light by default) */
   --background: var(--background-light);
@@ -122,6 +138,7 @@
   --hero-gradient: var(--hero-gradient-light);
   --hero-primary-foreground: var(--hero-primary-foreground-light);
   --hero-secondary-foreground: var(--hero-secondary-foreground-light);
+  --page-gradient: var(--page-gradient-light);
   --sidebar: var(--sidebar-light);
   --sidebar-foreground: var(--sidebar-foreground-light);
   --sidebar-primary: var(--sidebar-primary-light);
@@ -199,6 +216,7 @@
   --hero-gradient: var(--hero-gradient-dark);
   --hero-primary-foreground: var(--hero-primary-foreground-dark);
   --hero-secondary-foreground: var(--hero-secondary-foreground-dark);
+  --page-gradient: var(--page-gradient-dark);
   --sidebar: var(--sidebar-dark);
   --sidebar-foreground: var(--sidebar-foreground-dark);
   --sidebar-primary: var(--sidebar-primary-dark);
@@ -247,6 +265,7 @@
     --hero-gradient: var(--hero-gradient-dark);
     --hero-primary-foreground: var(--hero-primary-foreground-dark);
     --hero-secondary-foreground: var(--hero-secondary-foreground-dark);
+    --page-gradient: var(--page-gradient-dark);
     --sidebar: var(--sidebar-dark);
     --sidebar-foreground: var(--sidebar-foreground-dark);
     --sidebar-primary: var(--sidebar-primary-dark);
@@ -335,6 +354,8 @@
   }
   body {
     @apply bg-background text-foreground;
+    background: var(--page-gradient);
+    background-attachment: fixed;
     font-family: var(--font-sans);
   }
   a:not([data-slot="button"]) {
@@ -402,20 +423,20 @@ html { color-scheme: light dark; }
 @keyframes rise {
   0% {
     opacity: 0;
-    transform: translateY(14px) scale(0.995);
+    transform: transtoneY(14px) scale(0.995);
   }
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: transtoneY(0) scale(1);
   }
 }
 
 @keyframes drift {
   0% {
-    transform: translate3d(-8%, -6%, 0) scale(1);
+    transform: transtone3d(-8%, -6%, 0) scale(1);
   }
   100% {
-    transform: translate3d(6%, 10%, 0) scale(1.04);
+    transform: transtone3d(6%, 10%, 0) scale(1.04);
   }
 }
 

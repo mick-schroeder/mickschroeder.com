@@ -63,7 +63,7 @@ const resolveAsset = (path: string | undefined | null) => {
 
         <div slot="content">
           {screenshotSrc ? (
-            <div class="-mx-6 mb-3 overflow-hidden">
+            <div class="-mx-6 mb-4 overflow-hidden rounded-xl border border-border/60 bg-black/5 dark:bg-white/5">
               <Picture
                 src={screenshotSrc}
                 alt={screenshotAlt}
@@ -75,7 +75,7 @@ const resolveAsset = (path: string | undefined | null) => {
               />
             </div>
           ) : project.screenshot ? (
-            <div class="-mx-6 mb-3 overflow-hidden">
+            <div class="-mx-6 mb-4 overflow-hidden rounded-xl border border-border/60 bg-black/5 dark:bg-white/5">
               <img
                 src={project.screenshot}
                 alt={screenshotAlt}
