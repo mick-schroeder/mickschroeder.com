@@ -64,7 +64,7 @@
   --card-foreground-dark: theme(colors.emerald.50);
   --popover-dark: #0a1c12;
   --popover-foreground-dark: theme(colors.stone.100);
-  --primary-dark: theme(colors.emerald.800);
+  --primary-dark: theme(colors.teal.700);
   --primary-foreground-dark: theme(colors.stone.50);
   --secondary-dark: theme(colors.stone.800);
   --secondary-foreground-dark: theme(colors.stone.100);
@@ -105,8 +105,8 @@
   --navbar-border-dark: #0f2c1f;
   --navbar-ring-dark: theme(colors.emerald.400);
   --page-gradient-dark:
-    radial-gradient(circle at 10% 10%, rgba(52, 211, 153, 0.12), transparent 24%),
-    radial-gradient(circle at 88% 8%, rgba(34, 197, 94, 0.12), transparent 26%),
+    radial-gradient(circle at 10% 10%, theme(colors.emerald.950), transparent 24%),
+    radial-gradient(circle at 88% 8%, theme(colors.teal.950), transparent 26%),
     linear-gradient(180deg, #020906 0%, #04150d 45%, #071d13 100%),
     var(--background-dark);
 
