@@ -5,7 +5,7 @@
 
 Personal site for Mick Schroeder, PharmD — Irish-American indie software developer + pharmacist.
 
-![screenshot](public/images/projects/screenshot-mickschroeder.png)
+![screenshot](src/assets/projects/screenshot-mickschroeder.png)
 
 ## Tech Stack
 

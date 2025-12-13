@@ -55,8 +55,16 @@ const { dict, projects, socials, navSocial, logo, email } = Astro.props as Props
         href={`https://www.linkedin.com/in/${navSocial.linkedin}/`}
         target="_blank"
         rel="noopener noreferrer"
-        class="text-hero-primary-foreground underline decoration-primary/60 underline-offset-6 hover:text-primary"
+        class="inline-flex items-center gap-2 text-hero-primary-foreground underline decoration-primary/60 underline-offset-6 hover:text-primary"
       >
+        <img
+          src="/images/socials/linkedin.svg"
+          alt=""
+          class="h-4 w-4"
+          width="16"
+          height="16"
+          aria-hidden="true"
+        />
         {dict["cta_linkedin"]}
       </a>
     )}
@@ -65,8 +73,16 @@ const { dict, projects, socials, navSocial, logo, email } = Astro.props as Props
         href={`https://github.com/${navSocial.github}`}
         target="_blank"
         rel="noopener noreferrer"
-        class="text-hero-primary-foreground underline decoration-primary/60 underline-offset-6 hover:text-primary"
+        class="inline-flex items-center gap-2 text-hero-primary-foreground underline decoration-primary/60 underline-offset-6 hover:text-primary"
       >
+        <img
+          src="/images/socials/github.svg"
+          alt=""
+          class="h-4 w-4"
+          width="16"
+          height="16"
+          aria-hidden="true"
+        />
         {dict["cta_github"]}
       </a>
     )}

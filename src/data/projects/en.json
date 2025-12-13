@@ -6,8 +6,8 @@
     "language": "JavaScript",
     "title": "Citation Generator",
     "description": "Free and open source software that automatically suggests citations and helps write a bibliography for you.",
-    "icon": "/images/projects/icon-cite.png",
-    "screenshot": "/images/projects/screenshot-cite.png",
+    "icon": "icon-cite.png",
+    "screenshot": "screenshot-cite.png",
     "links": [
       { "label": "Website", "url": "https://cite.mickschroeder.com" },
       { "label": "Source code", "url": "https://github.com/mick-schroeder/cite.mickschroeder.com" }
@@ -20,8 +20,8 @@
     "language": "Swift",
     "title": "Potato Game",
     "description": "Potato Game is a gravity based emoji merging puzzle for iOS and macOS.",
-    "icon": "/images/projects/icon-potatogame.png",
-    "screenshot": "/images/projects/screenshot-potatogame.png",
+    "icon": "icon-potatogame.png",
+    "screenshot": "screenshot-potatogame.png",
     "links": [
       { "label": "Website", "url": "https://potatogame.mickschroeder.com" },
       { "label": "Source code", "url": "https://github.com/mick-schroeder/potatogame" },
@@ -33,8 +33,8 @@
     "repo": "https://github.com/mick-schroeder/RxShortages",
     "title": "RxShortages",
     "description": "RxShortages was an open-source cross-platform mobile application for health care professionals providing information about drug shortages.",
-    "icon": "/images/projects/icon-rxshortages.png",
-        "screenshot": "/images/projects/screenshot-rxshortages.png",
+    "icon": "icon-rxshortages.png",
+        "screenshot": "screenshot-rxshortages.png",
 
     "links": [
       { "label": "Source code", "url": "https://github.com/mick-schroeder/RxShortages" }
@@ -45,8 +45,8 @@
     "repo": "https://github.com/mick-schroeder/Medical-Spelling-Dictionary",
     "title": "Medical Spelling Dictionary",
     "description": "Free Spelling dictionary containing medical terms for Microsoft Word / Office.",
-    "icon": "/images/projects/icon-spell.png",
-            "screenshot": "/images/projects/screenshot-spell.png",
+    "icon": "icon-spell.png",
+            "screenshot": "screenshot-spell.png",
 
     "links": [
       { "label": "Source code", "url": "https://github.com/mick-schroeder/Medical-Spelling-Dictionary" }
@@ -59,8 +59,8 @@
     "language": "JavaScript",
     "title": "News Shuffle",
     "description": "Provides a shuffle button to send you to the best and most influential news websites on the web.",
-    "icon": "/images/projects/icon-newsshuffle.png",
-                "screenshot": "/images/projects/screenshot-newsshuffle.png",
+    "icon": "icon-newsshuffle.png",
+                "screenshot": "screenshot-newsshuffle.png",
 
     "links": [
       { "label": "Website", "url": "https://news.mickschroeder.com" },
@@ -74,8 +74,8 @@
     "language": "JavaScript",
     "title": "mickschroeder.com",
     "description": "See source code for this website.",
-    "icon": "/images/projects/icon-mickschroeder.png",
-                    "screenshot": "/images/projects/screenshot-mickschroeder.png",
+    "icon": "icon-mickschroeder.png",
+                    "screenshot": "screenshot-mickschroeder.png",
 
     "links": [
       { "label": "Website", "url": "https://www.mickschroeder.com" },

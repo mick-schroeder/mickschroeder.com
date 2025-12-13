@@ -6,8 +6,8 @@
     "language": "TypeScript",
     "title": "Citation Generator",
     "description": "Bogearraí saor in aisce agus foinse oscailte a mholann lua citithe go huathoibríoch agus a chuidíonn le hinsint fhoinsí a scríobh.",
-    "icon": "/images/projects/icon-cite.png",
-    "screenshot": "/images/projects/screenshot-cite.png",
+    "icon": "icon-cite.png",
+    "screenshot": "screenshot-cite.png",
     "links": [
       { "label": "Bain triail as", "url": "https://cite.mickschroeder.com" },
       { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/cite.mickschroeder.com" }
@@ -20,8 +20,8 @@
     "language": "Swift",
     "title": "Potato Game",
     "description": "Is cluiche puzail cumaisc emoji bunaithe ar dhomhantarraingt é Potato Game do iOS agus macOS.",
-    "icon": "/images/projects/icon-potatogame.png",
-    "screenshot": "/images/projects/screenshot-potatogame.png",
+    "icon": "icon-potatogame.png",
+    "screenshot": "screenshot-potatogame.png",
     "links": [
       { "label": "Bain triail as", "url": "https://potatogame.mickschroeder.com" },
       { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/potatogame" },
@@ -33,8 +33,8 @@
     "repo": "https://github.com/mick-schroeder/RxShortages",
     "title": "RxShortages",
     "description": "Aip ilardáin foinse oscailte do ghannchuidí cógais.",
-    "icon": "/images/projects/icon-rxshortages.png",
-    "screenshot": "/images/projects/screenshot-rxshortages.png",
+    "icon": "icon-rxshortages.png",
+    "screenshot": "screenshot-rxshortages.png",
     "links": [
       { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/RxShortages" }
     ]
@@ -44,8 +44,8 @@
     "repo": "https://github.com/mick-schroeder/Medical-Spelling-Dictionary",
     "title": "Foclóir Litrithe Leighis",
     "description": "Foclóir litrithe saor in aisce le téarmaí leighis do Microsoft Word / Office.",
-    "icon": "/images/projects/icon-spell.png",
-        "screenshot": "/images/projects/screenshot-spell.png",
+    "icon": "icon-spell.png",
+        "screenshot": "screenshot-spell.png",
 
     "links": [
       { "label": "Íoslódáil", "url": "https://github.com/mick-schroeder/Medical-Spelling-Dictionary" }
@@ -58,9 +58,9 @@
     "language": "TypeScript",
     "title": "Shuffle Nuachta",
     "description": "\"🔀 Shuffle\" le suíomhanna gréasáin is fearr agus is mó tionchair, curtha in eagar ag AI.",
-    "icon": "/images/projects/icon-newsshuffle.png",
+    "icon": "icon-newsshuffle.png",
     
-        "screenshot": "/images/projects/screenshot-newsshuffle.png",
+        "screenshot": "screenshot-newsshuffle.png",
 
     "links": [
       { "label": "Bain triail as", "url": "https://news.mickschroeder.com" }
@@ -73,8 +73,8 @@
     "language": "TypeScript",
     "title": "mickschroeder.com",
     "description": "Féach cód foinse an tsuímh ghréasáin seo.",
-    "icon": "/images/projects/icon-mickschroeder.png",
-            "screenshot": "/images/projects/screenshot-mickschroeder.png",
+    "icon": "icon-mickschroeder.png",
+            "screenshot": "screenshot-mickschroeder.png",
 
     "links": [
       { "label": "Bain triail as", "url": "https://news.mickschroeder.com" },
