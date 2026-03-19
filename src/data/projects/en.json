@@ -28,6 +28,21 @@
       { "label": "App Store", "url": "https://apps.apple.com/us/app/potato-game/id6477922776" }
     ]
   },
+    {
+    "slug": "https://cascade7.mickschroeder.com",
+    "homepage": "https://cascade7.mickschroeder.com",
+    "repo": "https://github.com/mick-schroeder/gba-cascade7",
+    "language": "C++",
+    "title": "Cascade7",
+    "description": "CASCADE7 is an open-source Game Boy Advance puzzle game inspired by Drop7.",
+    "icon": "icon-cascade7.png",
+    "screenshot": "screenshot-cascade7.png",
+    "links": [
+      { "label": "Website", "url": "https://cascade7.mickschroeder.com" },
+      { "label": "Source code", "url": "https://github.com/mick-schroeder/gba-cascade7" },
+      { "label": "ROM Download", "url": "https://github.com/mick-schroeder/gba-cascade7/releases" }
+    ]
+  },
   {
     "slug": "https://github.com/mick-schroeder/RxShortages",
     "repo": "https://github.com/mick-schroeder/RxShortages",
