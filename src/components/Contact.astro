@@ -15,21 +15,32 @@ if (!email) {
 }
 ---
 
-<div class="grid gap-6 md:grid-cols-2">
+<div class="mt-8 grid gap-6">
   <Card class="animate-rise">
-    <div slot="header" class="flex items-center gap-3">
-      <span class="inline-grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-foreground ring-1 ring-border">
+    <div slot="header" class="flex items-center gap-4">
+      <span class="inline-grid h-11 w-11 place-items-center rounded-2xl bg-primary/12 text-primary ring-1 ring-border">
         <Mail class="h-4 w-4" />
       </span>
-      <h3 class="text-lg font-semibold">{dict["title_email"] || "E-mail"}</h3>
+      <div>
+        <h3 class="text-xl font-semibold tracking-[-0.02em]">{dict["title_email"]}</h3>
+        <a
+          href={`mailto:${email}`}
+          class="text-sm text-muted-foreground underline decoration-primary/35 underline-offset-4 hover:text-primary"
+        >
+          {email}
+        </a>
+      </div>
     </div>
     <div slot="content" class="pt-0">
+      <p class="mb-5 max-w-xl text-base leading-7 text-muted-foreground">
+        {dict["contact_body"]}
+      </p>
       <Button
         href={`mailto:${email}`}
         variant="outline"
-        className="w-full"
+        className="w-full sm:w-auto"
       >
-        {dict["cta_email"] || "Get in touch"}
+        {dict["cta_email"]}
         <Mail class="h-4 w-4" />
       </Button>
     </div>

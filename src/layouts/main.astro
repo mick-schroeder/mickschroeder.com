@@ -2,7 +2,6 @@
 import "@/styles/global.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics.astro";
 import LanguageSwitcher from "@/components/LanguageSwitcher.astro";
-import Button from "@/components/ui/astro/Button.astro";
 import ThemeToggle from "@/components/ThemeToggle.astro";
 import { siteConfig } from "@/config/site";
 import type { Dictionary, Language } from "@/i18n/config";
@@ -65,11 +64,11 @@ const ld = { "@context": "https://schema.org", "@graph": ldGraph };
 
 const navLogo = "/images/icon-circle.svg";
 const navItems = [
-  { href: "#projects", label: dict["projects_heading"] || "Projects" },
-  { href: "#socials", label: dict["socials_heading"] || "Socials" },
-  { href: "#contact", label: dict["contact_heading"] || "Contact" },
+  { href: "#projects", label: dict["projects_heading"] },
+  { href: "#socials", label: dict["socials_heading"] },
+  { href: "#contact", label: dict["contact_heading"] },
 ];
-const skipLabel = dict["skip_to_content"] || "Skip to main content";
+const skipLabel = dict["skip_to_content"];
 const homeHref = pathWithLang(lang, "/");
 const gaId = import.meta.env.PUBLIC_GTAG_ID;
 ---
@@ -141,7 +140,12 @@ const gaId = import.meta.env.PUBLIC_GTAG_ID;
     </script>
   </head>
 
-  <body class="bg-background text-foreground antialiased">
+  <body class="min-h-screen bg-background text-foreground antialiased">
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      <div class="absolute left-[-10rem] top-[-8rem] h-[22rem] w-[22rem] rounded-full bg-primary/10 blur-3xl" />
+      <div class="absolute right-[-9rem] top-[8rem] h-[18rem] w-[18rem] rounded-full bg-accent/12 blur-3xl" />
+      <div class="absolute bottom-[-10rem] left-1/2 h-[20rem] w-[28rem] -translate-x-1/2 rounded-full bg-primary/8 blur-3xl" />
+    </div>
     <a
       href="#main-content"
       class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
@@ -149,28 +153,26 @@ const gaId = import.meta.env.PUBLIC_GTAG_ID;
       {skipLabel}
     </a>
 
-    <header class="sticky top-0 z-50 border-b border-navbar-border bg-navbar text-navbar-foreground backdrop-blur supports-[backdrop-filter]:bg-navbar/60 dark:border-navbar-border/70 dark:bg-navbar/80">
-      <div class="mx-auto flex w-full max-w-4xl flex-wrap items-center gap-3 px-4 py-4 sm:flex-nowrap sm:gap-4">
+    <header class="sticky top-0 z-50 border-b border-navbar-border bg-navbar text-navbar-foreground backdrop-blur-xl supports-[backdrop-filter]:bg-navbar/70">
+      <div class="mx-auto flex w-full max-w-5xl flex-wrap items-center gap-3 px-5 py-4 sm:flex-nowrap sm:gap-5">
         <a
           href={homeHref}
-          class="inline-flex items-center gap-2 text-xl font-black tracking-tighter text-navbar-foreground transition-colors hover:text-navbar-primary no-underline hover:no-underline"
+          class="inline-flex items-center gap-3 text-navbar-foreground no-underline transition-colors hover:text-navbar-primary hover:no-underline"
         >
-          <img src={navLogo} alt={dict["logo_alt"] || "Logo"} class="h-6 w-6" loading="lazy" decoding="async" />
-          <span class="whitespace-nowrap">mick schroeder</span>
+          <img src={navLogo} alt={dict["logo_alt"]} class="h-7 w-7" loading="lazy" decoding="async" />
+          <span class="block whitespace-nowrap text-xl font-black tracking-[-0.035em] lowercase md:text-2xl">mick schroeder</span>
         </a>
 
         <nav class="ml-auto w-full sm:w-auto">
-          <ul class="flex flex-wrap items-center justify-end gap-2 text-sm font-medium sm:justify-center">
+          <ul class="flex flex-wrap items-center justify-end gap-1.5 text-sm font-medium sm:justify-center">
             {navItems.map((item) => (
               <li>
-                <Button
+                <a
                   href={item.href}
-                  variant="outline"
-                  size="sm"
-                  className="border-navbar-border/60 bg-navbar-accent text-navbar-accent-foreground px-4 py-2 hover:bg-navbar-primary/80 hover:text-navbar-primary-foreground focus-visible:ring-navbar-ring/60 focus-visible:ring-offset-background"
+                  class="rounded-full px-3 py-2 text-sm text-navbar-foreground no-underline transition-colors hover:bg-navbar-accent hover:text-navbar-primary hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navbar-ring/60"
                 >
                   {item.label}
-                </Button>
+                </a>
               </li>
             ))}
             <li>
@@ -184,7 +186,7 @@ const gaId = import.meta.env.PUBLIC_GTAG_ID;
       </div>
     </header>
 
-    <main id="main-content" class="mx-auto w-full max-w-4xl px-6 py-10">
+    <main id="main-content" class="mx-auto w-full max-w-5xl px-6 py-10">
       <slot />
     </main>
   </body>

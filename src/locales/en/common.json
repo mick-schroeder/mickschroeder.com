@@ -1,15 +1,22 @@
 {
-  "hero_line": "Irish-American Indie Software Developer <b>+</b> Pharmacist <b>+</b> Executive MBA Candidate at Trinity College Dublin.",
-  "hero_sub_line": "Shipping thoughtful products across web, mobile, and AI with an eye on quality and openness.",
+  "intro_eyebrow": "Irish-American software developer and pharmacist",
+  "hero_heading": "Open-source software for healthcare, research and fun",
+  "hero_body": "I'm Mick Schroeder, PharmD, an Irish-American pharmacist and indie software developer. I consult for health systems, specializing in health informatics, and build open-source products across web, mobile, and AI.",
   "cta_linkedin": "Connect on LinkedIn",
-  "cta_github": "Follow on Github",
+  "cta_github": "Follow on GitHub",
   "cta_email": "Get in touch",
   "cta_projects": "View Projects",
+  "cta_visit": "Visit",
   "footer_copy": "© 2025 Mick Schroeder, LLC.",
   "footer_copy_html": "© 2025 Mick Schroeder, LLC. Code: <a1>MIT</a1> • Content: <a2>CC BY-NC 4.0</a2>",
   "projects_heading": "Projects",
+  "projects_intro": "Selected projects across software, games, and healthcare.",
+  "project_label_fallback": "Open source",
   "socials_heading": "Socials",
+  "socials_intro": "Profiles, code, and updates.",
   "contact_heading": "Contact",
+  "contact_intro": "Get in touch",
+  "contact_body": "Available for consulting work and collaborations in product, healthcare, and AI.",
   "language_switcher_label": "Select language",
   "language_switcher_current": "Current language",
   "title_email": "E-mail",
@@ -24,6 +31,4 @@
   ,
   "flag_solved": "Solved!",
   "flag_scramble": "Scramble"
-  ,
-  "cta_visit": "Visit"
 }

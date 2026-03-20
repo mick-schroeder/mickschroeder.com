@@ -18,9 +18,9 @@ const {
 } = Astro.props as Props;
 ---
 
-<article class={cn("bg-card/95 text-card-foreground overflow-hidden rounded-2xl border border-border/70 shadow-[0_20px_60px_-32px_rgba(15,23,42,0.55)] backdrop-blur supports-[backdrop-filter]:bg-card/80", className)}>
+<article class={cn("overflow-hidden rounded-[1.75rem] border border-border/70 bg-card/90 text-card-foreground shadow-[0_28px_70px_-42px_rgba(22,18,13,0.45)] backdrop-blur supports-[backdrop-filter]:bg-card/82 dark:shadow-[0_28px_70px_-42px_rgba(0,0,0,0.65)]", className)}>
   {Astro.slots.has("header") && (
-    <div class={cn("flex items-center gap-3 px-6 py-4", headerClass)}>
+    <div class={cn("flex items-center gap-3 px-6 py-5", headerClass)}>
       <slot name="header" />
     </div>
   )}
@@ -34,7 +34,7 @@ const {
   )}
 
   {Astro.slots.has("footer") && (
-    <div class={cn("border-t border-border/60 px-6 py-4", footerClass)}>
+    <div class={cn("border-t border-border/60 px-6 py-5", footerClass)}>
       <slot name="footer" />
     </div>
   )}

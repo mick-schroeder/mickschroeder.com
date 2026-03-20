@@ -1,15 +1,22 @@
 {
-  "hero_line": "Forbróir Bogearraí Neamhspleách Éireannach‑Meiriceánach <b>+</b> Cógaiseoir <b>+</b> Mac Léinn MBA i gColáiste na Tríonóide, Baile Átha Cliath.",
-  "hero_sub_line": "Táirgí cúramacha a sheoladh ar an ngréasán, ar ghléasanna soghluaiste, agus san AI le fócas ar cháilíocht agus oscailteacht.",
+  "intro_eyebrow": "Forbróir bogearraí agus cógaiseoir Éireannach-Mheiriceánach",
+  "hero_heading": "Bogearraí foinse oscailte do chúram sláinte, taighde, agus spraoi",
+  "hero_body": "Is mise Mick Schroeder, PharmD, cógaiseoir Éireannach-Mheiriceánach agus forbróir bogearraí neamhspleách. Oibrím mar chomhairleoir do chórais sláinte, le speisialtóireacht in fhaisnéisíocht sláinte, agus tógaim táirgí foinse oscailte don ghréasán, don mhóibíl, agus don AI.",
   "cta_linkedin": "Ceangail liom ar LinkedIn",
   "cta_github": "Féach ar GitHub",
   "cta_email": "Déan Teagmháil",
   "cta_projects": "Féach ar Thionscadail",
+  "cta_visit": "Oscail",
   "footer_copy": "© 2025 Mick Schroeder, LLC.",
   "footer_copy_html": "© 2025 Mick Schroeder, LLC. Cód: <a1>MIT</a1> • Ábhar: <a2>CC BY-NC 4.0</a2>",
   "projects_heading": "Tionscadail",
+  "projects_intro": "Tionscadail roghnaithe i mbogearraí, cluichí, agus cúram sláinte.",
+  "project_label_fallback": "Foinse oscailte",
   "socials_heading": "Meáin shóisialta",
+  "socials_intro": "Próifílí, cód, agus nuashonruithe.",
   "contact_heading": "Teagmháil",
+  "contact_intro": "Déan Teagmháil",
+  "contact_body": "Ar fáil d'obair chomhairliúcháin agus do chomhoibriú i dtáirgí, i gcúram sláinte, agus in AI.",
   "language_switcher_label": "Roghnaigh teanga",
   "language_switcher_current": "Teanga reatha",
   "title_email": "Ríomhphost",
@@ -25,6 +32,4 @@
   ,
   "flag_solved": "Réitithe!",
   "flag_scramble": "Measc arís"
-  ,
-  "cta_visit": "Oscail"
 }

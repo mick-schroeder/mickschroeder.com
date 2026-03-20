@@ -21,7 +21,7 @@ const { dict, projects, socials, navSocial, logo, email } = Astro.props as Props
 
 <section class="mb-6 text-center text-foreground">
   <div
-    class="relative mx-auto aspect-[1150/150] w-full max-w-[18rem] md:max-w-[22rem]"
+    class="relative mx-auto aspect-[1150/150] w-full max-w-[14rem] opacity-85 md:max-w-[18rem]"
     style={`mask-image: url(${logo}); -webkit-mask-image: url(${logo}); mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat; mask-size: contain; -webkit-mask-size: contain; mask-position: center; -webkit-mask-position: center;`}
   >
     <span aria-hidden class="absolute inset-0 block rounded-sm bg-[var(--foreground)]" />
@@ -30,85 +30,101 @@ const { dict, projects, socials, navSocial, logo, email } = Astro.props as Props
   <h1 class="sr-only">Mick Schroeder</h1>
 </section>
 
-<div class="relative mb-10 overflow-hidden rounded-3xl hero-gradient p-6 text-left ring-1 ring-primary/25 shadow-xl shadow-emerald-900/10 backdrop-blur supports-[backdrop-filter]:bg-white/5 dark:ring-primary/35 dark:shadow-black/40 md:p-10">
+<div class="hero-gradient relative mb-14 overflow-hidden rounded-[2rem] border border-border/70 p-7 text-left shadow-[0_36px_90px_-50px_rgba(22,18,13,0.5)] animate-rise md:p-10">
   <div aria-hidden class="pointer-events-none absolute inset-0">
-    <div class="animate-drift-slow absolute left-1/2 top-[-30%] h-60 w-60 -translate-x-1/2 rounded-full bg-emerald-300/25 blur-3xl" />
-    <div class="animate-drift-slower absolute -left-6 bottom-[-10%] h-48 w-48 rounded-full bg-lime-300/18 blur-3xl" />
-    <div class="animate-glow absolute right-[-8%] top-[-12%] h-56 w-56 rotate-6 rounded-full bg-emerald-200/18 blur-3xl" />
-    <div class="animate-shimmer absolute inset-x-8 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(16,185,129,0.7),transparent)]" />
+    <div class="absolute left-[-8%] top-[8%] h-48 w-48 rounded-full bg-primary/10 blur-3xl" />
+    <div class="absolute bottom-[-12%] right-[-3%] h-56 w-56 rounded-full bg-accent/10 blur-3xl" />
+    <div class="absolute inset-x-10 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(15,106,75,0.55),transparent)]" />
   </div>
-  <p class="relative z-10 text-xl text-hero-primary-foreground md:px-5 animate-rise" style="animation-delay: 0.05s" set:html={dict["hero_line"]} />
-  <p class="relative z-10 mt-3 md:px-5 text-hero-secondary-foreground text-sm md:text-base animate-rise" style="animation-delay: 0.15s">
-    {dict["hero_sub_line"]}
-  </p>
-  <div class="relative z-10 mt-6 flex flex-col items-center justify-center gap-3 md:flex-row animate-rise" style="animation-delay: 0.25s">
-    <Button href="#projects" size="lg">
-      {dict["cta_projects"]}
-    </Button>
-    <Button href="#contact" variant="outline" size="lg">
-      {dict["cta_email"]}
-    </Button>
-  </div>
-  <div class="relative z-10 mt-4 flex flex-wrap justify-center gap-4 text-sm font-semibold text-hero-secondary-foreground animate-rise" style="animation-delay: 0.35s">
-    {navSocial.linkedin && (
-      <a
-        href={`https://www.linkedin.com/in/${navSocial.linkedin}/`}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 text-hero-primary-foreground underline decoration-primary/60 underline-offset-6 hover:text-primary"
-      >
-        <img
-          src="/images/socials/linkedin.svg"
-          alt=""
-          class="h-4 w-4 dark:invert"
-          width="16"
-          height="16"
-          aria-hidden="true"
-        />
-        {dict["cta_linkedin"]}
-      </a>
-    )}
-    {navSocial.github && (
-      <a
-        href={`https://github.com/${navSocial.github}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 text-hero-primary-foreground underline decoration-primary/60 underline-offset-6 hover:text-primary"
-      >
-        <img
-          src="/images/socials/github.svg"
-          alt=""
-          class="h-4 w-4 dark:invert"
-          width="16"
-          height="16"
-          aria-hidden="true"
-        />
-        {dict["cta_github"]}
-      </a>
-    )}
+  <div class="relative z-10">
+    <p class="section-kicker">{dict["intro_eyebrow"]}</p>
+    <h2 class="mt-5 max-w-4xl font-serif text-5xl leading-[0.92] tracking-[-0.04em] text-hero-primary-foreground md:text-7xl">
+      {dict["hero_heading"]}
+    </h2>
+    <p class="mt-6 max-w-3xl text-lg leading-8 text-hero-secondary-foreground">
+      {dict["hero_body"]}
+    </p>
+    <p class="mt-4 max-w-3xl text-sm font-medium uppercase tracking-[0.18em] text-hero-secondary-foreground/90" set:html={dict["hero_line"]} />
+
+    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+      <Button href="#projects" size="lg">
+        {dict["cta_projects"]}
+      </Button>
+      <Button href="#contact" variant="outline" size="lg">
+        {dict["cta_email"]}
+      </Button>
+    </div>
+
+    <div class="mt-8 flex flex-wrap gap-5 text-sm font-semibold text-hero-secondary-foreground">
+      {navSocial.linkedin && (
+        <a
+          href={`https://www.linkedin.com/in/${navSocial.linkedin}/`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-hero-primary-foreground underline decoration-primary/50 underline-offset-6 hover:text-primary"
+        >
+          <img
+            src="/images/socials/linkedin.svg"
+            alt=""
+            class="h-4 w-4 dark:invert"
+            width="16"
+            height="16"
+            aria-hidden="true"
+          />
+          {dict["cta_linkedin"]}
+        </a>
+      )}
+      {navSocial.github && (
+        <a
+          href={`https://github.com/${navSocial.github}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-hero-primary-foreground underline decoration-primary/50 underline-offset-6 hover:text-primary"
+        >
+          <img
+            src="/images/socials/github.svg"
+            alt=""
+            class="h-4 w-4 dark:invert"
+            width="16"
+            height="16"
+            aria-hidden="true"
+          />
+          {dict["cta_github"]}
+        </a>
+      )}
+    </div>
   </div>
 </div>
 
 <section id="projects" class="mt-10 scroll-mt-32">
-  <h2 class="animate-rise mb-4 flex items-center gap-2 text-2xl font-bold" style="animation-delay: 0.1s">
-    <FolderKanban class="h-6 w-6 text-muted" aria-hidden="true" />
+  <h2 class="animate-rise mt-3 flex items-center gap-2 text-3xl font-semibold tracking-[-0.03em]" style="animation-delay: 0.1s">
+    <FolderKanban class="h-6 w-6 text-primary" aria-hidden="true" />
     {dict["projects_heading"]}
   </h2>
-  <Projects projects={projects} />
+  <p class="mt-3 max-w-2xl text-base leading-7 text-muted-foreground">
+    {dict["projects_intro"]}
+  </p>
+  <Projects projects={projects} dict={dict} />
 </section>
 
 <section id="socials" class="mt-10 scroll-mt-32">
-  <h2 class="animate-rise mb-4 flex items-center gap-2 text-2xl font-bold" style="animation-delay: 0.1s">
-    <Share2 class="h-6 w-6 text-muted" aria-hidden="true" />
+  <h2 class="animate-rise mt-3 flex items-center gap-2 text-3xl font-semibold tracking-[-0.03em]" style="animation-delay: 0.1s">
+    <Share2 class="h-6 w-6 text-primary" aria-hidden="true" />
     {dict["socials_heading"]}
   </h2>
+  <p class="mt-3 max-w-2xl text-base leading-7 text-muted-foreground">
+    {dict["socials_intro"]}
+  </p>
   <Socials items={socials} dict={dict} />
 </section>
 
 <section id="contact" class="mt-10 scroll-mt-32">
-  <h2 class="animate-rise mb-4 flex items-center gap-2 text-2xl font-bold" style="animation-delay: 0.1s">
-    <Mail class="h-6 w-6 text-muted" aria-hidden="true" />
+  <h2 class="animate-rise mt-3 flex items-center gap-2 text-3xl font-semibold tracking-[-0.03em]" style="animation-delay: 0.1s">
+    <Mail class="h-6 w-6 text-primary" aria-hidden="true" />
     {dict["contact_heading"]}
   </h2>
+  <p class="mt-3 max-w-2xl text-base leading-7 text-muted-foreground">
+    {dict["contact_intro"]}
+  </p>
   <Contact email={email} dict={dict} />
 </section>

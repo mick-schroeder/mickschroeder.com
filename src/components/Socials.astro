@@ -15,29 +15,39 @@ const list = Array.isArray(items) ? items : [];
 ---
 
 {list.length ? (
-  <div class="grid gap-6 md:grid-cols-3">
+  <div class="mt-8 grid gap-6">
     {list.map((item, idx) => {
       const delay = `${idx * 80}ms`;
+      const displayUrl = item.url.replace(/^https?:\/\//, "");
       return (
         <Card class="animate-rise" style={`animation-delay: ${delay};`}>
-          <div slot="header" class="flex items-center gap-3">
-            <span class="inline-grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-foreground ring-1 ring-border">
+          <div slot="header" class="flex items-center gap-4">
+            <span class="inline-grid h-11 w-11 place-items-center rounded-2xl bg-primary/12 text-primary ring-1 ring-border">
               {item.icon ? (
-                <img src={item.icon} alt="" aria-hidden="true" width="18" height="18" class="invert" />
+                <img src={item.icon} alt="" aria-hidden="true" width="18" height="18" class="dark:invert" />
               ) : (
                 <ExternalLink class="h-4 w-4" />
               )}
             </span>
-            <h3 class="text-lg font-semibold">{item.title}</h3>
+            <div>
+              <h3 class="text-xl font-semibold tracking-[-0.02em]">{item.title}</h3>
+              <a
+                href={item.url}
+                rel="noopener noreferrer"
+                class="text-sm text-muted-foreground underline decoration-primary/35 underline-offset-4 hover:text-primary"
+              >
+                {displayUrl}
+              </a>
+            </div>
           </div>
           <div slot="content" class="pt-0">
             <Button
               href={item.url}
               variant="outline"
-              className="w-full"
+              className="w-full sm:w-auto"
               rel="noopener noreferrer"
             >
-              {item.cta || dict["cta_visit"] || "Visit"}
+              {item.cta || dict["cta_visit"]}
               <ExternalLink class="h-4 w-4" />
             </Button>
           </div>

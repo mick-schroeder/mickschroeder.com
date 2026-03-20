@@ -23,7 +23,7 @@ const basePath = normalize(stripLocale(Astro.url.pathname || pathname || "/"));
 const hrefFor = (lng: Language) =>
   lng === defaultLanguage ? basePath : `/${lng}${basePath}`;
 
-const label = dict["language_switcher_label"] || "Select language";
+const label = dict["language_switcher_label"];
 const options = languages.map((lng) => ({
   lang: lng,
   href: hrefFor(lng as Language),
