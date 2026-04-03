@@ -1,0 +1,49 @@
+---
+interface Section {
+  heading: string;
+  body: string[];
+}
+
+interface Props {
+  title: string;
+  intro: string;
+  lastUpdatedLabel: string;
+  lastUpdatedDate: string;
+  sections: Section[];
+  contactLabel: string;
+  contactEmail: string;
+}
+
+const { title, intro, lastUpdatedLabel, lastUpdatedDate, sections, contactLabel, contactEmail } = Astro.props as Props;
+---
+
+<section class="mx-auto max-w-3xl">
+  <div class="rounded-[2rem] border border-border/70 bg-card/80 p-8 shadow-sm backdrop-blur sm:p-10">
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-primary/80">{lastUpdatedLabel}</p>
+    <h1 class="mt-3 font-serif text-4xl font-bold tracking-[-0.03em] text-foreground sm:text-5xl">{title}</h1>
+    <p class="mt-5 text-base leading-8 text-muted-foreground sm:text-lg">{intro}</p>
+  </div>
+
+  <div class="mt-8 space-y-6">
+    {sections.map((section) => (
+      <section class="rounded-[1.75rem] border border-border/65 bg-card/75 p-7 shadow-xs backdrop-blur sm:p-8">
+        <h2 class="font-serif text-2xl font-semibold tracking-[-0.02em] text-foreground">{section.heading}</h2>
+        <div class="mt-4 space-y-4 text-base leading-8 text-muted-foreground">
+          {section.body.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <section class="mt-8 rounded-[1.75rem] border border-primary/20 bg-primary/8 p-7 sm:p-8">
+    <h2 class="font-serif text-2xl font-semibold tracking-[-0.02em] text-foreground">{contactLabel}</h2>
+    <p class="mt-4 text-base leading-8 text-muted-foreground">
+      If you have any questions about this Privacy Policy, you can contact Mick Schroeder at
+      <a class="font-medium text-primary underline decoration-primary/40 underline-offset-4" href={`mailto:${contactEmail}`}>
+        {contactEmail}
+      </a>.
+    </p>
+  </section>
+</section>

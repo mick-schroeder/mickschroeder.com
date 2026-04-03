@@ -63,13 +63,13 @@ const ldGraph = [
 const ld = { "@context": "https://schema.org", "@graph": ldGraph };
 
 const navLogo = "/images/icon-circle.svg";
+const homeHref = pathWithLang(lang, "/");
 const navItems = [
-  { href: "#projects", label: dict["projects_heading"] },
-  { href: "#socials", label: dict["socials_heading"] },
-  { href: "#contact", label: dict["contact_heading"] },
+  { href: `${homeHref}#projects`, label: dict["projects_heading"] },
+  { href: `${homeHref}#socials`, label: dict["socials_heading"] },
+  { href: `${homeHref}#contact`, label: dict["contact_heading"] },
 ];
 const skipLabel = dict["skip_to_content"];
-const homeHref = pathWithLang(lang, "/");
 const gaId = import.meta.env.PUBLIC_GTAG_ID;
 ---
 
