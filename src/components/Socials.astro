@@ -24,13 +24,22 @@ const list = Array.isArray(items) ? items : [];
           <div slot="header" class="flex items-center gap-4">
             <span class="inline-grid h-11 w-11 place-items-center rounded-2xl bg-primary/12 text-primary ring-1 ring-border">
               {item.icon ? (
-                <img src={item.icon} alt="" aria-hidden="true" width="18" height="18" class="dark:invert" />
+                <img
+                  src={item.icon}
+                  alt=""
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  class="dark:invert"
+                />
               ) : (
                 <ExternalLink class="h-4 w-4" />
               )}
             </span>
             <div>
-              <h3 class="text-xl font-semibold tracking-[-0.02em]">{item.title}</h3>
+              <h3 class="text-xl font-semibold tracking-[-0.02em]">
+                {item.title}
+              </h3>
               <a
                 href={item.url}
                 rel="noopener noreferrer"

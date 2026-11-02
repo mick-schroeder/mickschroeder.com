@@ -1,5 +1,7 @@
 ---
 import "@/styles/global.css";
+import { Font } from "astro:assets";
+import themeScript from "@/scripts/theme.js?raw";
 import GoogleAnalytics from "@/components/GoogleAnalytics.astro";
 import LanguageSwitcher from "@/components/LanguageSwitcher.astro";
 import ThemeToggle from "@/components/ThemeToggle.astro";
@@ -18,11 +20,21 @@ interface Props {
   robots?: string;
 }
 
-const { lang, dict, title, description, pathname, jsonLd = [], robots = "index,follow" } = Astro.props as Props;
+const {
+  lang,
+  dict,
+  title,
+  description,
+  pathname,
+  jsonLd = [],
+  robots = "index,follow",
+} = Astro.props as Props;
 
 const siteUrl = siteConfig.siteUrl.replace(/\/$/, "");
-const resolvedTitle = title ? `${title} — ${siteConfig.title}` : siteConfig.title;
-const resolvedDescription = description || siteConfig.description;
+const resolvedTitle = title
+  ? `${title} — ${siteConfig.title}`
+  : siteConfig.title;
+const resolvedDescription = description || dict.site_description;
 const canonicalPath = pathWithLang(lang, pathname || "/");
 const canonical = `${siteUrl}${canonicalPath}`;
 const defaultImage = siteConfig.image || "/images/icon.png";
@@ -32,32 +44,45 @@ const imageUrl = defaultImage.startsWith("http")
 const ogLocaleMap: Record<string, string> = { en: "en_US", ga: "ga_IE" };
 const ogLocale = ogLocaleMap[lang] || "en_US";
 
-const alternateLinks = languages
-  .map((lng) => ({
+const alternateLinks = [
+  ...languages.map((lng) => ({
     href: `${siteUrl}${pathWithLang(lng, pathname)}`,
     hrefLang: lng,
-  }))
-  .concat([
-    {
-      href: `${siteUrl}${pathWithLang(defaultLanguage, pathname)}`,
-      hrefLang: "x-default",
-    },
-  ]);
+  })),
+  {
+    href: `${siteUrl}${pathWithLang(defaultLanguage, pathname)}`,
+    hrefLang: "x-default",
+  },
+];
 
 const ldGraph = [
   { "@type": "WebSite", name: siteConfig.title, url: siteUrl },
-  buildPersonJsonLd(siteConfig, siteUrl, languages as unknown as string[]),
-  {
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: canonical,
-      },
-    ],
-  },
+  buildPersonJsonLd(siteConfig, siteUrl, languages),
+  ...(robots.startsWith("noindex")
+    ? []
+    : [
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: dict.home_label,
+              item: `${siteUrl}${pathWithLang(lang, "/")}`,
+            },
+            ...(title
+              ? [
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: title,
+                    item: canonical,
+                  },
+                ]
+              : []),
+          ],
+        },
+      ]),
   ...jsonLd,
 ];
 const ld = { "@context": "https://schema.org", "@graph": ldGraph };
@@ -73,7 +98,7 @@ const skipLabel = dict["skip_to_content"];
 const gaId = import.meta.env.PUBLIC_GTAG_ID;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
@@ -86,62 +111,72 @@ const gaId = import.meta.env.PUBLIC_GTAG_ID;
     <meta name="generator" content={Astro.generator} />
     {gaId && <GoogleAnalytics measurementId={gaId} />}
     <title>{resolvedTitle}</title>
-    {resolvedDescription && <meta name="description" content={resolvedDescription} />}
+    {resolvedDescription && (
+      <meta name="description" content={resolvedDescription} />
+    )}
     <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
     <meta name="color-scheme" content="light dark" />
 
     <meta property="og:title" content={resolvedTitle} />
-    {resolvedDescription && <meta property="og:description" content={resolvedDescription} />}
+    {resolvedDescription && (
+      <meta property="og:description" content={resolvedDescription} />
+    )}
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={siteConfig.title} />
     <meta property="og:image" content={imageUrl} />
-    {resolvedDescription && <meta property="og:image:alt" content={resolvedDescription} />}
+    {resolvedDescription && (
+      <meta property="og:image:alt" content={resolvedDescription} />
+    )}
     <meta property="og:locale" content={ogLocale} />
     {languages
       .filter((lng) => lng !== lang)
       .map((lng) => (
-        <meta property="og:locale:alternate" content={ogLocaleMap[lng] || lng} />
+        <meta
+          property="og:locale:alternate"
+          content={ogLocaleMap[lng] || lng}
+        />
       ))}
 
     <meta name="twitter:card" content="summary_large_image" />
     {siteConfig.social.twitter && (
-      <meta name="twitter:site" content={`@${siteConfig.social.twitter.replace(/^@/, "")}`} />
+      <meta
+        name="twitter:site"
+        content={`@${siteConfig.social.twitter.replace(/^@/, "")}`}
+      />
     )}
     {siteConfig.social.twitter && (
-      <meta name="twitter:creator" content={`@${siteConfig.social.twitter.replace(/^@/, "")}`} />
+      <meta
+        name="twitter:creator"
+        content={`@${siteConfig.social.twitter.replace(/^@/, "")}`}
+      />
     )}
     <meta name="twitter:title" content={resolvedTitle} />
-    {resolvedDescription && <meta name="twitter:description" content={resolvedDescription} />}
+    {resolvedDescription && (
+      <meta name="twitter:description" content={resolvedDescription} />
+    )}
     <meta name="twitter:image" content={imageUrl} />
 
     {alternateLinks.map((alt) => (
-      <link rel="alternate" href={alt.href} hrefLang={alt.hrefLang} />
+      <link rel="alternate" href={alt.href} hreflang={alt.hrefLang} />
     ))}
 
-    <script type="application/ld+json" set:html={JSON.stringify(ld)} />
-    <script>
-      (() => {
-        try {
-          const root = document.documentElement;
-          const storageKey = "theme-preference";
-          const stored = window.localStorage.getItem(storageKey);
-          const media = window.matchMedia("(prefers-color-scheme: dark)");
-          const target = stored || "system";
-          const resolved = target === "system" ? (media.matches ? "dark" : "light") : target;
-          if (target !== "system") root.setAttribute("data-theme", target);
-          if (resolved === "dark") root.classList.add("dark");
-          root.style.colorScheme = resolved === "dark" ? "dark" : "light";
-        } catch {
-          /* ignore */
-        }
-      })();
-    </script>
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(ld)}
+    />
+    <script is:inline set:html={themeScript} />
+    <Font cssVariable="--font-instrument" preload />
+    <Font cssVariable="--font-newsreader" preload />
   </head>
 
   <body class="min-h-screen bg-background text-foreground antialiased">
-    <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <div
+      aria-hidden="true"
+      class="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+    >
       <div class="absolute left-[-10rem] top-[-8rem] h-[22rem] w-[22rem] rounded-full bg-primary/10 blur-3xl" />
       <div class="absolute right-[-9rem] top-[8rem] h-[18rem] w-[18rem] rounded-full bg-accent/12 blur-3xl" />
       <div class="absolute bottom-[-10rem] left-1/2 h-[20rem] w-[28rem] -translate-x-1/2 rounded-full bg-primary/8 blur-3xl" />
@@ -154,17 +189,29 @@ const gaId = import.meta.env.PUBLIC_GTAG_ID;
     </a>
 
     <header class="sticky top-0 z-50 border-b border-navbar-border bg-navbar text-navbar-foreground backdrop-blur-xl supports-[backdrop-filter]:bg-navbar/70">
-      <div class="mx-auto flex w-full max-w-5xl flex-wrap items-center gap-3 px-5 py-4 sm:flex-nowrap sm:gap-5">
+      <div class="mx-auto grid w-full max-w-5xl grid-cols-[minmax(0,1fr)_auto] items-center gap-x-2 gap-y-1 px-4 py-3 sm:flex sm:flex-wrap sm:gap-5 sm:px-5 sm:py-4">
         <a
           href={homeHref}
-          class="inline-flex items-center gap-3 text-navbar-foreground no-underline transition-colors hover:text-navbar-primary hover:no-underline"
+          class="inline-flex items-center gap-2 text-navbar-foreground no-underline transition-colors hover:text-navbar-primary hover:no-underline"
         >
-          <img src={navLogo} alt={dict["logo_alt"]} class="h-7 w-7" loading="lazy" decoding="async" />
-          <span class="block whitespace-nowrap text-xl font-black tracking-[-0.035em] lowercase md:text-2xl">mick schroeder</span>
+          <img
+            src={navLogo}
+            alt={dict["logo_alt"]}
+            class="h-7 w-7"
+            width="28"
+            height="28"
+            decoding="async"
+          />
+          <span class="block whitespace-nowrap text-base sm:text-xl font-bold tracking-[-0.035em] lowercase md:text-2xl">
+            mick schroeder
+          </span>
         </a>
 
-        <nav class="ml-auto w-full sm:w-auto">
-          <ul class="flex flex-wrap items-center justify-end gap-1.5 text-sm font-medium sm:justify-center">
+        <nav
+          aria-label={dict.navigation_label}
+          class="order-3 col-span-2 w-full sm:order-none sm:ml-auto sm:w-auto"
+        >
+          <ul class="flex flex-wrap items-center justify-start gap-1.5 text-sm font-medium sm:justify-center">
             {navItems.map((item) => (
               <li>
                 <a
@@ -175,14 +222,15 @@ const gaId = import.meta.env.PUBLIC_GTAG_ID;
                 </a>
               </li>
             ))}
-            <li>
-              <LanguageSwitcher lang={lang} dict={dict} pathname={pathname} />
-            </li>
-            <li>
-              <ThemeToggle className="text-navbar-foreground hover:text-navbar-primary" />
-            </li>
           </ul>
         </nav>
+        <div class="flex items-center justify-end gap-1 sm:gap-2">
+          <LanguageSwitcher lang={lang} dict={dict} pathname={pathname} />
+          <ThemeToggle
+            dict={dict}
+            class="text-navbar-foreground hover:text-navbar-primary"
+          />
+        </div>
       </div>
     </header>
 

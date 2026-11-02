@@ -3,14 +3,20 @@
     "slug": "https://cite.mickschroeder.com",
     "homepage": "https://cite.mickschroeder.com",
     "repo": "https://github.com/mick-schroeder/cite.mickschroeder.com",
-    "language": "TypeScript",
+    "language": "JavaScript",
     "title": "Citation Generator",
     "description": "Bogearraí saor in aisce agus foinse oscailte a mholann lua citithe go huathoibríoch agus a chuidíonn le hinsint fhoinsí a scríobh.",
     "icon": "icon-cite.png",
     "screenshot": "screenshot-cite.png",
     "links": [
-      { "label": "Bain triail as", "url": "https://cite.mickschroeder.com" },
-      { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/cite.mickschroeder.com" }
+      {
+        "label": "Bain triail as",
+        "url": "https://cite.mickschroeder.com"
+      },
+      {
+        "label": "Cód foinse",
+        "url": "https://github.com/mick-schroeder/cite.mickschroeder.com"
+      }
     ]
   },
   {
@@ -23,9 +29,18 @@
     "icon": "icon-potatogame.png",
     "screenshot": "screenshot-potatogame.png",
     "links": [
-      { "label": "Bain triail as", "url": "https://potatogame.mickschroeder.com" },
-      { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/potatogame" },
-      { "label": "App Store", "url": "https://apps.apple.com/us/app/potato-game/id6477922776" }
+      {
+        "label": "Bain triail as",
+        "url": "https://potatogame.mickschroeder.com"
+      },
+      {
+        "label": "Cód foinse",
+        "url": "https://github.com/mick-schroeder/potatogame"
+      },
+      {
+        "label": "App Store",
+        "url": "https://apps.apple.com/us/app/potato-game/id6477922776"
+      }
     ]
   },
   {
@@ -36,7 +51,10 @@
     "icon": "icon-rxshortages.png",
     "screenshot": "screenshot-rxshortages.png",
     "links": [
-      { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/RxShortages" }
+      {
+        "label": "Cód foinse",
+        "url": "https://github.com/mick-schroeder/RxShortages"
+      }
     ]
   },
   {
@@ -45,40 +63,48 @@
     "title": "Foclóir Litrithe Leighis",
     "description": "Foclóir litrithe saor in aisce le téarmaí leighis do Microsoft Word / Office.",
     "icon": "icon-spell.png",
-        "screenshot": "screenshot-spell.png",
-
+    "screenshot": "screenshot-spell.png",
     "links": [
-      { "label": "Íoslódáil", "url": "https://github.com/mick-schroeder/Medical-Spelling-Dictionary" }
+      {
+        "label": "Íoslódáil",
+        "url": "https://github.com/mick-schroeder/Medical-Spelling-Dictionary"
+      }
     ]
   },
   {
     "slug": "https://news.mickschroeder.com",
     "homepage": "https://news.mickschroeder.com",
     "repo": "https://github.com/mick-schroeder/news.mickschroeder.com",
-    "language": "TypeScript",
+    "language": "JavaScript",
     "title": "Shuffle Nuachta",
     "description": "\"🔀 Shuffle\" le suíomhanna gréasáin is fearr agus is mó tionchair, curtha in eagar ag AI.",
     "icon": "icon-newsshuffle.png",
-    
-        "screenshot": "screenshot-newsshuffle.png",
-
+    "screenshot": "screenshot-newsshuffle.png",
     "links": [
-      { "label": "Bain triail as", "url": "https://news.mickschroeder.com" }
+      {
+        "label": "Bain triail as",
+        "url": "https://news.mickschroeder.com"
+      }
     ]
   },
   {
     "slug": "https://github.com/mick-schroeder/mickschroeder.com",
     "repo": "https://github.com/mick-schroeder/mickschroeder.com",
     "homepage": "https://www.mickschroeder.com/",
-    "language": "TypeScript",
+    "language": "JavaScript",
     "title": "mickschroeder.com",
     "description": "Féach cód foinse an tsuímh ghréasáin seo.",
     "icon": "icon-mickschroeder.png",
-            "screenshot": "screenshot-mickschroeder.png",
-
+    "screenshot": "screenshot-mickschroeder.png",
     "links": [
-      { "label": "Bain triail as", "url": "https://news.mickschroeder.com" },
-      { "label": "Cód foinse", "url": "https://github.com/mick-schroeder/mickschroeder.com" }
+      {
+        "label": "Bain triail as",
+        "url": "https://www.mickschroeder.com"
+      },
+      {
+        "label": "Cód foinse",
+        "url": "https://github.com/mick-schroeder/mickschroeder.com"
+      }
     ]
   }
 ]

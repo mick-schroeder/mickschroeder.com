@@ -6,6 +6,13 @@ const buildRobots = (site: URL) => {
 };
 
 export const GET: APIRoute = ({ site }) => {
+  if (!site)
+    throw new Error(
+      "Configure the canonical site URL before building robots.txt",
+    );
   const body = buildRobots(site);
-  return new Response(body, { status: 200, headers: { "Content-Type": "text/plain" } });
+  return new Response(body, {
+    status: 200,
+    headers: { "Content-Type": "text/plain" },
+  });
 };

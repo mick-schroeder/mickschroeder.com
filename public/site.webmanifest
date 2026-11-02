@@ -4,10 +4,15 @@
   "description": "Mick Schroeder — Indie software developer and pharmacist.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#111827",
+  "background_color": "#f4ede2",
+  "theme_color": "#0f6a4b",
   "icons": [
-    { "src": "/images/icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" },
+    {
+      "src": "/images/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
     { "src": "/images/icon.svg", "sizes": "any", "type": "image/svg+xml" }
   ]
 }

@@ -1,16 +1,16 @@
 ---
-type Props = { measurementId?: string };
-const { measurementId } = Astro.props as Props;
+interface Props {
+  measurementId: string;
+}
+const { measurementId } = Astro.props;
+if (!/^G-[A-Z0-9]+$/.test(measurementId))
+  throw new Error("PUBLIC_GTAG_ID must be a GA4 measurement ID (G-...).");
+const init = `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ${JSON.stringify(measurementId)});`;
 ---
 
-{measurementId ? (
-  <>
-    <script type="text/partytown" src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}></script>
-    <script type="text/partytown">
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag("js", new Date());
-      gtag("config", "{measurementId}");
-    </script>
-  </>
-) : null}
+<script
+  is:inline
+  type="text/partytown"
+  src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
+></script>
+<script is:inline type="text/partytown" set:html={init}></script>

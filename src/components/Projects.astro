@@ -3,35 +3,30 @@ import Card from "@/components/ui/astro/Card.astro";
 import Button from "@/components/ui/astro/Button.astro";
 import ExternalLink from "@lucide/astro/icons/external-link";
 import { Picture } from "astro:assets";
+import { resolveProjectAsset } from "@/lib/project-assets";
+import type { Dictionary } from "@/i18n/config";
 import type { Project } from "@/data/projects";
 
 interface Props {
   projects: Project[];
-  dict: Record<string, string>;
+  dict: Dictionary;
 }
 
 const { projects, dict } = Astro.props;
-
-const projectImages = import.meta.glob("../assets/projects/*.{png,jpg,jpeg,webp,avif}", {
-  eager: true,
-  import: "default",
-});
-
-const resolveAsset = (path: string | undefined | null) => {
-  if (!path) return null;
-  const normalized = path.replace(/^\/?images\/projects\//, "");
-  const key = `../assets/projects/${normalized}`;
-  return projectImages[key] || null;
-};
 ---
 
 <div class="mt-8 grid gap-8">
   {projects.map((project, idx) => {
     const delay = `${idx * 60}ms`;
-    const iconAlt = `${project.title} icon`;
-    const screenshotAlt = `${project.title} screenshot`;
-    const iconSrc = resolveAsset(project.icon);
-    const screenshotSrc = resolveAsset(project.screenshot);
+    const iconAlt = dict.project_icon.replace("{title}", project.title);
+    const screenshotAlt = dict.project_screenshot.replace(
+      "{title}",
+      project.title,
+    );
+    const iconSrc = resolveProjectAsset(project.icon);
+    const screenshotSrc = project.screenshot
+      ? resolveProjectAsset(project.screenshot)
+      : null;
     const projectLabel = project.language || dict["project_label_fallback"];
     return (
       <Card
@@ -41,43 +36,44 @@ const resolveAsset = (path: string | undefined | null) => {
         contentClass="pt-6"
         footerClass="hidden"
       >
-        <div slot="content" class="grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(16rem,24rem)] lg:items-start">
+        <div
+          slot="content"
+          class="grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(16rem,24rem)] lg:items-start"
+        >
           <div class="flex h-full flex-col justify-between">
             <div>
               <div class="flex items-start justify-between gap-4">
-                <div class="flex items-center gap-3">
-                  {iconSrc ? (
+                <div class="flex min-w-0 items-center gap-3">
+                  {
                     <Picture
                       src={iconSrc}
                       alt={iconAlt}
-                      widths={[32, 48, 64]}
-                      sizes="32px"
-                      formats={["avif", "webp", "png"]}
-                      class="h-10 w-10 rounded-xl border border-border/60"
+                      widths={[40, 80].filter(
+                        (width) => width <= iconSrc.width,
+                      )}
+                      sizes="40px"
+                      formats={["avif", "webp"]}
+                      class="h-10 w-10 min-w-10 shrink-0 object-contain rounded-xl border border-border/60"
                       loading="lazy"
                     />
-                  ) : project.icon ? (
-                    <img
-                      src={project.icon}
-                      alt={iconAlt}
-                      width="32"
-                      height="32"
-                      class="h-10 w-10 rounded-xl border border-border/60"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  ) : null}
-                  <div>
-                    <h3 class="text-2xl font-semibold tracking-[-0.03em] text-foreground">{project.title}</h3>
-                    <p class="mt-1 text-sm text-muted-foreground">{projectLabel}</p>
+                  }
+                  <div class="min-w-0">
+                    <h3 class="break-words text-xl sm:text-2xl font-semibold tracking-[-0.03em] text-foreground">
+                      {project.title}
+                    </h3>
+                    <p class="mt-1 text-sm text-muted-foreground">
+                      {projectLabel}
+                    </p>
                   </div>
                 </div>
-                <span class="rounded-full border border-border/70 bg-background/70 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                  {project.homepage ? "Live" : "Archive"}
+                <span class="shrink-0 rounded-full border border-border/70 bg-background/70 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                  {project.homepage ? dict.project_live : dict.project_archive}
                 </span>
               </div>
 
-              <p class="mt-6 text-base leading-7 text-muted-foreground">{project.description}</p>
+              <p class="mt-6 text-base leading-7 text-muted-foreground">
+                {project.description}
+              </p>
             </div>
 
             <div class="mt-8 flex flex-wrap gap-3">
@@ -101,21 +97,13 @@ const resolveAsset = (path: string | undefined | null) => {
                 <Picture
                   src={screenshotSrc}
                   alt={screenshotAlt}
-                  widths={[640, 960, 1400]}
-                  sizes="(max-width: 768px) 18rem, 24rem"
-                  formats={["avif", "webp", "png"]}
+                  widths={[288, 384, 576, 768].filter(
+                    (width) => width <= screenshotSrc.width,
+                  )}
+                  sizes="(min-width: 1024px) 384px, (max-width: 375px) calc(100vw - 96px), 288px"
+                  formats={["avif", "webp"]}
                   class="aspect-[37/40] h-auto w-full object-cover object-top"
                   loading="lazy"
-                />
-              </div>
-            ) : project.screenshot ? (
-              <div class="overflow-hidden rounded-[1.25rem] border border-border/60 bg-black/5 dark:bg-white/5">
-                <img
-                  src={project.screenshot}
-                  alt={screenshotAlt}
-                  class="aspect-[37/40] h-auto w-full object-cover object-top"
-                  loading="lazy"
-                  decoding="async"
                 />
               </div>
             ) : null}

@@ -18,7 +18,10 @@ export const siteConfig = {
     jobTitle: "Informatics Pharmacist",
     alumniOf: [
       { name: "Trinity College Dublin", url: "https://www.tcd.ie/" },
-      { name: "Philadelphia College of Pharmacy", url: "https://www.sju.edu/departments/philadelphia-college-pharmacy" },
+      {
+        name: "Philadelphia College of Pharmacy",
+        url: "https://www.sju.edu/departments/philadelphia-college-pharmacy",
+      },
     ],
   },
 } as const;

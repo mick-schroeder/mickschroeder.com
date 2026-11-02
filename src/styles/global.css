@@ -1,6 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap");
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -30,9 +28,17 @@
   --chart-4-light: #bb8f63;
   --chart-5-light: #2d4a42;
   --hero-gradient-light:
-    radial-gradient(circle at 14% 18%, rgba(15, 106, 75, 0.16), transparent 32%),
+    radial-gradient(
+      circle at 14% 18%,
+      rgba(15, 106, 75, 0.16),
+      transparent 32%
+    ),
     radial-gradient(circle at 88% 8%, rgba(147, 99, 63, 0.14), transparent 28%),
-    linear-gradient(135deg, rgba(255, 251, 245, 0.96) 0%, rgba(245, 237, 226, 0.92) 100%);
+    linear-gradient(
+      135deg,
+      rgba(255, 251, 245, 0.96) 0%,
+      rgba(245, 237, 226, 0.92) 100%
+    );
   --hero-primary-foreground-light: #16120d;
   --hero-secondary-foreground-light: #5e5447;
   --sidebar-light: rgba(255, 251, 245, 0.88);
@@ -53,7 +59,11 @@
   --navbar-ring-light: rgba(15, 106, 75, 0.3);
   --page-gradient-light:
     radial-gradient(circle at 0% 0%, rgba(15, 106, 75, 0.14), transparent 28%),
-    radial-gradient(circle at 100% 0%, rgba(147, 99, 63, 0.12), transparent 24%),
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(147, 99, 63, 0.12),
+      transparent 24%
+    ),
     linear-gradient(180deg, #f8f2e9 0%, #f2e9db 54%, #ece2d3 100%);
 
   --background-dark: #0e1412;
@@ -81,9 +91,21 @@
   --chart-4-dark: #c88755;
   --chart-5-dark: #9fc4b3;
   --hero-gradient-dark:
-    radial-gradient(circle at 12% 18%, rgba(126, 212, 174, 0.12), transparent 32%),
-    radial-gradient(circle at 88% 10%, rgba(211, 167, 128, 0.12), transparent 28%),
-    linear-gradient(145deg, rgba(19, 27, 24, 0.96) 0%, rgba(14, 20, 18, 0.98) 100%);
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(126, 212, 174, 0.12),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 88% 10%,
+      rgba(211, 167, 128, 0.12),
+      transparent 28%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(19, 27, 24, 0.96) 0%,
+      rgba(14, 20, 18, 0.98) 100%
+    );
   --hero-primary-foreground-dark: #f4ede2;
   --hero-secondary-foreground-dark: #b9b2a5;
   --sidebar-dark: rgba(19, 27, 24, 0.9);
@@ -103,8 +125,16 @@
   --navbar-border-dark: rgba(244, 237, 226, 0.08);
   --navbar-ring-dark: rgba(126, 212, 174, 0.28);
   --page-gradient-dark:
-    radial-gradient(circle at 0% 0%, rgba(126, 212, 174, 0.12), transparent 24%),
-    radial-gradient(circle at 100% 0%, rgba(211, 167, 128, 0.1), transparent 20%),
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(126, 212, 174, 0.12),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(211, 167, 128, 0.1),
+      transparent 20%
+    ),
     linear-gradient(180deg, #0b110f 0%, #0d1411 54%, #121a17 100%);
 
   --background: var(--background-light);
@@ -153,9 +183,11 @@
   --navbar-ring: var(--navbar-ring-light);
 
   --font-sans:
-    "Helvetica Neue", "Helvetica Now Text", "Helvetica Now Display", "Helvetica", "Arial Nova", "Arial", sans-serif;
+    var(--font-instrument), "Helvetica Neue", "Helvetica Now Text",
+    "Helvetica Now Display", "Helvetica", "Arial Nova", "Arial", sans-serif;
   --font-serif:
-    "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    var(--font-newsreader), "Iowan Old Style", "Palatino Linotype",
+    "Book Antiqua", Georgia, serif;
   --font-mono:
     "SFMono-Regular", "SF Mono", "IBM Plex Mono", "Consolas", monospace;
   --radius: 1rem;
@@ -401,7 +433,7 @@
 
 @layer utilities {
   .animate-rise {
-    animation: rise 0.72s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: rise 0.4s ease-out;
   }
 
   .hero-gradient {
@@ -421,12 +453,18 @@
 
 @keyframes rise {
   0% {
-    opacity: 0;
     transform: translateY(14px);
   }
 
   100% {
-    opacity: 1;
     transform: translateY(0);
   }
+}
+
+[hidden] {
+  display: none !important;
+}
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
 }

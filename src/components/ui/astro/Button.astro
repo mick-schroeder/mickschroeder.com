@@ -2,6 +2,7 @@
 import { buttonVariants, type ButtonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+import type { HTMLAttributes } from "astro/types";
 type Props = {
   variant?: ButtonVariants["variant"];
   size?: ButtonVariants["size"];
@@ -13,7 +14,7 @@ type Props = {
   type?: "button" | "submit" | "reset";
   ariaLabel?: string;
   title?: string;
-} & Record<string, unknown>;
+} & Omit<HTMLAttributes<"a"> & HTMLAttributes<"button">, "class">;
 
 const {
   variant = "default",
@@ -29,7 +30,8 @@ const {
   ...rest
 } = Astro.props as Props;
 
-const computedRel = rel || (target === "_blank" ? "noopener noreferrer" : undefined);
+const computedRel =
+  rel || (target === "_blank" ? "noopener noreferrer" : undefined);
 const classes = cn(buttonVariants({ variant, size, className }));
 ---
 

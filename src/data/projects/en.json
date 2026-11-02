@@ -10,7 +10,10 @@
     "screenshot": "screenshot-cite.png",
     "links": [
       { "label": "Website", "url": "https://cite.mickschroeder.com" },
-      { "label": "Source code", "url": "https://github.com/mick-schroeder/cite.mickschroeder.com" }
+      {
+        "label": "Source code",
+        "url": "https://github.com/mick-schroeder/cite.mickschroeder.com"
+      }
     ]
   },
   {
@@ -24,8 +27,14 @@
     "screenshot": "screenshot-potatogame.png",
     "links": [
       { "label": "Website", "url": "https://potatogame.mickschroeder.com" },
-      { "label": "Source code", "url": "https://github.com/mick-schroeder/potatogame" },
-      { "label": "App Store", "url": "https://apps.apple.com/us/app/potato-game/id6477922776" }
+      {
+        "label": "Source code",
+        "url": "https://github.com/mick-schroeder/potatogame"
+      },
+      {
+        "label": "App Store",
+        "url": "https://apps.apple.com/us/app/potato-game/id6477922776"
+      }
     ]
   },
   {
@@ -34,10 +43,13 @@
     "title": "RxShortages",
     "description": "RxShortages was an open-source cross-platform mobile application for health care professionals providing information about drug shortages.",
     "icon": "icon-rxshortages.png",
-        "screenshot": "screenshot-rxshortages.png",
+    "screenshot": "screenshot-rxshortages.png",
 
     "links": [
-      { "label": "Source code", "url": "https://github.com/mick-schroeder/RxShortages" }
+      {
+        "label": "Source code",
+        "url": "https://github.com/mick-schroeder/RxShortages"
+      }
     ]
   },
   {
@@ -46,10 +58,13 @@
     "title": "Medical Spelling Dictionary",
     "description": "Free Spelling dictionary containing medical terms for Microsoft Word / Office.",
     "icon": "icon-spell.png",
-            "screenshot": "screenshot-spell.png",
+    "screenshot": "screenshot-spell.png",
 
     "links": [
-      { "label": "Source code", "url": "https://github.com/mick-schroeder/Medical-Spelling-Dictionary" }
+      {
+        "label": "Source code",
+        "url": "https://github.com/mick-schroeder/Medical-Spelling-Dictionary"
+      }
     ]
   },
   {
@@ -60,11 +75,14 @@
     "title": "News Shuffle",
     "description": "Provides a shuffle button to send you to the best and most influential news websites on the web.",
     "icon": "icon-newsshuffle.png",
-                "screenshot": "screenshot-newsshuffle.png",
+    "screenshot": "screenshot-newsshuffle.png",
 
     "links": [
       { "label": "Website", "url": "https://news.mickschroeder.com" },
-      { "label": "Source code", "url": "https://github.com/mick-schroeder/news.mickschroeder.com" }
+      {
+        "label": "Source code",
+        "url": "https://github.com/mick-schroeder/news.mickschroeder.com"
+      }
     ]
   },
   {
@@ -75,11 +93,14 @@
     "title": "mickschroeder.com",
     "description": "See source code for this website.",
     "icon": "icon-mickschroeder.png",
-                    "screenshot": "screenshot-mickschroeder.png",
+    "screenshot": "screenshot-mickschroeder.png",
 
     "links": [
       { "label": "Website", "url": "https://www.mickschroeder.com" },
-      { "label": "Source code", "url": "https://github.com/mick-schroeder/mickschroeder.com" }
+      {
+        "label": "Source code",
+        "url": "https://github.com/mick-schroeder/mickschroeder.com"
+      }
     ]
   }
 ]

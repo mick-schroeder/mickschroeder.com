@@ -1,0 +1,40 @@
+---
+import Footer from "@/components/Footer.astro";
+import HomePage from "@/components/HomePage.astro";
+import MainLayout from "@/layouts/main.astro";
+import { siteConfig } from "@/config/site";
+import type { Language } from "@/i18n/config";
+import { getDictionary } from "@/i18n/config";
+import { getProjects } from "@/data/projects";
+import { getSocials } from "@/data/socials";
+import { buildSoftwareSourceCodeJsonLd } from "@/lib/seo";
+
+interface Props {
+  lang: Language;
+}
+const { lang } = Astro.props;
+const dict = getDictionary(lang);
+const projects = getProjects(lang);
+const socials = getSocials(lang);
+const pathname = Astro.url.pathname;
+const jsonLd = buildSoftwareSourceCodeJsonLd(
+  projects,
+  siteConfig.siteUrl,
+  siteConfig.person.fullName || siteConfig.author,
+);
+
+const navSocial = siteConfig.social || {};
+const logo = "/images/logo-mick-schroeder.svg";
+---
+
+<MainLayout lang={lang} dict={dict} pathname={pathname} jsonLd={jsonLd}>
+  <HomePage
+    dict={dict}
+    projects={projects}
+    socials={socials}
+    navSocial={navSocial}
+    logo={logo}
+    email={siteConfig.social.email}
+  />
+  <Footer lang={lang} dict={dict} />
+</MainLayout>

@@ -1,0 +1,33 @@
+---
+import type { Dictionary, Language } from "@/i18n/config";
+import { pathWithLang } from "@/i18n/config";
+interface Props {
+  lang: Language;
+  dict: Dictionary;
+}
+const { lang, dict } = Astro.props;
+---
+
+<footer class="mt-12 text-center text-xs leading-6 text-muted-foreground">
+  <p>
+    © {new Date().getFullYear()} Mick Schroeder, LLC. {dict.footer_code}:{" "}
+    <a
+      href="https://opensource.org/licenses/MIT"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      MIT
+    </a>{" "}
+    • {dict.footer_content}:{" "}
+    <a
+      href="https://creativecommons.org/licenses/by-nc/4.0/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      CC BY-NC 4.0
+    </a>
+  </p>
+  <p class="mt-2">
+    <a href={pathWithLang(lang, "/privacy-policy")}>{dict.privacy_title}</a>
+  </p>
+</footer>

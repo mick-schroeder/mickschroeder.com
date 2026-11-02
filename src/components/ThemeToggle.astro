@@ -3,112 +3,33 @@ import Monitor from "@lucide/astro/icons/monitor";
 import Moon from "@lucide/astro/icons/moon";
 import Sun from "@lucide/astro/icons/sun";
 import { buttonVariants } from "@/components/ui/button";
-
-type ThemeMode = "system" | "light" | "dark";
-type Props = { className?: string; class?: string };
-
-const { className = "", class: classAttr = "" } = Astro.props as Props;
-const mergedClassName = [className, classAttr].filter(Boolean).join(" ");
-const buttonClass = buttonVariants({
-  variant: "ghost",
-  size: "icon",
-  className: mergedClassName || undefined,
-});
-const labelMap: Record<ThemeMode, string> = {
-  dark: "Dark mode",
-  light: "Light mode",
-  system: "System mode",
-};
+import type { Dictionary } from "@/i18n/config";
+interface Props {
+  dict: Dictionary;
+  class?: string;
+}
+const { dict, class: className } = Astro.props;
 ---
 
 <button
   type="button"
-  class={buttonClass}
-  aria-label={`${labelMap.system} toggle`}
-  title="Cycle light / dark / system"
+  hidden
+  class={buttonVariants({ variant: "ghost", size: "icon", className })}
+  aria-label={dict.theme_cycle}
   data-theme-toggle
   data-mode="system"
+  data-system={dict.theme_system}
+  data-light={dict.theme_light}
+  data-dark={dict.theme_dark}
+  data-action={dict.theme_cycle}
 >
-  <span data-icon="dark" class="contents" hidden>
+  <span data-icon="dark" hidden>
     <Moon class="h-4 w-4" aria-hidden="true" />
   </span>
-  <span data-icon="light" class="contents" hidden>
+  <span data-icon="light" hidden>
     <Sun class="h-4 w-4" aria-hidden="true" />
   </span>
-  <span data-icon="system" class="contents">
+  <span data-icon="system">
     <Monitor class="h-4 w-4" aria-hidden="true" />
   </span>
 </button>
-
-<script>
-  const storageKey = "theme-preference";
-  const labelMap = {
-    dark: "Dark mode",
-    light: "Light mode",
-    system: "System mode",
-  };
-  const nextTheme = {
-    system: "light",
-    light: "dark",
-    dark: "system",
-  };
-
-  const applyTheme = (target) => {
-    const root = document.documentElement;
-    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const resolved = target === "system" ? (systemPrefersDark ? "dark" : "light") : target;
-
-    if (target === "system") {
-      root.removeAttribute("data-theme");
-    } else {
-      root.setAttribute("data-theme", target);
-    }
-
-    root.classList.toggle("dark", resolved === "dark");
-    root.style.colorScheme = resolved === "dark" ? "dark" : "light";
-  };
-
-  const setupThemeToggle = () => {
-    const button = document.querySelector("[data-theme-toggle]");
-    if (!button) return;
-
-    const icons = button.querySelectorAll("[data-icon]");
-    const updateUI = (mode) => {
-      icons.forEach((icon) => {
-        icon.hidden = icon.dataset.icon !== mode;
-      });
-      button.dataset.mode = mode;
-      button.setAttribute("aria-label", `${labelMap[mode]} toggle`);
-    };
-
-    const stored = window.localStorage.getItem(storageKey);
-    const valid = stored === "light" || stored === "dark" || stored === "system";
-    let mode = valid ? stored : "system";
-
-    applyTheme(mode);
-    updateUI(mode);
-
-    button.addEventListener("click", () => {
-      mode = nextTheme[mode];
-      applyTheme(mode);
-      if (mode === "system") {
-        window.localStorage.removeItem(storageKey);
-      } else {
-        window.localStorage.setItem(storageKey, mode);
-      }
-      updateUI(mode);
-    });
-
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const syncSystem = () => {
-      if (mode === "system") applyTheme("system");
-    };
-    mediaQuery.addEventListener("change", syncSystem);
-  };
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", setupThemeToggle, { once: true });
-  } else {
-    setupThemeToggle();
-  }
-</script>

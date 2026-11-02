@@ -5,7 +5,8 @@ export const languages = ["en", "ga"] as const;
 export type Language = (typeof languages)[number];
 export const defaultLanguage: Language = "en";
 
-export type Dictionary = Record<string, string>;
+export type TranslationKey = keyof typeof en;
+export type Dictionary = Record<TranslationKey, string>;
 
 const dictionaries: Record<Language, Dictionary> = {
   en,
@@ -22,14 +23,15 @@ export function getDictionary(lang: string | undefined | null): Dictionary {
 
 export function translate(
   dict: Dictionary,
-  key: string,
-  fallback?: string
+  key: TranslationKey,
+  fallback?: string,
 ): string {
   if (dict[key]) return dict[key];
   return fallback ?? key;
 }
 
-const trailingSlash = (path: string) => (path.endsWith("/") ? path : `${path}/`);
+const trailingSlash = (path: string) =>
+  path.endsWith("/") ? path : `${path}/`;
 const normalizePath = (path: string) => {
   const normalized = path.startsWith("/") ? path : `/${path}`;
   return normalized === "" ? "/" : normalized;

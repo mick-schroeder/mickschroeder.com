@@ -24,4 +24,3 @@ const projectMap: Record<Language, Project[]> = {
 export function getProjects(lang: Language): Project[] {
   return projectMap[lang] || projectMap.en;
 }
-
