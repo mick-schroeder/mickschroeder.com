@@ -2,7 +2,7 @@
 
 Personal site for Mick Schroeder, PharmD — Irish-American indie software developer and pharmacist.
 
-Static Astro 7 pages, Tailwind CSS 4, native Astro components, Lucide SVG icons, and English/Irish routing. Fonts are served from the built site. No React runtime or client framework is required.
+Static Astro 7 pages, Tailwind CSS 4, native Astro components, Lucide SVG icons, and English/Irish routing. Typography uses Helvetica with local system fallbacks. No React runtime or client framework is required.
 
 ## Development
 
@@ -30,7 +30,7 @@ Use `npx astro dev stop` or `npx astro preview stop` to stop a background server
 - English and Irish interface strings: `src/locales/{en,ga}/common.json`. Both dictionaries must have the same keys.
 - Projects and social links: `src/data/{projects,socials}/{en,ga}.json`. Keep project identities and order aligned across languages. Project images live in `src/assets/projects/` and are resolved centrally for both the page and JSON-LD.
 - Shared homepage, privacy page, and footer components keep route files small. The substantive privacy policy is stored once in `src/data/privacy.ts`; update its effective date only when changing policy content.
-- Styles: `src/styles/global.css`. Astro's Fonts API downloads the configured font files at build time and serves them locally. A fresh build needs network access to Fontsource.
+- Styles: `src/styles/global.css`. The font stack is Helvetica, Helvetica Neue, Arial, and sans-serif; no web font downloads are required.
 
 English canonicals use `/` and `/privacy-policy/`. `/en/` and `/en/privacy-policy/` remain working aliases, excluded from the sitemap. Irish pages use `/ga/`. The Irish privacy page explains that the full policy is in English, links to it, and marks its English content with `lang="en"`.
 
@@ -76,9 +76,9 @@ GitHub Actions runs the same verification on pull requests and pushes to `main`,
 
 ### Recorded results
 
-Mobile Lighthouse audits on 2 November 2026 scored 100 for performance, accessibility, best practices, and SEO on both English and Irish homepages. Largest contentful paint was approximately 0.77 seconds in English and 0.75 seconds in Irish, with zero total blocking time and cumulative layout shift below 0.001. These are local lab measurements.
+Mobile Lighthouse audits on 2 November 2026 scored 100 for performance, accessibility, best practices, and SEO on both English and Irish homepages. Largest contentful paint was approximately 0.75 seconds in both languages, with zero total blocking time and cumulative layout shift below 0.001. These are local lab measurements.
 
-With analytics disabled, the production homepage contains 67,623 bytes of HTML and uses 49,339 bytes of CSS. Theme and language scripts are inline; no standalone JavaScript files or Partytown runtime are emitted.
+With analytics disabled, theme and language scripts are inline; no standalone JavaScript files or Partytown runtime are emitted.
 
 ### Dependency notes
 
@@ -99,5 +99,6 @@ AWS Amplify reads `.nvmrc`, runs `npm ci`, builds the site, and publishes `dist/
 
 - Code: [MIT](LICENSE).
 - Content: [CC BY-NC 4.0](CONTENT_LICENSE.md).
+- Component styles: [third-party notices](THIRD_PARTY_NOTICES.md).
 
 Logos, trademarks, and certain media assets may be excluded and remain All Rights Reserved unless explicitly licensed.

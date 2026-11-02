@@ -1,67 +1,40 @@
 ---
-import Button from "@/components/ui/astro/Button.astro";
-import Card from "@/components/ui/astro/Card.astro";
-import ExternalLink from "@lucide/astro/icons/external-link";
+import ArrowUpRight from "@lucide/astro/icons/arrow-up-right";
 import type { SocialItem } from "@/data/socials";
 import type { Dictionary } from "@/i18n/config";
-
 interface Props {
   items: SocialItem[];
   dict: Dictionary;
 }
-
 const { items, dict } = Astro.props;
-const list = Array.isArray(items) ? items : [];
 ---
 
-{list.length ? (
-  <div class="mt-8 grid gap-6">
-    {list.map((item, idx) => {
-      const delay = `${idx * 80}ms`;
-      const displayUrl = item.url.replace(/^https?:\/\//, "");
-      return (
-        <Card class="animate-rise" style={`animation-delay: ${delay};`}>
-          <div slot="header" class="flex items-center gap-4">
-            <span class="inline-grid h-11 w-11 place-items-center rounded-2xl bg-primary/12 text-primary ring-1 ring-border">
-              {item.icon ? (
-                <img
-                  src={item.icon}
-                  alt=""
-                  aria-hidden="true"
-                  width="18"
-                  height="18"
-                  class="dark:invert"
-                />
-              ) : (
-                <ExternalLink class="h-4 w-4" />
-              )}
-            </span>
-            <div>
-              <h3 class="text-xl font-semibold tracking-[-0.02em]">
-                {item.title}
-              </h3>
-              <a
-                href={item.url}
-                rel="noopener noreferrer"
-                class="text-sm text-muted-foreground underline decoration-primary/35 underline-offset-4 hover:text-primary"
-              >
-                {displayUrl}
-              </a>
-            </div>
-          </div>
-          <div slot="content" class="pt-0">
-            <Button
-              href={item.url}
-              variant="outline"
-              className="w-full sm:w-auto"
-              rel="noopener noreferrer"
-            >
-              {item.cta || dict["cta_visit"]}
-              <ExternalLink class="h-4 w-4" />
-            </Button>
-          </div>
-        </Card>
-      );
-    })}
-  </div>
-) : null}
+<ul class="mt-4 divide-y">
+  {items.map((item) => (
+    <li>
+      <a
+        href={item.url}
+        class="group flex min-h-12 items-center justify-between gap-4 py-3 text-sm font-medium no-underline transition-colors hover:text-primary"
+        aria-label={item.cta || `${dict.cta_visit} ${item.title}`}
+      >
+        <span class="flex items-center gap-3">
+          {item.icon && (
+            <img
+              src={item.icon}
+              alt=""
+              aria-hidden="true"
+              width="16"
+              height="16"
+              class="dark:invert"
+            />
+          )}
+          {item.title}
+        </span>
+        <ArrowUpRight
+          class="size-4 text-muted-foreground transition-colors group-hover:text-primary"
+          aria-hidden="true"
+        />
+      </a>
+    </li>
+  ))}
+</ul>

@@ -1,7 +1,7 @@
 // @ts-check
 import { loadEnv } from "vite";
 import tailwindcss from "@tailwindcss/vite";
-import { defineConfig, fontProviders } from "astro/config";
+import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import partytown from "@astrojs/partytown";
 
@@ -21,26 +21,6 @@ export default defineConfig({
     defaultLocale: "en",
     routing: { prefixDefaultLocale: false },
   },
-  fonts: [
-    {
-      name: "Instrument Sans",
-      cssVariable: "--font-instrument",
-      provider: fontProviders.fontsource(),
-      weights: [400, 500, 600, 700],
-      styles: ["normal"],
-      subsets: ["latin"],
-      fallbacks: ["Arial", "sans-serif"],
-    },
-    {
-      name: "Newsreader",
-      cssVariable: "--font-newsreader",
-      provider: fontProviders.fontsource(),
-      weights: [400, 600, 700],
-      styles: ["normal"],
-      subsets: ["latin"],
-      fallbacks: ["Georgia", "serif"],
-    },
-  ],
   vite: { plugins: [tailwindcss()] },
   integrations: [
     sitemap({

@@ -22,9 +22,6 @@ const jsonLd = buildSoftwareSourceCodeJsonLd(
   siteConfig.siteUrl,
   siteConfig.person.fullName || siteConfig.author,
 );
-
-const navSocial = siteConfig.social || {};
-const logo = "/images/logo-mick-schroeder.svg";
 ---
 
 <MainLayout lang={lang} dict={dict} pathname={pathname} jsonLd={jsonLd}>
@@ -32,8 +29,6 @@ const logo = "/images/logo-mick-schroeder.svg";
     dict={dict}
     projects={projects}
     socials={socials}
-    navSocial={navSocial}
-    logo={logo}
     email={siteConfig.social.email}
   />
   <Footer lang={lang} dict={dict} />

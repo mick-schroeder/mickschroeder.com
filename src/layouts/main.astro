@@ -1,6 +1,5 @@
 ---
 import "@/styles/global.css";
-import { Font } from "astro:assets";
 import themeScript from "@/scripts/theme.js?raw";
 import GoogleAnalytics from "@/components/GoogleAnalytics.astro";
 import LanguageSwitcher from "@/components/LanguageSwitcher.astro";
@@ -168,19 +167,9 @@ const gaId = import.meta.env.PUBLIC_GTAG_ID;
       set:html={JSON.stringify(ld)}
     />
     <script is:inline set:html={themeScript} />
-    <Font cssVariable="--font-instrument" preload />
-    <Font cssVariable="--font-newsreader" preload />
   </head>
 
   <body class="min-h-screen bg-background text-foreground antialiased">
-    <div
-      aria-hidden="true"
-      class="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
-    >
-      <div class="absolute left-[-10rem] top-[-8rem] h-[22rem] w-[22rem] rounded-full bg-primary/10 blur-3xl" />
-      <div class="absolute right-[-9rem] top-[8rem] h-[18rem] w-[18rem] rounded-full bg-accent/12 blur-3xl" />
-      <div class="absolute bottom-[-10rem] left-1/2 h-[20rem] w-[28rem] -translate-x-1/2 rounded-full bg-primary/8 blur-3xl" />
-    </div>
     <a
       href="#main-content"
       class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
@@ -188,11 +177,11 @@ const gaId = import.meta.env.PUBLIC_GTAG_ID;
       {skipLabel}
     </a>
 
-    <header class="sticky top-0 z-50 border-b border-navbar-border bg-navbar text-navbar-foreground backdrop-blur-xl supports-[backdrop-filter]:bg-navbar/70">
-      <div class="mx-auto grid w-full max-w-5xl grid-cols-[minmax(0,1fr)_auto] items-center gap-x-2 gap-y-1 px-4 py-3 sm:flex sm:flex-wrap sm:gap-5 sm:px-5 sm:py-4">
+    <header class="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/90">
+      <div class="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-x-2 gap-y-1 px-4 py-3 sm:flex sm:flex-wrap sm:gap-5 sm:px-5 sm:py-4">
         <a
           href={homeHref}
-          class="inline-flex items-center gap-2 text-navbar-foreground no-underline transition-colors hover:text-navbar-primary hover:no-underline"
+          class="inline-flex items-center gap-2 text-foreground no-underline transition-colors hover:text-primary hover:no-underline"
         >
           <img
             src={navLogo}
@@ -202,7 +191,7 @@ const gaId = import.meta.env.PUBLIC_GTAG_ID;
             height="28"
             decoding="async"
           />
-          <span class="block whitespace-nowrap text-base sm:text-xl font-bold tracking-[-0.035em] lowercase md:text-2xl">
+          <span class="block whitespace-nowrap text-base font-semibold tracking-tight sm:text-lg">
             mick schroeder
           </span>
         </a>
@@ -216,7 +205,7 @@ const gaId = import.meta.env.PUBLIC_GTAG_ID;
               <li>
                 <a
                   href={item.href}
-                  class="rounded-full px-3 py-2 text-sm text-navbar-foreground no-underline transition-colors hover:bg-navbar-accent hover:text-navbar-primary hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navbar-ring/60"
+                  class="rounded-md px-3 py-2 text-sm text-foreground no-underline transition-colors hover:bg-accent hover:text-primary hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
                 >
                   {item.label}
                 </a>
@@ -226,15 +215,15 @@ const gaId = import.meta.env.PUBLIC_GTAG_ID;
         </nav>
         <div class="flex items-center justify-end gap-1 sm:gap-2">
           <LanguageSwitcher lang={lang} dict={dict} pathname={pathname} />
-          <ThemeToggle
-            dict={dict}
-            class="text-navbar-foreground hover:text-navbar-primary"
-          />
+          <ThemeToggle dict={dict} class="text-foreground hover:text-primary" />
         </div>
       </div>
     </header>
 
-    <main id="main-content" class="mx-auto w-full max-w-5xl px-6 py-10">
+    <main
+      id="main-content"
+      class="mx-auto w-full max-w-6xl px-5 pb-8 pt-5 sm:px-8"
+    >
       <slot />
     </main>
   </body>

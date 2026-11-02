@@ -8,7 +8,7 @@ interface Props {
 const { lang, dict } = Astro.props;
 ---
 
-<footer class="mt-12 text-center text-xs leading-6 text-muted-foreground">
+<footer class="mt-12 flex flex-col gap-2 border-t pt-6 text-xs leading-6 text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
   <p>
     © {new Date().getFullYear()} Mick Schroeder, LLC. {dict.footer_code}:{" "}
     <a
@@ -27,7 +27,7 @@ const { lang, dict } = Astro.props;
       CC BY-NC 4.0
     </a>
   </p>
-  <p class="mt-2">
+  <p class="shrink-0">
     <a href={pathWithLang(lang, "/privacy-policy")}>{dict.privacy_title}</a>
   </p>
 </footer>

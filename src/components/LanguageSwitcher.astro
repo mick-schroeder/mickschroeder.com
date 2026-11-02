@@ -21,7 +21,7 @@ const options = languages.map((lng) => ({
     </label>
     <NativeSelect
       id="language-switcher"
-      class="min-w-16 border-navbar-border bg-navbar text-navbar-foreground"
+      class="min-w-16 border-input bg-background text-foreground"
     >
       {options.map((option) => (
         <option value={option.href} selected={option.lang === lang}>
